@@ -42,8 +42,8 @@
     "index.html": {
       "settings": {
         "main": true,
-        "title": "Home",
-        "meta_descr": "Biswarup Biswas",
+        "title": "Biswarup Biswas",
+        "meta_descr": "Home page of Biswarup Biswas.",
         "header_custom": "",
         "footer_custom": "",
         "html_before": ""
