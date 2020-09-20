@@ -1,6 +1,6 @@
 {
   "settings": {
-    "name": "Site-09-20_1405",
+    "name": "Biswarup Biswas",
     "currentPage": "index.html",
     "theme": {
       "name": "mobirise4",
@@ -35,7 +35,7 @@
     "uniqCompNum": 2,
     "versionPublish": "4.9.7",
     "screenshot": "screenshot.png",
-    "favicon": "@PROJECT_PATH@/assets/images/eg12-80x80-surf-128x96.png",
+    "favicon": "@PROJECT_PATH@/assets/images/eg12-80x80-surf-128x96-1.png",
     "noImageResize": ""
   },
   "pages": {
@@ -43,7 +43,7 @@
       "settings": {
         "main": true,
         "title": "Home",
-        "meta_descr": "",
+        "meta_descr": "Biswarup Biswas",
         "header_custom": "",
         "footer_custom": "",
         "html_before": ""
