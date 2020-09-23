@@ -1,11 +1,3 @@
 ## my web page
-This webpage is available at
-```
-[page1](https://bbiswarup.github.io)
+This webpage is available at [https://bbiswarup.github.io](https://bbiswarup.github.io) and [http://web.iitd.ernet.in/~biswarupb](http://web.iitd.ernet.in/~biswarupb)
 
-```
-and
-```
-[page 2](http://web.iitd.ernet.in/~biswarupb)
-
-```
