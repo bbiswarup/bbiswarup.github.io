@@ -8,4 +8,7 @@ and
 ```
 [http://web.iitd.ernet.in/~biswarupb](http://web.iitd.ernet.in/~biswarupb)
 
+## License
+[MIT](https://choosealicense.com/licenses/mit/)
+
 ```
