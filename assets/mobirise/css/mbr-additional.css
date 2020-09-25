@@ -1478,6 +1478,96 @@ body {
   padding-bottom: 0px;
   background-color: #ffffff;
 }
+.cid-sbATLpLilC {
+  padding-top: 45px;
+  padding-bottom: 0px;
+  background-color: #ffffff;
+}
+.cid-sbATLpLilC .mbr-section-subtitle {
+  color: #767676;
+}
+.cid-sbAVAZJH0W {
+  padding-top: 90px;
+  padding-bottom: 90px;
+  background-color: #ffffff;
+}
+.cid-sbAVAZJH0W .mbr-section-subtitle {
+  color: #767676;
+}
+.cid-sbAVAZJH0W .container-table {
+  margin: 0 auto;
+}
+.cid-sbAVAZJH0W .scroll {
+  overflow-x: auto;
+  padding: 0;
+}
+.cid-sbAVAZJH0W .dataTables_wrapper {
+  display: block;
+}
+.cid-sbAVAZJH0W .dataTables_wrapper .search {
+  margin-bottom: .5rem;
+}
+.cid-sbAVAZJH0W .dataTables_wrapper .table {
+  overflow-x: auto;
+}
+.cid-sbAVAZJH0W table {
+  width: 100% !important;
+  margin-top: 6px;
+  border: 1px solid #ffffff;
+  margin-bottom: 0;
+}
+.cid-sbAVAZJH0W table th {
+  border-top: none;
+  transition: all .2s;
+  border-bottom: none;
+}
+.cid-sbAVAZJH0W table th:hover {
+  background: #ffffff;
+  color: #000000;
+}
+.cid-sbAVAZJH0W table td {
+  border-top: 1px solid #ffffff;
+}
+.cid-sbAVAZJH0W table.table {
+  background: #efefef;
+}
+.cid-sbAVAZJH0W .dataTables_filter {
+  text-align: right;
+  margin-bottom: .5rem;
+}
+.cid-sbAVAZJH0W .dataTables_filter label {
+  display: inline;
+  white-space: normal !important;
+}
+.cid-sbAVAZJH0W .dataTables_filter input {
+  display: inline;
+  width: auto;
+  margin-left: .5rem;
+  border-radius: 100px;
+  padding-left: 1rem;
+}
+.cid-sbAVAZJH0W .dataTables_info {
+  padding-bottom: 1rem;
+  padding-top: 1rem;
+  white-space: normal !important;
+}
+@media (max-width: 992px) {
+  .cid-sbAVAZJH0W .dataTables_filter {
+    text-align: center;
+  }
+}
+@media (max-width: 350px) {
+  .cid-sbAVAZJH0W .dataTables_filter {
+    text-align: center;
+  }
+  .cid-sbAVAZJH0W .dataTables_filter input {
+    width: 100% !important;
+    margin-left: 0 !important;
+  }
+}
+.cid-sbAVAZJH0W .head-item {
+  text-align: left;
+}
 .cid-sb7ES4QFCy {
   padding-top: 60px;
   padding-bottom: 0px;
