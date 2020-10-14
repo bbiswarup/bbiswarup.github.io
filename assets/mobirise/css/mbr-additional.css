@@ -2209,7 +2209,7 @@ body {
 }
 .cid-sbBptxBboh {
   padding-top: 60px;
-  padding-bottom: 60px;
+  padding-bottom: 0px;
   background-color: #465052;
 }
 @media (max-width: 767px) {
@@ -2274,4 +2274,82 @@ body {
     -webkit-justify-content: center;
     justify-content: center;
   }
+}
+.cid-sdoabjIbFE {
+  padding-top: 0px;
+  padding-bottom: 30px;
+  background-color: #465052;
+}
+.cid-sdoabjIbFE .row-links {
+  width: 100%;
+  -webkit-justify-content: center;
+  justify-content: center;
+}
+.cid-sdoabjIbFE .social-row {
+  width: 100%;
+  -webkit-justify-content: center;
+  justify-content: center;
+}
+.cid-sdoabjIbFE .media-container-row {
+  -webkit-flex-direction: column;
+  flex-direction: column;
+  -webkit-justify-content: center;
+  justify-content: center;
+  -webkit-align-items: center;
+  align-items: center;
+}
+.cid-sdoabjIbFE .media-container-row .foot-menu {
+  list-style: none;
+  display: flex;
+  -webkit-justify-content: center;
+  justify-content: center;
+  -webkit-flex-wrap: wrap;
+  flex-wrap: wrap;
+  padding: 0;
+  margin-bottom: 0;
+}
+.cid-sdoabjIbFE .media-container-row .foot-menu li {
+  padding: 0 1rem 1rem 1rem;
+}
+.cid-sdoabjIbFE .media-container-row .foot-menu li p {
+  margin: 0;
+}
+.cid-sdoabjIbFE .media-container-row .social-list {
+  padding-left: 0;
+  margin-bottom: 0;
+  list-style: none;
+  display: flex;
+  -webkit-flex-wrap: wrap;
+  flex-wrap: wrap;
+  -webkit-justify-content: flex-end;
+  justify-content: flex-end;
+}
+.cid-sdoabjIbFE .media-container-row .social-list .mbr-iconfont-social {
+  font-size: 1.5rem;
+  color: #ffffff;
+}
+.cid-sdoabjIbFE .media-container-row .social-list .soc-item {
+  margin: 0 .5rem;
+}
+.cid-sdoabjIbFE .media-container-row .social-list a {
+  margin: 0;
+  opacity: .5;
+  -webkit-transition: .2s linear;
+  transition: .2s linear;
+}
+.cid-sdoabjIbFE .media-container-row .social-list a:hover {
+  opacity: 1;
+}
+@media (max-width: 767px) {
+  .cid-sdoabjIbFE .media-container-row .social-list {
+    -webkit-justify-content: center;
+    justify-content: center;
+  }
+}
+.cid-sdoabjIbFE .media-container-row .row-copirayt {
+  word-break: break-word;
+  width: 100%;
+}
+.cid-sdoabjIbFE .media-container-row .row-copirayt p {
+  width: 100%;
 }
