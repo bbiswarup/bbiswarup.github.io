@@ -42,7 +42,7 @@
       }
     ],
     "uniqCompNum": 16,
-    "versionPublish": "5.2.0",
+    "versionPublish": "4.12.4",
     "screenshot": "screenshot.png",
     "favicon": "@PROJECT_PATH@/assets/images/eg12-80x80-surf-128x96-128x96.png",
     "noImageResize": "",
