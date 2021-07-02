@@ -54,7 +54,10 @@
     "siteUrl": false,
     "cookiesAlert": false,
     "gdpr": false,
-    "modified": "2021-03-13T11:34:04.371Z"
+    "modified": "2021-03-13T11:34:04.371Z",
+    "publishType": "github",
+    "gitHubName": "bbiswarup",
+    "gitHubPath": ""
   },
   "pages": {
     "index.html": {
