@@ -1,0 +1,7 @@
+person age sex
+Ramesh 22 M
+Priyanka 19 F
+Vinodh 17 M
+Ravi 19 M
+Rstudio 12 na 
+Palak 20 F

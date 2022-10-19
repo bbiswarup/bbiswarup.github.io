@@ -1,0 +1,725 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+
+<meta charset="utf-8" />
+<meta name="generator" content="pandoc" />
+<meta http-equiv="X-UA-Compatible" content="IE=EDGE" />
+
+
+
+
+<title>Lab sheet 2: R Programming</title>
+
+<script src="site_libs/header-attrs-2.14/header-attrs.js"></script>
+<script src="site_libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link href="site_libs/bootstrap-3.3.5/css/cosmo.min.css" rel="stylesheet" />
+<script src="site_libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/respond.min.js"></script>
+<style>h1 {font-size: 34px;}
+       h1.title {font-size: 38px;}
+       h2 {font-size: 30px;}
+       h3 {font-size: 24px;}
+       h4 {font-size: 18px;}
+       h5 {font-size: 16px;}
+       h6 {font-size: 12px;}
+       code {color: inherit; background-color: rgba(0, 0, 0, 0.04);}
+       pre:not([class]) { background-color: white }</style>
+<script src="site_libs/navigation-1.1/tabsets.js"></script>
+<link href="site_libs/highlightjs-9.12.0/textmate.css" rel="stylesheet" />
+<script src="site_libs/highlightjs-9.12.0/highlight.js"></script>
+<link href="site_libs/font-awesome-5.1.0/css/all.css" rel="stylesheet" />
+<link href="site_libs/font-awesome-5.1.0/css/v4-shims.css" rel="stylesheet" />
+
+<style type="text/css">
+  code{white-space: pre-wrap;}
+  span.smallcaps{font-variant: small-caps;}
+  span.underline{text-decoration: underline;}
+  div.column{display: inline-block; vertical-align: top; width: 50%;}
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+  ul.task-list{list-style: none;}
+    </style>
+
+<style type="text/css">code{white-space: pre;}</style>
+<script type="text/javascript">
+if (window.hljs) {
+  hljs.configure({languages: []});
+  hljs.initHighlightingOnLoad();
+  if (document.readyState && document.readyState === "complete") {
+    window.setTimeout(function() { hljs.initHighlighting(); }, 0);
+  }
+}
+</script>
+
+
+
+
+
+
+<link rel="stylesheet" href="styles.css" type="text/css" />
+
+
+
+<style type = "text/css">
+.main-container {
+  max-width: 940px;
+  margin-left: auto;
+  margin-right: auto;
+}
+img {
+  max-width:100%;
+}
+.tabbed-pane {
+  padding-top: 12px;
+}
+.html-widget {
+  margin-bottom: 20px;
+}
+button.code-folding-btn:focus {
+  outline: none;
+}
+summary {
+  display: list-item;
+}
+details > summary > p:only-child {
+  display: inline;
+}
+pre code {
+  padding: 0;
+}
+</style>
+
+
+<style type="text/css">
+.dropdown-submenu {
+  position: relative;
+}
+.dropdown-submenu>.dropdown-menu {
+  top: 0;
+  left: 100%;
+  margin-top: -6px;
+  margin-left: -1px;
+  border-radius: 0 6px 6px 6px;
+}
+.dropdown-submenu:hover>.dropdown-menu {
+  display: block;
+}
+.dropdown-submenu>a:after {
+  display: block;
+  content: " ";
+  float: right;
+  width: 0;
+  height: 0;
+  border-color: transparent;
+  border-style: solid;
+  border-width: 5px 0 5px 5px;
+  border-left-color: #cccccc;
+  margin-top: 5px;
+  margin-right: -10px;
+}
+.dropdown-submenu:hover>a:after {
+  border-left-color: #adb5bd;
+}
+.dropdown-submenu.pull-left {
+  float: none;
+}
+.dropdown-submenu.pull-left>.dropdown-menu {
+  left: -100%;
+  margin-left: 10px;
+  border-radius: 6px 0 6px 6px;
+}
+</style>
+
+<script type="text/javascript">
+// manage active state of menu based on current page
+$(document).ready(function () {
+  // active menu anchor
+  href = window.location.pathname
+  href = href.substr(href.lastIndexOf('/') + 1)
+  if (href === "")
+    href = "index.html";
+  var menuAnchor = $('a[href="' + href + '"]');
+
+  // mark it active
+  menuAnchor.tab('show');
+
+  // if it's got a parent navbar menu mark it active as well
+  menuAnchor.closest('li.dropdown').addClass('active');
+
+  // Navbar adjustments
+  var navHeight = $(".navbar").first().height() + 15;
+  var style = document.createElement('style');
+  var pt = "padding-top: " + navHeight + "px; ";
+  var mt = "margin-top: -" + navHeight + "px; ";
+  var css = "";
+  // offset scroll position for anchor links (for fixed navbar)
+  for (var i = 1; i <= 6; i++) {
+    css += ".section h" + i + "{ " + pt + mt + "}\n";
+  }
+  style.innerHTML = "body {" + pt + "padding-bottom: 40px; }\n" + css;
+  document.head.appendChild(style);
+});
+</script>
+
+<!-- tabsets -->
+
+<style type="text/css">
+.tabset-dropdown > .nav-tabs {
+  display: inline-table;
+  max-height: 500px;
+  min-height: 44px;
+  overflow-y: auto;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+.tabset-dropdown > .nav-tabs > li.active:before {
+  content: "";
+  font-family: 'Glyphicons Halflings';
+  display: inline-block;
+  padding: 10px;
+  border-right: 1px solid #ddd;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li.active:before {
+  content: "&#xe258;";
+  border: none;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open:before {
+  content: "";
+  font-family: 'Glyphicons Halflings';
+  display: inline-block;
+  padding: 10px;
+  border-right: 1px solid #ddd;
+}
+
+.tabset-dropdown > .nav-tabs > li.active {
+  display: block;
+}
+
+.tabset-dropdown > .nav-tabs > li > a,
+.tabset-dropdown > .nav-tabs > li > a:focus,
+.tabset-dropdown > .nav-tabs > li > a:hover {
+  border: none;
+  display: inline-block;
+  border-radius: 4px;
+  background-color: transparent;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li {
+  display: block;
+  float: none;
+}
+
+.tabset-dropdown > .nav-tabs > li {
+  display: none;
+}
+</style>
+
+<!-- code folding -->
+
+
+
+
+</head>
+
+<body>
+
+
+<div class="container-fluid main-container">
+
+
+
+
+<div class="navbar navbar-inverse  navbar-fixed-top" role="navigation">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-bs-toggle="collapse" data-target="#navbar" data-bs-target="#navbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="index.html">R Programming</a>
+    </div>
+    <div id="navbar" class="navbar-collapse collapse">
+      <ul class="nav navbar-nav">
+        <li>
+  <a href="index.html">
+    <span class="fa fa-home"></span>
+     
+    Home
+  </a>
+</li>
+<li>
+  <a href="about.html">
+    <span class="fa fa-info"></span>
+     
+    About
+  </a>
+</li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        <li>
+  <a>
+    <span class="fa fa-question fa-lg"></span>
+     
+  </a>
+</li>
+      </ul>
+    </div><!--/.nav-collapse -->
+  </div><!--/.container -->
+</div><!--/.navbar -->
+
+<div id="header">
+
+
+
+<h1 class="title toc-ignore">Lab sheet 2: R Programming</h1>
+
+</div>
+
+
+<div id="more-on-character-variables" class="section level2">
+<h2>More on character variables</h2>
+<pre class="r"><code>hello &lt;- &quot;Hello World!&quot;
+nchar(hello)</code></pre>
+<pre><code>## [1] 12</code></pre>
+<pre class="r"><code>a &lt;- &quot;0.1&quot; # now try: a &lt;- a+1
+&quot;alpha&quot; == &quot; alpha&quot;</code></pre>
+<pre><code>## [1] FALSE</code></pre>
+<pre class="r"><code>c(&quot;alpha&quot;,&quot;beta&quot;,&quot;gamma&quot;)==&quot;beta&quot;</code></pre>
+<pre><code>## [1] FALSE  TRUE FALSE</code></pre>
+<pre class="r"><code>&quot;alpha&quot;&lt;=&quot;beta&quot;</code></pre>
+<pre><code>## [1] TRUE</code></pre>
+<pre class="r"><code>str1=c(&quot;boring&quot;, &quot;class&quot;, &quot;this&quot;, &quot;is&quot;)
+str1</code></pre>
+<pre><code>## [1] &quot;boring&quot; &quot;class&quot;  &quot;this&quot;   &quot;is&quot;</code></pre>
+<pre class="r"><code>cat(str1[3],str1[2],str1[4],&quot;really&quot;, str1[1])</code></pre>
+<pre><code>## this class is really boring</code></pre>
+<pre class="r"><code>paste(str1[3],str1[2],str1[4],&quot;really&quot;, str1[1],sep=&quot;-&quot;)</code></pre>
+<pre><code>## [1] &quot;this-class-is-really-boring&quot;</code></pre>
+<p>You can not use single backslash (/) and double inverted comma (“) inside string. The following can be done:</p>
+<pre class="r"><code>cat(&quot;I really want a backslash: \\\nand a double quote: \&quot;&quot;)</code></pre>
+<pre><code>## I really want a backslash: \
+## and a double quote: &quot;</code></pre>
+<pre class="r"><code>str2 &lt;- &quot;I am a beginner in R!&quot;
+substr(x=str2,start=8,stop=15) </code></pre>
+<pre><code>## [1] &quot;beginner&quot;</code></pre>
+<pre class="r"><code>substr(x=str2,start=8,stop=15) &lt;-&quot;PRO&quot;
+str2</code></pre>
+<pre><code>## [1] &quot;I am a PROinner in R!&quot;</code></pre>
+<pre class="r"><code># consider a string &quot;Hello dear&quot;
+# replace the character &#39;e&#39; in &quot;Hello dear&quot; with &quot;E&quot;
+print(gsub(&quot;e&quot;, &quot;E&quot;, &quot;Hello dear&quot;) )</code></pre>
+<pre><code>## [1] &quot;HEllo dEar&quot;</code></pre>
+<pre class="r"><code># use parse to convert character variable to expression
+
+x &lt;- &quot;sqrt(2)&quot;
+eval(x)</code></pre>
+<pre><code>## [1] &quot;sqrt(2)&quot;</code></pre>
+<pre class="r"><code>xparse &lt;- parse(text = x)
+eval(xparse)</code></pre>
+<pre><code>## [1] 1.414214</code></pre>
+<pre class="r"><code># Upper case.
+string1 &lt;- toupper(&quot;I love Hyderabad&quot;)
+string1</code></pre>
+<pre><code>## [1] &quot;I LOVE HYDERABAD&quot;</code></pre>
+<pre class="r"><code># Lower case.
+string2 &lt;- tolower(&quot;I love Hyderabad&quot;)
+string2</code></pre>
+<pre><code>## [1] &quot;i love hyderabad&quot;</code></pre>
+</div>
+<div id="left-justifying" class="section level1">
+<h1>left justifying</h1>
+<p>x &lt;- format(“MU”, width = 16, justify = “l”) print(x)</p>
+</div>
+<div id="centering" class="section level1">
+<h1>centering</h1>
+<p>x &lt;- format(“MU”, width = 16, justify = “c”) print(x)</p>
+<div id="the-stringr-package" class="section level2">
+<h2>The stringr package</h2>
+<pre class="r"><code># load the stringr package to replace a string
+library(&quot;stringr&quot;)
+str3 &lt;- &quot;I am a beginner in R!&quot;
+print(str_replace_all( str3,&quot;beginner&quot;, &quot;PRO&quot;) )</code></pre>
+<pre><code>## [1] &quot;I am a PRO in R!&quot;</code></pre>
+<pre class="r"><code>x &lt;- c(&quot;this&quot;, &quot;is&quot;, &quot;our&quot;, &quot;third&quot;, &quot;lab&quot;, &quot;in&quot;, &quot;this&quot;, &quot;course&quot;)
+str_length(x) </code></pre>
+<pre><code>## [1] 4 2 3 5 3 2 4 6</code></pre>
+<pre class="r"><code>str_c(x, collapse = &quot;, &quot;)</code></pre>
+<pre><code>## [1] &quot;this, is, our, third, lab, in, this, course&quot;</code></pre>
+<pre class="r"><code>str_c(x, collapse = &quot; &quot;)</code></pre>
+<pre><code>## [1] &quot;this is our third lab in this course&quot;</code></pre>
+<pre class="r"><code>str_sub(x, 1, 2)</code></pre>
+<pre><code>## [1] &quot;th&quot; &quot;is&quot; &quot;ou&quot; &quot;th&quot; &quot;la&quot; &quot;in&quot; &quot;th&quot; &quot;co&quot;</code></pre>
+<pre class="r"><code>str_subset(x, &quot;[aeiou]&quot;)</code></pre>
+<pre><code>## [1] &quot;this&quot;   &quot;is&quot;     &quot;our&quot;    &quot;third&quot;  &quot;lab&quot;    &quot;in&quot;     &quot;this&quot;   &quot;course&quot;</code></pre>
+<pre class="r"><code>str_count(x, &quot;[aeiou]&quot;)</code></pre>
+<pre><code>## [1] 1 1 2 1 1 1 1 3</code></pre>
+<pre class="r"><code>str_replace(x, &quot;[aeiou]&quot;, &quot;?&quot;)</code></pre>
+<pre><code>## [1] &quot;th?s&quot;   &quot;?s&quot;     &quot;?ur&quot;    &quot;th?rd&quot;  &quot;l?b&quot;    &quot;?n&quot;     &quot;th?s&quot;   &quot;c?urse&quot;</code></pre>
+<p>The following two functions are widely used.</p>
+<pre class="r"><code>str_extract(string, pattern)
+
+str_extract_all(string, pattern, simplify = FALSE)</code></pre>
+<p>To know more about pattern see this <a href="https://rdrr.io/cran/stringi/man/about_search_regex.html">Link</a>. Some examples are:</p>
+<pre class="r"><code>book_list &lt;- c(&quot;Calculus&quot;, &quot;Linear Algebra II&quot;, &quot;Numerical Methods v2&quot;, &quot;Real Analysis&quot;)
+str_extract(book_list, &quot;\\d&quot;)</code></pre>
+<pre><code>## [1] NA  NA  &quot;2&quot; NA</code></pre>
+<pre class="r"><code>str_extract(book_list, &quot;[[a-z][A-Z]]+&quot;)</code></pre>
+<pre><code>## [1] &quot;Calculus&quot;  &quot;Linear&quot;    &quot;Numerical&quot; &quot;Real&quot;</code></pre>
+<pre class="r"><code>str_extract(book_list, &quot;[a-z]{1,4}&quot;)</code></pre>
+<pre><code>## [1] &quot;alcu&quot; &quot;inea&quot; &quot;umer&quot; &quot;eal&quot;</code></pre>
+<pre class="r"><code>str_extract(book_list, &quot;\\b[a-z]{1,4}\\b&quot;)</code></pre>
+<pre><code>## [1] NA NA NA NA</code></pre>
+<pre class="r"><code># Extract all matches
+str_extract_all(book_list, &quot;[[A-Z][a-z]]+&quot;)</code></pre>
+<pre><code>## [[1]]
+## [1] &quot;Calculus&quot;
+## 
+## [[2]]
+## [1] &quot;Linear&quot;  &quot;Algebra&quot; &quot;II&quot;     
+## 
+## [[3]]
+## [1] &quot;Numerical&quot; &quot;Methods&quot;   &quot;v&quot;        
+## 
+## [[4]]
+## [1] &quot;Real&quot;     &quot;Analysis&quot;</code></pre>
+<pre class="r"><code>str_extract_all(book_list, &quot;\\d&quot;)</code></pre>
+<pre><code>## [[1]]
+## character(0)
+## 
+## [[2]]
+## character(0)
+## 
+## [[3]]
+## [1] &quot;2&quot;
+## 
+## [[4]]
+## character(0)</code></pre>
+<pre class="r"><code>str_extract_all(str_c(book_list, collapse = &quot; &quot;),&quot;[[A-Z][a-z]]+&quot;)</code></pre>
+<pre><code>## [[1]]
+## [1] &quot;Calculus&quot;  &quot;Linear&quot;    &quot;Algebra&quot;   &quot;II&quot;        &quot;Numerical&quot; &quot;Methods&quot;  
+## [7] &quot;v&quot;         &quot;Real&quot;      &quot;Analysis&quot;</code></pre>
+<pre class="r"><code># Rounded off.
+x &lt;- format(3.14159265358979323846, digits = 5)
+x</code></pre>
+<pre><code>## [1] &quot;3.1416&quot;</code></pre>
+<pre class="r"><code># in scientific notation format.
+x &lt;- format(3.14159265358979323846, scientific = TRUE)
+print(x)</code></pre>
+<pre><code>## [1] &quot;3.141593e+00&quot;</code></pre>
+<pre class="r"><code># Show at least 5 digits after decimal.
+x &lt;- format(3.14, nsmall = 5)
+print(x)</code></pre>
+<pre><code>## [1] &quot;3.14000&quot;</code></pre>
+<pre class="r"><code>x &lt;- format(007, width = 16)
+print(x)</code></pre>
+<pre><code>## [1] &quot;               7&quot;</code></pre>
+</div>
+<div id="factors" class="section level2">
+<h2>Factors</h2>
+<pre class="r"><code>first.name &lt;- c(&quot;Priya&quot;,&quot;Aarav&quot;,&quot;Darpan&quot;,&quot;Bandita&quot;, &quot;Anika&quot;,
+                &quot;Chaitanya&quot;,&quot;Shruti&quot;,&quot;Chandran&quot;, &quot;Darsh&quot;,&quot;Evanshi&quot;)
+gender.num &lt;- c(1,0,0,1,1,0,1,0,0,1)
+gender.str &lt;- c(&quot;female&quot;,&quot;male&quot;,&quot;male&quot;,&quot;female&quot;,&quot;female&quot;,&quot;male&quot;,
+             &quot;female&quot;,&quot;male&quot;,&quot;male&quot;,&quot;female&quot;)
+first.name[gender.num==0]</code></pre>
+<pre><code>## [1] &quot;Aarav&quot;     &quot;Darpan&quot;    &quot;Chaitanya&quot; &quot;Chandran&quot;  &quot;Darsh&quot;</code></pre>
+<pre class="r"><code>first.name[gender.str==&quot;female&quot;]</code></pre>
+<pre><code>## [1] &quot;Priya&quot;   &quot;Bandita&quot; &quot;Anika&quot;   &quot;Shruti&quot;  &quot;Evanshi&quot;</code></pre>
+<pre class="r"><code>gender.num.fac &lt;- factor(x=gender.num)
+gender.num.fac</code></pre>
+<pre><code>##  [1] 1 0 0 1 1 0 1 0 0 1
+## Levels: 0 1</code></pre>
+<pre class="r"><code>gender.str.fac &lt;- factor(x=gender.str)
+gender.str.fac</code></pre>
+<pre><code>##  [1] female male   male   female female male   female male   male   female
+## Levels: female male</code></pre>
+<pre class="r"><code>levels(x=gender.str.fac)</code></pre>
+<pre><code>## [1] &quot;female&quot; &quot;male&quot;</code></pre>
+<pre class="r"><code>mob.str=c(&quot;Feb&quot;,&quot;Jul&quot;,&quot;Jun&quot;,&quot;Sep&quot;,&quot;Dec&quot;,&quot;Aug&quot;,&quot;Jul&quot;,&quot;Mar&quot;,&quot;Jul&quot;,&quot;Mar&quot;)
+mob.str.fac=factor(x=mob.str)
+levels(mob.str.fac)</code></pre>
+<pre><code>## [1] &quot;Aug&quot; &quot;Dec&quot; &quot;Feb&quot; &quot;Jul&quot; &quot;Jun&quot; &quot;Mar&quot; &quot;Sep&quot;</code></pre>
+<pre class="r"><code>ms &lt;- c(&quot;Jan&quot;,&quot;Feb&quot;,&quot;Mar&quot;,&quot;Apr&quot;,&quot;May&quot;,&quot;Jun&quot;,&quot;Jul&quot;,&quot;Aug&quot;,&quot;Sep&quot;,&quot;Oct&quot;,&quot;Nov&quot;,&quot;Dec&quot;)
+
+mob.fac &lt;- factor(x=mob.str,levels=ms,ordered=TRUE)
+mob.fac</code></pre>
+<pre><code>##  [1] Feb Jul Jun Sep Dec Aug Jul Mar Jul Mar
+## 12 Levels: Jan &lt; Feb &lt; Mar &lt; Apr &lt; May &lt; Jun &lt; Jul &lt; Aug &lt; Sep &lt; Oct &lt; ... &lt; Dec</code></pre>
+<pre class="r"><code>mob.fac[2]&lt;mob.fac[3]</code></pre>
+<pre><code>## [1] FALSE</code></pre>
+<pre class="r"><code>Y &lt;- c(0.53,5.4,1.5,3.33,0.45,0.01,2,4.2,1.99,1.01)
+br &lt;- c(0,2,4,6)
+cut(x=Y,breaks=br)</code></pre>
+<pre><code>##  [1] (0,2] (4,6] (0,2] (2,4] (0,2] (0,2] (0,2] (4,6] (0,2] (0,2]
+## Levels: (0,2] (2,4] (4,6]</code></pre>
+<pre class="r"><code>cut(x=Y,breaks=br,right=F)</code></pre>
+<pre><code>##  [1] [0,2) [4,6) [0,2) [2,4) [0,2) [0,2) [2,4) [4,6) [0,2) [0,2)
+## Levels: [0,2) [2,4) [4,6)</code></pre>
+<pre class="r"><code>cut(x=Y,breaks=br,right=F,include.lowest=T)</code></pre>
+<pre><code>##  [1] [0,2) [4,6] [0,2) [2,4) [0,2) [0,2) [2,4) [4,6] [0,2) [0,2)
+## Levels: [0,2) [2,4) [4,6]</code></pre>
+<pre class="r"><code>lab &lt;- c(&quot;Small&quot;,&quot;Medium&quot;,&quot;Large&quot;)
+cut(x=Y,breaks=br,right=F,include.lowest=T,labels=lab)</code></pre>
+<pre><code>##  [1] Small  Large  Small  Medium Small  Small  Medium Large  Small  Small 
+## Levels: Small Medium Large</code></pre>
+</div>
+<div id="list-and-data-frames" class="section level2">
+<h2>List and data frames</h2>
+<p>Vectors, matrices, and arrays can store only one type of data (Numeric, logical or character). In some cases, in fact, in most cases, we need to store all kinds of data in a tabular form. We will explore two more data structures in this lab session: lists and data frames that allow one to store multiple types of data variables at a time.</p>
+<div id="list" class="section level3">
+<h3>List</h3>
+<pre class="r"><code>my.list &lt;- list(matrix(data=5:9,nrow=2,ncol=2),c(F,T,T,F,T),
+                &quot;hi, I am inside a list&quot;)</code></pre>
+<pre><code>## Warning in matrix(data = 5:9, nrow = 2, ncol = 2): data length [5] is not a sub-
+## multiple or multiple of the number of rows [2]</code></pre>
+<pre class="r"><code>my.list</code></pre>
+<pre><code>## [[1]]
+##      [,1] [,2]
+## [1,]    5    7
+## [2,]    6    8
+## 
+## [[2]]
+## [1] FALSE  TRUE  TRUE FALSE  TRUE
+## 
+## [[3]]
+## [1] &quot;hi, I am inside a list&quot;</code></pre>
+<pre class="r"><code>length(x=my.list)</code></pre>
+<pre><code>## [1] 3</code></pre>
+<pre class="r"><code>my.list[[3]]</code></pre>
+<pre><code>## [1] &quot;hi, I am inside a list&quot;</code></pre>
+<pre class="r"><code>my.list[[3]] &lt;- paste(my.list[[3]],&quot;and you too!&quot;)
+my.list</code></pre>
+<pre><code>## [[1]]
+##      [,1] [,2]
+## [1,]    5    7
+## [2,]    6    8
+## 
+## [[2]]
+## [1] FALSE  TRUE  TRUE FALSE  TRUE
+## 
+## [[3]]
+## [1] &quot;hi, I am inside a list and you too!&quot;</code></pre>
+<pre class="r"><code>names(my.list) &lt;- c(&quot;my.matrix&quot;,&quot;my.logical&quot;,&quot;my.string&quot;)
+my.list$my.matrix</code></pre>
+<pre><code>##      [,1] [,2]
+## [1,]    5    7
+## [2,]    6    8</code></pre>
+<pre class="r"><code>my.list1 &lt;- list(var1=c(T,F,T,T),var2=&quot;Do you want to be a part of the Math Club?&quot;,
+            var3=my.list$my.matrix)
+names(my.list1)</code></pre>
+<pre><code>## [1] &quot;var1&quot; &quot;var2&quot; &quot;var3&quot;</code></pre>
+<pre class="r"><code>my.list1$inner.list &lt;- list(my.vector=c(T,F,F,T),
+                            my.string=&quot;Contact/Meet Faculty Incharge&quot;)
+my.list1</code></pre>
+<pre><code>## $var1
+## [1]  TRUE FALSE  TRUE  TRUE
+## 
+## $var2
+## [1] &quot;Do you want to be a part of the Math Club?&quot;
+## 
+## $var3
+##      [,1] [,2]
+## [1,]    5    7
+## [2,]    6    8
+## 
+## $inner.list
+## $inner.list$my.vector
+## [1]  TRUE FALSE FALSE  TRUE
+## 
+## $inner.list$my.string
+## [1] &quot;Contact/Meet Faculty Incharge&quot;</code></pre>
+<pre class="r"><code>my.list1$inner.list$my.string</code></pre>
+<pre><code>## [1] &quot;Contact/Meet Faculty Incharge&quot;</code></pre>
+</div>
+<div id="data-frames" class="section level3">
+<h3>Data Frames</h3>
+<pre class="r"><code>my_data &lt;- data.frame(person=c(&quot;Ramesh&quot;,&quot;Priyanka&quot;,&quot;Vinodh&quot;,&quot;Ravi&quot;,&quot;Palak&quot;),
+age=c(22,19,17,19,20),
+gender=factor(c(&quot;M&quot;,&quot;F&quot;,&quot;M&quot;,&quot;M&quot;,&quot;F&quot;)),
+stringsAsFactors=FALSE
+)
+my_data</code></pre>
+<pre><code>##     person age gender
+## 1   Ramesh  22      M
+## 2 Priyanka  19      F
+## 3   Vinodh  17      M
+## 4     Ravi  19      M
+## 5    Palak  20      F</code></pre>
+<pre class="r"><code>my_data[1,3]</code></pre>
+<pre><code>## [1] M
+## Levels: F M</code></pre>
+<pre class="r"><code>my_data[2:4,1]</code></pre>
+<pre><code>## [1] &quot;Priyanka&quot; &quot;Vinodh&quot;   &quot;Ravi&quot;</code></pre>
+<pre class="r"><code>my_data$age</code></pre>
+<pre><code>## [1] 22 19 17 19 20</code></pre>
+<pre class="r"><code>dim(my_data)</code></pre>
+<pre><code>## [1] 5 3</code></pre>
+<pre class="r"><code>nrow(my_data)</code></pre>
+<pre><code>## [1] 5</code></pre>
+<pre class="r"><code>ncol(my_data)</code></pre>
+<pre><code>## [1] 3</code></pre>
+<pre class="r"><code>my_data$person</code></pre>
+<pre><code>## [1] &quot;Ramesh&quot;   &quot;Priyanka&quot; &quot;Vinodh&quot;   &quot;Ravi&quot;     &quot;Palak&quot;</code></pre>
+<pre class="r"><code>newrecord &lt;- data.frame(person=&quot;Akansha&quot;,age=17,
+gender=factor(&quot;F&quot;,levels=levels(my_data$gender)))
+my_data &lt;- rbind(my_data,newrecord)
+my_data</code></pre>
+<pre><code>##     person age gender
+## 1   Ramesh  22      M
+## 2 Priyanka  19      F
+## 3   Vinodh  17      M
+## 4     Ravi  19      M
+## 5    Palak  20      F
+## 6  Akansha  17      F</code></pre>
+<pre class="r"><code>stream &lt;- c(&quot;CM&quot;,&quot;CM&quot;,&quot;ME&quot;,&quot;ME&quot;,&quot;EEE&quot;,&quot;CM&quot;)
+stream &lt;- factor(x=stream,levels=c(&quot;CM&quot;,&quot;ME&quot;,&quot;EEE&quot;))
+my_data &lt;- cbind(my_data,stream)
+my_data</code></pre>
+<pre><code>##     person age gender stream
+## 1   Ramesh  22      M     CM
+## 2 Priyanka  19      F     CM
+## 3   Vinodh  17      M     ME
+## 4     Ravi  19      M     ME
+## 5    Palak  20      F    EEE
+## 6  Akansha  17      F     CM</code></pre>
+<pre class="r"><code>my_data[my_data$stream==&quot;CM&quot;,]</code></pre>
+<pre><code>##     person age gender stream
+## 1   Ramesh  22      M     CM
+## 2 Priyanka  19      F     CM
+## 6  Akansha  17      F     CM</code></pre>
+<pre class="r"><code>my_data[my_data$age&gt;18,]</code></pre>
+<pre><code>##     person age gender stream
+## 1   Ramesh  22      M     CM
+## 2 Priyanka  19      F     CM
+## 4     Ravi  19      M     ME
+## 5    Palak  20      F    EEE</code></pre>
+<pre class="r"><code>sorted_data &lt;-my_data[order(my_data$person,decreasing = FALSE),]
+sorted_data</code></pre>
+<pre><code>##     person age gender stream
+## 6  Akansha  17      F     CM
+## 5    Palak  20      F    EEE
+## 2 Priyanka  19      F     CM
+## 1   Ramesh  22      M     CM
+## 4     Ravi  19      M     ME
+## 3   Vinodh  17      M     ME</code></pre>
+</div>
+</div>
+<div id="special-values" class="section level2">
+<h2>Special values</h2>
+<pre class="r"><code>big_num &lt;- 90000^100
+big_num</code></pre>
+<pre><code>## [1] Inf</code></pre>
+<pre class="r"><code>-2*Inf</code></pre>
+<pre><code>## [1] -Inf</code></pre>
+<pre class="r"><code>1/Inf</code></pre>
+<pre><code>## [1] 0</code></pre>
+<pre class="r"><code>1+Inf</code></pre>
+<pre><code>## [1] Inf</code></pre>
+<pre class="r"><code>4/0</code></pre>
+<pre><code>## [1] Inf</code></pre>
+<pre class="r"><code>Inf/0</code></pre>
+<pre><code>## [1] Inf</code></pre>
+<pre class="r"><code>Inf+Inf</code></pre>
+<pre><code>## [1] Inf</code></pre>
+<pre class="r"><code>Inf-Inf</code></pre>
+<pre><code>## [1] NaN</code></pre>
+<pre class="r"><code>0/0</code></pre>
+<pre><code>## [1] NaN</code></pre>
+<pre class="r"><code>Inf/Inf</code></pre>
+<pre><code>## [1] NaN</code></pre>
+<pre class="r"><code>is.nan(2+6*(4-4)/0)</code></pre>
+<pre><code>## [1] TRUE</code></pre>
+<pre class="r"><code>spcl &lt;- c(NaN,54.3,-2,NaN,90094.123,-Inf,55)
+is.infinite(spcl)</code></pre>
+<pre><code>## [1] FALSE FALSE FALSE FALSE FALSE  TRUE FALSE</code></pre>
+<pre class="r"><code>1&gt;NaN</code></pre>
+<pre><code>## [1] NA</code></pre>
+<pre class="r"><code>a &lt;- c(0,5,NA,9)
+a</code></pre>
+<pre><code>## [1]  0  5 NA  9</code></pre>
+<pre class="r"><code>a[6]</code></pre>
+<pre><code>## [1] NA</code></pre>
+<pre class="r"><code>c(0,5,NULL,9)</code></pre>
+<pre><code>## [1] 0 5 9</code></pre>
+<pre class="r"><code>c(NA,NA,NA)</code></pre>
+<pre><code>## [1] NA NA NA</code></pre>
+<pre class="r"><code>c(NULL,NULL,NULL)</code></pre>
+<pre><code>## NULL</code></pre>
+</div>
+<div id="is-and-as-dot-functions" class="section level2">
+<h2>is and as dot functions</h2>
+<pre class="r"><code>is.numeric(0.1)</code></pre>
+<pre><code>## [1] TRUE</code></pre>
+<pre class="r"><code>is.character(0.1)</code></pre>
+<pre><code>## [1] FALSE</code></pre>
+<pre class="r"><code>is.character(&quot;0.1&quot;)</code></pre>
+<pre><code>## [1] TRUE</code></pre>
+<pre class="r"><code>as.numeric(&quot;0.1&quot;)+1</code></pre>
+<pre><code>## [1] 1.1</code></pre>
+<pre class="r"><code>is.integer(8.7)</code></pre>
+<pre><code>## [1] FALSE</code></pre>
+<pre class="r"><code>as.character(0.1)</code></pre>
+<pre><code>## [1] &quot;0.1&quot;</code></pre>
+<pre class="r"><code>as.logical(c(&quot;1&quot;,&quot;0&quot;,&quot;1&quot;,&quot;0&quot;,&quot;0&quot;))</code></pre>
+<pre><code>## [1] NA NA NA NA NA</code></pre>
+<pre class="r"><code>as.logical(as.numeric(c(&quot;1&quot;,&quot;0&quot;,&quot;1&quot;,&quot;0&quot;,&quot;0&quot;)))</code></pre>
+<pre><code>## [1]  TRUE FALSE  TRUE FALSE FALSE</code></pre>
+</div>
+</div>
+
+<p>Copyright &copy; 2022 Biswarup Biswas. All rights reserved.</p>
+
+
+
+</div>
+
+<script>
+
+// add bootstrap table styles to pandoc tables
+function bootstrapStylePandocTables() {
+  $('tr.odd').parent('tbody').parent('table').addClass('table table-condensed');
+}
+$(document).ready(function () {
+  bootstrapStylePandocTables();
+});
+
+
+</script>
+
+<!-- tabsets -->
+
+<script>
+$(document).ready(function () {
+  window.buildTabsets("TOC");
+});
+
+$(document).ready(function () {
+  $('.tabset-dropdown > .nav-tabs > li').click(function () {
+    $(this).parent().toggleClass('nav-tabs-open');
+  });
+});
+</script>
+
+<!-- code folding -->
+
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+
+</body>
+</html>
