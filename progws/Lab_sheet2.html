@@ -359,13 +359,11 @@ str_length(x) </code></pre>
 <pre class="r"><code>str_sub(x, 1, 2)</code></pre>
 <pre><code>## [1] &quot;th&quot; &quot;is&quot; &quot;ou&quot; &quot;th&quot; &quot;la&quot; &quot;in&quot; &quot;th&quot; &quot;co&quot;</code></pre>
 <pre class="r"><code>str_subset(x, &quot;[aeiou]&quot;)</code></pre>
-<pre><code>## [1] &quot;this&quot;   &quot;is&quot;     &quot;our&quot;    &quot;third&quot;  &quot;lab&quot;    &quot;in&quot;     &quot;this&quot;  
-## [8] &quot;course&quot;</code></pre>
+<pre><code>## [1] &quot;this&quot;   &quot;is&quot;     &quot;our&quot;    &quot;third&quot;  &quot;lab&quot;    &quot;in&quot;     &quot;this&quot;   &quot;course&quot;</code></pre>
 <pre class="r"><code>str_count(x, &quot;[aeiou]&quot;)</code></pre>
 <pre><code>## [1] 1 1 2 1 1 1 1 3</code></pre>
 <pre class="r"><code>str_replace(x, &quot;[aeiou]&quot;, &quot;?&quot;)</code></pre>
-<pre><code>## [1] &quot;th?s&quot;   &quot;?s&quot;     &quot;?ur&quot;    &quot;th?rd&quot;  &quot;l?b&quot;    &quot;?n&quot;     &quot;th?s&quot;  
-## [8] &quot;c?urse&quot;</code></pre>
+<pre><code>## [1] &quot;th?s&quot;   &quot;?s&quot;     &quot;?ur&quot;    &quot;th?rd&quot;  &quot;l?b&quot;    &quot;?n&quot;     &quot;th?s&quot;   &quot;c?urse&quot;</code></pre>
 <p>The following two functions are widely used.</p>
 <pre class="r"><code>str_extract(string, pattern)
 
@@ -407,8 +405,8 @@ str_extract_all(book_list, &quot;[[A-Z][a-z]]+&quot;)</code></pre>
 ## character(0)</code></pre>
 <pre class="r"><code>str_extract_all(str_c(book_list, collapse = &quot; &quot;),&quot;[[A-Z][a-z]]+&quot;)</code></pre>
 <pre><code>## [[1]]
-## [1] &quot;Calculus&quot;  &quot;Linear&quot;    &quot;Algebra&quot;   &quot;II&quot;        &quot;Numerical&quot;
-## [6] &quot;Methods&quot;   &quot;v&quot;         &quot;Real&quot;      &quot;Analysis&quot;</code></pre>
+## [1] &quot;Calculus&quot;  &quot;Linear&quot;    &quot;Algebra&quot;   &quot;II&quot;        &quot;Numerical&quot; &quot;Methods&quot;  
+## [7] &quot;v&quot;         &quot;Real&quot;      &quot;Analysis&quot;</code></pre>
 <pre class="r"><code># Rounded off.
 x &lt;- format(3.14159265358979323846, digits = 5)
 x</code></pre>
@@ -442,8 +440,7 @@ gender.num.fac</code></pre>
 ## Levels: 0 1</code></pre>
 <pre class="r"><code>gender.str.fac &lt;- factor(x=gender.str)
 gender.str.fac</code></pre>
-<pre><code>##  [1] female male   male   female female male   female male   male  
-## [10] female
+<pre><code>##  [1] female male   male   female female male   female male   male   female
 ## Levels: female male</code></pre>
 <pre class="r"><code>levels(x=gender.str.fac)</code></pre>
 <pre><code>## [1] &quot;female&quot; &quot;male&quot;</code></pre>
@@ -456,7 +453,7 @@ levels(mob.str.fac)</code></pre>
 mob.fac &lt;- factor(x=mob.str,levels=ms,ordered=TRUE)
 mob.fac</code></pre>
 <pre><code>##  [1] Feb Jul Jun Sep Dec Aug Jul Mar Jul Mar
-## 12 Levels: Jan &lt; Feb &lt; Mar &lt; Apr &lt; May &lt; Jun &lt; Jul &lt; Aug &lt; ... &lt; Dec</code></pre>
+## 12 Levels: Jan &lt; Feb &lt; Mar &lt; Apr &lt; May &lt; Jun &lt; Jul &lt; Aug &lt; Sep &lt; ... &lt; Dec</code></pre>
 <pre class="r"><code>mob.fac[2]&lt;mob.fac[3]</code></pre>
 <pre><code>## [1] FALSE</code></pre>
 <pre class="r"><code>Y &lt;- c(0.53,5.4,1.5,3.33,0.45,0.01,2,4.2,1.99,1.01)
@@ -472,8 +469,7 @@ cut(x=Y,breaks=br)</code></pre>
 ## Levels: [0,2) [2,4) [4,6]</code></pre>
 <pre class="r"><code>lab &lt;- c(&quot;Small&quot;,&quot;Medium&quot;,&quot;Large&quot;)
 cut(x=Y,breaks=br,right=F,include.lowest=T,labels=lab)</code></pre>
-<pre><code>##  [1] Small  Large  Small  Medium Small  Small  Medium Large  Small 
-## [10] Small 
+<pre><code>##  [1] Small  Large  Small  Medium Small  Small  Medium Large  Small  Small 
 ## Levels: Small Medium Large</code></pre>
 </div>
 <div id="list-and-data-frames" class="section level2">
@@ -483,8 +479,8 @@ cut(x=Y,breaks=br,right=F,include.lowest=T,labels=lab)</code></pre>
 <h3>List</h3>
 <pre class="r"><code>my.list &lt;- list(matrix(data=5:9,nrow=2,ncol=2),c(F,T,T,F,T),
                 &quot;hi, I am inside a list&quot;)</code></pre>
-<pre><code>## Warning in matrix(data = 5:9, nrow = 2, ncol = 2): data length [5] is not
-## a sub-multiple or multiple of the number of rows [2]</code></pre>
+<pre><code>## Warning in matrix(data = 5:9, nrow = 2, ncol = 2): data length [5] is not a
+## sub-multiple or multiple of the number of rows [2]</code></pre>
 <pre class="r"><code>my.list</code></pre>
 <pre><code>## [[1]]
 ##      [,1] [,2]
