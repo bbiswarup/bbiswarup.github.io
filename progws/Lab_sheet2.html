@@ -453,7 +453,7 @@ levels(mob.str.fac)</code></pre>
 mob.fac &lt;- factor(x=mob.str,levels=ms,ordered=TRUE)
 mob.fac</code></pre>
 <pre><code>##  [1] Feb Jul Jun Sep Dec Aug Jul Mar Jul Mar
-## 12 Levels: Jan &lt; Feb &lt; Mar &lt; Apr &lt; May &lt; Jun &lt; Jul &lt; Aug &lt; Sep &lt; ... &lt; Dec</code></pre>
+## 12 Levels: Jan &lt; Feb &lt; Mar &lt; Apr &lt; May &lt; Jun &lt; Jul &lt; Aug &lt; Sep &lt; Oct &lt; ... &lt; Dec</code></pre>
 <pre class="r"><code>mob.fac[2]&lt;mob.fac[3]</code></pre>
 <pre><code>## [1] FALSE</code></pre>
 <pre class="r"><code>Y &lt;- c(0.53,5.4,1.5,3.33,0.45,0.01,2,4.2,1.99,1.01)
@@ -479,8 +479,8 @@ cut(x=Y,breaks=br,right=F,include.lowest=T,labels=lab)</code></pre>
 <h3>List</h3>
 <pre class="r"><code>my.list &lt;- list(matrix(data=5:9,nrow=2,ncol=2),c(F,T,T,F,T),
                 &quot;hi, I am inside a list&quot;)</code></pre>
-<pre><code>## Warning in matrix(data = 5:9, nrow = 2, ncol = 2): data length [5] is not a
-## sub-multiple or multiple of the number of rows [2]</code></pre>
+<pre><code>## Warning in matrix(data = 5:9, nrow = 2, ncol = 2): data length [5] is not a sub-
+## multiple or multiple of the number of rows [2]</code></pre>
 <pre class="r"><code>my.list</code></pre>
 <pre><code>## [[1]]
 ##      [,1] [,2]
