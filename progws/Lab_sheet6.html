@@ -291,11 +291,16 @@ $(document).ready(function () {
 <h3>Create token</h3>
 <pre class="r"><code># following library helps downloading and analyzing Twitter data
 library(rtweet)
-app_name        &lt;- &#39;&#39;
-api_key         &lt;- &#39;&#39;
-api_secret_key  &lt;- &#39;&#39;
-access_token    &lt;- &#39;&#39;
-access_secret   &lt;- &#39;&#39;</code></pre>
+app_name        &lt;- &#39;Your app name&#39;
+api_key         &lt;- &#39;Your app key&#39;
+api_secret_key  &lt;- &#39;Yoiur api secret key&#39;
+access_token    &lt;- &#39;Your access token&#39;
+access_secret   &lt;- &#39;Your acess secret&#39;</code></pre>
+</div>
+<div id="section" class="section level3">
+<h3></h3>
+<p>To get the above keys go to <a href="https://developer.twitter.com/en">https://developer.twitter.com/en</a> and sign up. After signing in you will be awarded a free essential account. Then fill the necessary form in <a href="https://developer.twitter.com/en/portal/products">https://developer.twitter.com/en/portal/products</a> to get an elevated account.</p>
+<p>Now create an app here: <a href="https://developer.twitter.com/en/portal/projects-and-apps">https://developer.twitter.com/en/portal/projects-and-apps</a></p>
 <pre class="r"><code># create the token 
 twitter_token &lt;- create_token(app = app_name,consumer_key = api_key,
                                       consumer_secret = api_secret_key,
