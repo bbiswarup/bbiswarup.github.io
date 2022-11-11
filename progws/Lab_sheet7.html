@@ -1,0 +1,592 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+
+<meta charset="utf-8" />
+<meta name="generator" content="pandoc" />
+<meta http-equiv="X-UA-Compatible" content="IE=EDGE" />
+
+
+
+
+<title>Lab sheet 7: Introduction to statistics</title>
+
+<script src="site_libs/header-attrs-2.14/header-attrs.js"></script>
+<script src="site_libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link href="site_libs/bootstrap-3.3.5/css/cosmo.min.css" rel="stylesheet" />
+<script src="site_libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/respond.min.js"></script>
+<style>h1 {font-size: 34px;}
+       h1.title {font-size: 38px;}
+       h2 {font-size: 30px;}
+       h3 {font-size: 24px;}
+       h4 {font-size: 18px;}
+       h5 {font-size: 16px;}
+       h6 {font-size: 12px;}
+       code {color: inherit; background-color: rgba(0, 0, 0, 0.04);}
+       pre:not([class]) { background-color: white }</style>
+<script src="site_libs/navigation-1.1/tabsets.js"></script>
+<link href="site_libs/highlightjs-9.12.0/textmate.css" rel="stylesheet" />
+<script src="site_libs/highlightjs-9.12.0/highlight.js"></script>
+<link href="site_libs/font-awesome-5.1.0/css/all.css" rel="stylesheet" />
+<link href="site_libs/font-awesome-5.1.0/css/v4-shims.css" rel="stylesheet" />
+
+<style type="text/css">
+  code{white-space: pre-wrap;}
+  span.smallcaps{font-variant: small-caps;}
+  span.underline{text-decoration: underline;}
+  div.column{display: inline-block; vertical-align: top; width: 50%;}
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+  ul.task-list{list-style: none;}
+    </style>
+
+<style type="text/css">code{white-space: pre;}</style>
+<script type="text/javascript">
+if (window.hljs) {
+  hljs.configure({languages: []});
+  hljs.initHighlightingOnLoad();
+  if (document.readyState && document.readyState === "complete") {
+    window.setTimeout(function() { hljs.initHighlighting(); }, 0);
+  }
+}
+</script>
+
+
+
+
+
+<style type="text/css">
+/* for pandoc --citeproc since 2.11 */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+}
+.hanging div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}
+</style>
+
+<link rel="stylesheet" href="styles.css" type="text/css" />
+
+
+
+<style type = "text/css">
+.main-container {
+  max-width: 940px;
+  margin-left: auto;
+  margin-right: auto;
+}
+img {
+  max-width:100%;
+}
+.tabbed-pane {
+  padding-top: 12px;
+}
+.html-widget {
+  margin-bottom: 20px;
+}
+button.code-folding-btn:focus {
+  outline: none;
+}
+summary {
+  display: list-item;
+}
+details > summary > p:only-child {
+  display: inline;
+}
+pre code {
+  padding: 0;
+}
+</style>
+
+
+<style type="text/css">
+.dropdown-submenu {
+  position: relative;
+}
+.dropdown-submenu>.dropdown-menu {
+  top: 0;
+  left: 100%;
+  margin-top: -6px;
+  margin-left: -1px;
+  border-radius: 0 6px 6px 6px;
+}
+.dropdown-submenu:hover>.dropdown-menu {
+  display: block;
+}
+.dropdown-submenu>a:after {
+  display: block;
+  content: " ";
+  float: right;
+  width: 0;
+  height: 0;
+  border-color: transparent;
+  border-style: solid;
+  border-width: 5px 0 5px 5px;
+  border-left-color: #cccccc;
+  margin-top: 5px;
+  margin-right: -10px;
+}
+.dropdown-submenu:hover>a:after {
+  border-left-color: #adb5bd;
+}
+.dropdown-submenu.pull-left {
+  float: none;
+}
+.dropdown-submenu.pull-left>.dropdown-menu {
+  left: -100%;
+  margin-left: 10px;
+  border-radius: 6px 0 6px 6px;
+}
+</style>
+
+<script type="text/javascript">
+// manage active state of menu based on current page
+$(document).ready(function () {
+  // active menu anchor
+  href = window.location.pathname
+  href = href.substr(href.lastIndexOf('/') + 1)
+  if (href === "")
+    href = "index.html";
+  var menuAnchor = $('a[href="' + href + '"]');
+
+  // mark it active
+  menuAnchor.tab('show');
+
+  // if it's got a parent navbar menu mark it active as well
+  menuAnchor.closest('li.dropdown').addClass('active');
+
+  // Navbar adjustments
+  var navHeight = $(".navbar").first().height() + 15;
+  var style = document.createElement('style');
+  var pt = "padding-top: " + navHeight + "px; ";
+  var mt = "margin-top: -" + navHeight + "px; ";
+  var css = "";
+  // offset scroll position for anchor links (for fixed navbar)
+  for (var i = 1; i <= 6; i++) {
+    css += ".section h" + i + "{ " + pt + mt + "}\n";
+  }
+  style.innerHTML = "body {" + pt + "padding-bottom: 40px; }\n" + css;
+  document.head.appendChild(style);
+});
+</script>
+
+<!-- tabsets -->
+
+<style type="text/css">
+.tabset-dropdown > .nav-tabs {
+  display: inline-table;
+  max-height: 500px;
+  min-height: 44px;
+  overflow-y: auto;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+.tabset-dropdown > .nav-tabs > li.active:before {
+  content: "";
+  font-family: 'Glyphicons Halflings';
+  display: inline-block;
+  padding: 10px;
+  border-right: 1px solid #ddd;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li.active:before {
+  content: "&#xe258;";
+  border: none;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open:before {
+  content: "";
+  font-family: 'Glyphicons Halflings';
+  display: inline-block;
+  padding: 10px;
+  border-right: 1px solid #ddd;
+}
+
+.tabset-dropdown > .nav-tabs > li.active {
+  display: block;
+}
+
+.tabset-dropdown > .nav-tabs > li > a,
+.tabset-dropdown > .nav-tabs > li > a:focus,
+.tabset-dropdown > .nav-tabs > li > a:hover {
+  border: none;
+  display: inline-block;
+  border-radius: 4px;
+  background-color: transparent;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li {
+  display: block;
+  float: none;
+}
+
+.tabset-dropdown > .nav-tabs > li {
+  display: none;
+}
+</style>
+
+<!-- code folding -->
+
+
+
+
+</head>
+
+<body>
+
+
+<div class="container-fluid main-container">
+
+
+
+
+<div class="navbar navbar-inverse  navbar-fixed-top" role="navigation">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-bs-toggle="collapse" data-target="#navbar" data-bs-target="#navbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="index.html">R Programming</a>
+    </div>
+    <div id="navbar" class="navbar-collapse collapse">
+      <ul class="nav navbar-nav">
+        <li>
+  <a href="index.html">
+    <span class="fa fa-home"></span>
+     
+    Home
+  </a>
+</li>
+<li>
+  <a href="about.html">
+    <span class="fa fa-info"></span>
+     
+    About
+  </a>
+</li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        <li>
+  <a href="http://bbiswarup.github.io/index.html">
+    <span class="fa fa-solid fa-user"></span>
+     
+    Biswarup Biswas
+  </a>
+</li>
+      </ul>
+    </div><!--/.nav-collapse -->
+  </div><!--/.container -->
+</div><!--/.navbar -->
+
+<div id="header">
+
+
+
+<h1 class="title toc-ignore">Lab sheet 7: Introduction to statistics</h1>
+
+</div>
+
+
+<p>I have used codes from the book <span class="citation"><a href="#ref-Dalgaard2008" role="doc-biblioref">Dalgaard</a> (<a href="#ref-Dalgaard2008" role="doc-biblioref">2008</a>)</span> for this lab.</p>
+<p><strong>Descriptive statistics</strong></p>
+<pre class="r"><code>x &lt;- rnorm(50)
+mean(x)</code></pre>
+<pre><code>## [1] 0.03630019</code></pre>
+<pre class="r"><code>sd(x)</code></pre>
+<pre><code>## [1] 0.8603222</code></pre>
+<pre class="r"><code>var(x)</code></pre>
+<pre><code>## [1] 0.7401543</code></pre>
+<pre class="r"><code>median(x)</code></pre>
+<pre><code>## [1] 0.06962898</code></pre>
+<pre class="r"><code>quantile(x)</code></pre>
+<pre><code>##          0%         25%         50%         75%        100% 
+## -1.88166176 -0.63768648  0.06962898  0.55607546  1.76135039</code></pre>
+<pre class="r"><code>pvec &lt;- seq(0,1,0.1)
+pvec</code></pre>
+<pre><code>##  [1] 0.0 0.1 0.2 0.3 0.4 0.5 0.6 0.7 0.8 0.9 1.0</code></pre>
+<pre class="r"><code>quantile(x,pvec)</code></pre>
+<pre><code>##          0%         10%         20%         30%         40%         50% 
+## -1.88166176 -1.03596174 -0.72139906 -0.37320898 -0.12954764  0.06962898 
+##         60%         70%         80%         90%        100% 
+##  0.36008824  0.45241945  0.74974667  1.12502978  1.76135039</code></pre>
+<pre class="r"><code>data()
+head(Nile)</code></pre>
+<pre><code>## [1] 1120 1160  963 1210 1160 1160</code></pre>
+<pre class="r"><code>summary(Nile)</code></pre>
+<pre><code>##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
+##   456.0   798.5   893.5   919.4  1032.5  1370.0</code></pre>
+<pre class="r"><code>library(&#39;ISwR&#39;)
+attach(juul)
+names(juul)</code></pre>
+<pre><code>## [1] &quot;age&quot;      &quot;menarche&quot; &quot;sex&quot;      &quot;igf1&quot;     &quot;tanner&quot;   &quot;testvol&quot;</code></pre>
+<pre class="r"><code>mean(igf1)</code></pre>
+<pre><code>## [1] NA</code></pre>
+<pre class="r"><code>mean(igf1,na.rm=T)</code></pre>
+<pre><code>## [1] 340.168</code></pre>
+<pre class="r"><code>summary(igf1)</code></pre>
+<pre><code>##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max.    NA&#39;s 
+##    25.0   202.2   313.5   340.2   462.8   915.0     321</code></pre>
+<pre class="r"><code>summary(juul)</code></pre>
+<pre><code>##       age            menarche          sex             igf1           tanner    
+##  Min.   : 0.170   Min.   :1.000   Min.   :1.000   Min.   : 25.0   Min.   :1.00  
+##  1st Qu.: 9.053   1st Qu.:1.000   1st Qu.:1.000   1st Qu.:202.2   1st Qu.:1.00  
+##  Median :12.560   Median :1.000   Median :2.000   Median :313.5   Median :2.00  
+##  Mean   :15.095   Mean   :1.476   Mean   :1.534   Mean   :340.2   Mean   :2.64  
+##  3rd Qu.:16.855   3rd Qu.:2.000   3rd Qu.:2.000   3rd Qu.:462.8   3rd Qu.:5.00  
+##  Max.   :83.000   Max.   :2.000   Max.   :2.000   Max.   :915.0   Max.   :5.00  
+##  NA&#39;s   :5        NA&#39;s   :635     NA&#39;s   :5       NA&#39;s   :321     NA&#39;s   :240   
+##     testvol      
+##  Min.   : 1.000  
+##  1st Qu.: 1.000  
+##  Median : 3.000  
+##  Mean   : 7.896  
+##  3rd Qu.:15.000  
+##  Max.   :30.000  
+##  NA&#39;s   :859</code></pre>
+<pre class="r"><code>detach(juul)</code></pre>
+<pre class="r"><code>juul$sex &lt;- factor(juul$sex,labels=c(&quot;M&quot;,&quot;F&quot;))
+juul$menarche &lt;- factor(juul$menarche,labels=c(&quot;No&quot;,&quot;Yes&quot;))
+juul$tanner &lt;- factor(juul$tanner,labels=c(&quot;I&quot;,&quot;II&quot;,&quot;III&quot;,&quot;IV&quot;,&quot;V&quot;))
+attach(juul)
+summary(juul)</code></pre>
+<pre><code>##       age         menarche     sex           igf1        tanner   
+##  Min.   : 0.170   No  :369   M   :621   Min.   : 25.0   I   :515  
+##  1st Qu.: 9.053   Yes :335   F   :713   1st Qu.:202.2   II  :103  
+##  Median :12.560   NA&#39;s:635   NA&#39;s:  5   Median :313.5   III : 72  
+##  Mean   :15.095                         Mean   :340.2   IV  : 81  
+##  3rd Qu.:16.855                         3rd Qu.:462.8   V   :328  
+##  Max.   :83.000                         Max.   :915.0   NA&#39;s:240  
+##  NA&#39;s   :5                              NA&#39;s   :321               
+##     testvol      
+##  Min.   : 1.000  
+##  1st Qu.: 1.000  
+##  Median : 3.000  
+##  Mean   : 7.896  
+##  3rd Qu.:15.000  
+##  Max.   :30.000  
+##  NA&#39;s   :859</code></pre>
+<pre class="r"><code>juul &lt;- transform(juul,sex=factor(sex,labels=c(&quot;M&quot;,&quot;F&quot;)),
+                  menarche=factor(menarche,labels=c(&quot;No&quot;,&quot;Yes&quot;)),
+                  tanner=factor(tanner,labels=c(&quot;I&quot;,&quot;II&quot;,&quot;III&quot;,&quot;IV&quot;,&quot;V&quot;)))</code></pre>
+<p><strong>Graphics for single data</strong></p>
+<pre class="r"><code>mid.age &lt;- c(2.5,7.5,13,16.5,17.5,19,22.5,44.5,70.5)
+acc.count &lt;- c(28,46,58,20,31,64,149,316,103)
+age.acc &lt;- rep(mid.age,acc.count)
+brk &lt;- c(0,5,10,16,17,18,20,25,60,80)
+hist(age.acc,breaks=brk)</code></pre>
+<p><img src="Lab_sheet7_files/figure-html/unnamed-chunk-7-1.png" width="672" /></p>
+<p><strong><em>Q-Q plot</em></strong></p>
+<pre class="r"><code>x &lt;- rnorm(10000)
+qqnorm(x)
+qqline(x, col = 2,lwd=2)</code></pre>
+<p><img src="Lab_sheet7_files/figure-html/unnamed-chunk-8-1.png" width="672" /></p>
+<pre class="r"><code>library(ggplot2)
+data &lt;- data.frame(x) 
+ggplot(data, aes(sample = x)) + 
+  stat_qq() +
+  stat_qq_line(col = &quot;red&quot;)</code></pre>
+<p><img src="Lab_sheet7_files/figure-html/unnamed-chunk-8-2.png" width="672" /></p>
+<pre class="r"><code>sample_data &lt;- ToothGrowth
+qqnorm(sample_data$len)
+qqline(sample_data$len, col = 2, lwd = 2)</code></pre>
+<p><img src="Lab_sheet7_files/figure-html/unnamed-chunk-8-3.png" width="672" /></p>
+<p><strong><em>Box plot</em></strong></p>
+<pre class="r"><code>par(mfrow=c(1,2))
+boxplot(IgM)
+boxplot(log(IgM))</code></pre>
+<p><img src="Lab_sheet7_files/figure-html/unnamed-chunk-9-1.png" width="672" /></p>
+<pre class="r"><code>par(mfrow=c(1,1))</code></pre>
+<p><strong>Summary statistics by group</strong></p>
+<pre class="r"><code>xbar &lt;- tapply(igf1, tanner, mean, na.rm=T)
+s &lt;- tapply(igf1, tanner, sd, na.rm=T)
+n &lt;- tapply(igf1, tanner, length)
+cbind(mean=xbar, std.dev=s, n=n)</code></pre>
+<pre><code>##         mean   std.dev   n
+## I   207.4727  90.27237 515
+## II  352.6714 122.59332 103
+## III 483.2222 152.28664  72
+## IV  513.0172 119.09594  81
+## V   465.3344 134.41867 328</code></pre>
+<pre class="r"><code>aggregate(juul[c(&quot;age&quot;,&quot;igf1&quot;)], juul[&quot;sex&quot;], mean, na.rm=T)</code></pre>
+<pre><code>##   sex      age     igf1
+## 1   M 15.38436 310.8866
+## 2   F 14.84363 368.1006</code></pre>
+<pre class="r"><code>by(juul, juul[&quot;sex&quot;], summary)</code></pre>
+<pre><code>## sex: M
+##       age        menarche   sex          igf1        tanner       testvol      
+##  Min.   : 0.17   No  :  0   M:621   Min.   : 29.0   I   :291   Min.   : 1.000  
+##  1st Qu.: 8.85   Yes :  0   F:  0   1st Qu.:176.0   II  : 55   1st Qu.: 1.000  
+##  Median :12.38   NA&#39;s:621           Median :280.0   III : 34   Median : 3.000  
+##  Mean   :15.38                      Mean   :310.9   IV  : 41   Mean   : 7.896  
+##  3rd Qu.:16.77                      3rd Qu.:430.2   V   :124   3rd Qu.:15.000  
+##  Max.   :83.00                      Max.   :915.0   NA&#39;s: 76   Max.   :30.000  
+##                                     NA&#39;s   :145                NA&#39;s   :141     
+## ------------------------------------------------------------ 
+## sex: F
+##       age        menarche   sex          igf1        tanner       testvol   
+##  Min.   : 0.25   No  :369   M:  0   Min.   : 25.0   I   :224   Min.   : NA  
+##  1st Qu.: 9.30   Yes :335   F:713   1st Qu.:233.0   II  : 48   1st Qu.: NA  
+##  Median :12.80   NA&#39;s:  9           Median :352.0   III : 38   Median : NA  
+##  Mean   :14.84                      Mean   :368.1   IV  : 40   Mean   :NaN  
+##  3rd Qu.:16.93                      3rd Qu.:483.0   V   :204   3rd Qu.: NA  
+##  Max.   :75.12                      Max.   :914.0   NA&#39;s:159   Max.   : NA  
+##                                     NA&#39;s   :176                NA&#39;s   :713</code></pre>
+<p><strong>Graphics for grouped data</strong></p>
+<pre class="r"><code>attach(energy)
+expend.lean &lt;- expend[stature==&quot;lean&quot;]
+expend.obese &lt;- expend[stature==&quot;obese&quot;]
+par(mfrow=c(2,1))
+hist(expend.lean,breaks=10,xlim=c(5,13),ylim=c(0,4),col=&quot;white&quot;)
+hist(expend.obese,breaks=10,xlim=c(5,13),ylim=c(0,4),col=&quot;grey&quot;)</code></pre>
+<p><img src="Lab_sheet7_files/figure-html/unnamed-chunk-11-1.png" width="672" /></p>
+<pre class="r"><code>par(mfrow=c(1,1))
+boxplot(expend ~ stature)</code></pre>
+<p><img src="Lab_sheet7_files/figure-html/unnamed-chunk-11-2.png" width="672" /></p>
+<p><strong><em>Tables</em></strong></p>
+<pre class="r"><code>caff.marital &lt;- matrix(c(652,1537,598,242,36,46,38,21,218,327,106,67),
+                         nrow=3,byrow=T)
+colnames(caff.marital) &lt;- c(&quot;0&quot;,&quot;1-150&quot;,&quot;151-300&quot;,&quot;&gt;300&quot;)
+rownames(caff.marital) &lt;- c(&quot;Married&quot;,&quot;Prev.married&quot;,&quot;Single&quot;)
+caff.marital</code></pre>
+<pre><code>##                0 1-150 151-300 &gt;300
+## Married      652  1537     598  242
+## Prev.married  36    46      38   21
+## Single       218   327     106   67</code></pre>
+<pre class="r"><code>names(dimnames(caff.marital)) &lt;- c(&quot;marital&quot;,&quot;consumption&quot;)
+caff.marital</code></pre>
+<pre><code>##               consumption
+## marital          0 1-150 151-300 &gt;300
+##   Married      652  1537     598  242
+##   Prev.married  36    46      38   21
+##   Single       218   327     106   67</code></pre>
+<pre class="r"><code>as.data.frame(as.table(caff.marital))</code></pre>
+<pre><code>##         marital consumption Freq
+## 1       Married           0  652
+## 2  Prev.married           0   36
+## 3        Single           0  218
+## 4       Married       1-150 1537
+## 5  Prev.married       1-150   46
+## 6        Single       1-150  327
+## 7       Married     151-300  598
+## 8  Prev.married     151-300   38
+## 9        Single     151-300  106
+## 10      Married        &gt;300  242
+## 11 Prev.married        &gt;300   21
+## 12       Single        &gt;300   67</code></pre>
+<pre class="r"><code>table(menarche,tanner)</code></pre>
+<pre><code>##         tanner
+## menarche   I  II III  IV   V
+##      No  221  43  32  14   2
+##      Yes   1   1   5  26 202</code></pre>
+<pre class="r"><code>xtabs(~ tanner + sex, data=juul)</code></pre>
+<pre><code>##       sex
+## tanner   M   F
+##    I   291 224
+##    II   55  48
+##    III  34  38
+##    IV   41  40
+##    V   124 204</code></pre>
+<pre class="r"><code>total.caff &lt;- margin.table(caff.marital,2)
+total.caff</code></pre>
+<pre><code>## consumption
+##       0   1-150 151-300    &gt;300 
+##     906    1910     742     330</code></pre>
+<pre class="r"><code>barplot(total.caff, col=&quot;white&quot;)</code></pre>
+<p><img src="Lab_sheet7_files/figure-html/unnamed-chunk-13-1.png" width="672" /></p>
+<pre class="r"><code>par(mfrow=c(2,2))
+barplot(caff.marital, col=&quot;white&quot;)
+barplot(t(caff.marital), col=&quot;white&quot;)
+barplot(t(caff.marital), col=&quot;white&quot;, beside=T)
+barplot(prop.table(t(caff.marital),2), col=&quot;white&quot;, beside=T)</code></pre>
+<p><img src="Lab_sheet7_files/figure-html/unnamed-chunk-13-2.png" width="672" /></p>
+<pre class="r"><code>par(mfrow=c(1,1))
+barplot(prop.table(t(caff.marital),2),beside=T,
+        legend.text=colnames(caff.marital),
+        col=c(&quot;white&quot;,&quot;grey80&quot;,&quot;grey50&quot;,&quot;black&quot;))</code></pre>
+<p><img src="Lab_sheet7_files/figure-html/unnamed-chunk-13-3.png" width="672" /></p>
+<p><strong>Piecharts</strong></p>
+<pre class="r"><code>opar &lt;- par(mfrow=c(2,2),mex=0.8, mar=c(1,1,2,1))
+slices &lt;- c(&quot;white&quot;,&quot;grey80&quot;,&quot;grey50&quot;,&quot;black&quot;)
+pie(caff.marital[&quot;Married&quot;,], main=&quot;Married&quot;, col=slices)
+pie(caff.marital[&quot;Prev.married&quot;,],
+    main=&quot;Previously married&quot;, col=slices)
+pie(caff.marital[&quot;Single&quot;,], main=&quot;Single&quot;, col=slices)
+par(opar)</code></pre>
+<p><img src="Lab_sheet7_files/figure-html/unnamed-chunk-14-1.png" width="672" /></p>
+<div id="references" class="section level1 unnumbered">
+<h1 class="unnumbered">References</h1>
+<div id="refs" class="references csl-bib-body hanging-indent">
+<div id="ref-Dalgaard2008" class="csl-entry">
+Dalgaard, Peter. 2008. <em><span class="nocase">Introductory Statistics with R</span></em>. Springer New York. <a href="https://doi.org/10.1007/978-0-387-79054-1">https://doi.org/10.1007/978-0-387-79054-1</a>.
+</div>
+</div>
+</div>
+
+<p>Copyright &copy; 2022 Biswarup Biswas. All rights reserved.</p>
+
+
+
+</div>
+
+<script>
+
+// add bootstrap table styles to pandoc tables
+function bootstrapStylePandocTables() {
+  $('tr.odd').parent('tbody').parent('table').addClass('table table-condensed');
+}
+$(document).ready(function () {
+  bootstrapStylePandocTables();
+});
+
+
+</script>
+
+<!-- tabsets -->
+
+<script>
+$(document).ready(function () {
+  window.buildTabsets("TOC");
+});
+
+$(document).ready(function () {
+  $('.tabset-dropdown > .nav-tabs > li').click(function () {
+    $(this).parent().toggleClass('nav-tabs-open');
+  });
+});
+</script>
+
+<!-- code folding -->
+
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+
+</body>
+</html>
