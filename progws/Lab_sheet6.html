@@ -365,19 +365,19 @@ tweetSentimentNRC %&gt;%
   filter(rowSums(tweetSentimentNRC[,-c(1,2)]) &gt; 0) %&gt;% 
   head()</code></pre>
 <pre><code>##                word freq anger anticipation disgust fear joy sadness surprise
-## join           join   33     0            0       0    0   0       0        0
+## join           join   34     0            0       0    0   0       0        0
 ## watch         watch   23     0            1       0    1   0       0        0
 ## inflation inflation   23     0            0       0    1   0       0        0
 ## economy     economy   22     0            0       0    0   0       0        0
-## prime         prime   21     0            0       0    0   0       0        0
-## plan           plan   18     0            1       0    0   0       0        0
+## prime         prime   20     0            0       0    0   0       0        0
+## forward     forward   18     0            0       0    0   0       0        0
 ##           trust negative positive
 ## join          0        0        1
 ## watch         0        0        0
 ## inflation     0        1        0
 ## economy       1        0        0
 ## prime         0        0        1
-## plan          0        0        0</code></pre>
+## forward       0        0        1</code></pre>
 <pre class="r"><code>sentimentScores = data.frame(colSums(tweetSentimentNRC %&gt;%
                                        select(-word,-freq)))
 names(sentimentScores) = &quot;Score&quot;

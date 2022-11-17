@@ -32,6 +32,13 @@
 <script src="site_libs/navigation-1.1/tabsets.js"></script>
 <link href="site_libs/highlightjs-9.12.0/textmate.css" rel="stylesheet" />
 <script src="site_libs/highlightjs-9.12.0/highlight.js"></script>
+<script src="site_libs/htmlwidgets-1.5.4/htmlwidgets.js"></script>
+<script src="site_libs/plotly-binding-4.10.0/plotly.js"></script>
+<script src="site_libs/typedarray-0.1/typedarray.min.js"></script>
+<link href="site_libs/crosstalk-1.1.1/css/crosstalk.css" rel="stylesheet" />
+<script src="site_libs/crosstalk-1.1.1/js/crosstalk.min.js"></script>
+<link href="site_libs/plotly-htmlwidgets-css-2.5.1/plotly-htmlwidgets.css" rel="stylesheet" />
+<script src="site_libs/plotly-main-2.5.1/plotly-latest.min.js"></script>
 <link href="site_libs/font-awesome-5.1.0/css/all.css" rel="stylesheet" />
 <link href="site_libs/font-awesome-5.1.0/css/v4-shims.css" rel="stylesheet" />
 
@@ -311,24 +318,24 @@ $(document).ready(function () {
 <p><strong>Descriptive statistics</strong></p>
 <pre class="r"><code>x &lt;- rnorm(50)
 mean(x)</code></pre>
-<pre><code>## [1] 0.03630019</code></pre>
+<pre><code>## [1] -0.1145626</code></pre>
 <pre class="r"><code>sd(x)</code></pre>
-<pre><code>## [1] 0.8603222</code></pre>
+<pre><code>## [1] 1.026263</code></pre>
 <pre class="r"><code>var(x)</code></pre>
-<pre><code>## [1] 0.7401543</code></pre>
+<pre><code>## [1] 1.053215</code></pre>
 <pre class="r"><code>median(x)</code></pre>
-<pre><code>## [1] 0.06962898</code></pre>
+<pre><code>## [1] -0.259408</code></pre>
 <pre class="r"><code>quantile(x)</code></pre>
-<pre><code>##          0%         25%         50%         75%        100% 
-## -1.88166176 -0.63768648  0.06962898  0.55607546  1.76135039</code></pre>
+<pre><code>##         0%        25%        50%        75%       100% 
+## -2.8740425 -0.7264143 -0.2594080  0.5425318  2.1533765</code></pre>
 <pre class="r"><code>pvec &lt;- seq(0,1,0.1)
 pvec</code></pre>
 <pre><code>##  [1] 0.0 0.1 0.2 0.3 0.4 0.5 0.6 0.7 0.8 0.9 1.0</code></pre>
 <pre class="r"><code>quantile(x,pvec)</code></pre>
-<pre><code>##          0%         10%         20%         30%         40%         50% 
-## -1.88166176 -1.03596174 -0.72139906 -0.37320898 -0.12954764  0.06962898 
-##         60%         70%         80%         90%        100% 
-##  0.36008824  0.45241945  0.74974667  1.12502978  1.76135039</code></pre>
+<pre><code>##         0%        10%        20%        30%        40%        50%        60% 
+## -2.8740425 -1.3334322 -1.0479604 -0.5316196 -0.3838509 -0.2594080  0.1357470 
+##        70%        80%        90%       100% 
+##  0.4072508  0.6755036  1.0118559  2.1533765</code></pre>
 <pre class="r"><code>data()
 head(Nile)</code></pre>
 <pre><code>## [1] 1120 1160  963 1210 1160 1160</code></pre>
@@ -462,6 +469,11 @@ hist(expend.obese,breaks=10,xlim=c(5,13),ylim=c(0,4),col=&quot;grey&quot;)</code
 <pre class="r"><code>par(mfrow=c(1,1))
 boxplot(expend ~ stature)</code></pre>
 <p><img src="Lab_sheet7_files/figure-html/unnamed-chunk-11-2.png" width="672" /></p>
+<p><strong>Box plot using plotly</strong></p>
+<pre class="r"><code>library(plotly)
+plot_ly(energy,y=~expend,x=~stature,color=~stature,type=&quot;box&quot;)</code></pre>
+<div id="htmlwidget-97da7008cd78de3e947f" style="width:672px;height:480px;" class="plotly html-widget"></div>
+<script type="application/json" data-for="htmlwidget-97da7008cd78de3e947f">{"x":{"visdat":{"178b32bfce2c2":["function () ","plotlyVisDat"]},"cur_data":"178b32bfce2c2","attrs":{"178b32bfce2c2":{"y":{},"x":{},"color":{},"alpha_stroke":1,"sizes":[10,100],"spans":[1,20],"type":"box"}},"layout":{"margin":{"b":40,"l":60,"t":25,"r":10},"xaxis":{"domain":[0,1],"automargin":true,"title":"stature","type":"category","categoryorder":"array","categoryarray":["lean","obese"]},"yaxis":{"domain":[0,1],"automargin":true,"title":"expend"},"hovermode":"closest","showlegend":true},"source":"A","config":{"modeBarButtonsToAdd":["hoverclosest","hovercompare"],"showSendToCloud":false},"data":[{"fillcolor":"rgba(102,194,165,0.5)","y":[7.53,7.48,8.08,8.09,10.15,8.4,10.88,6.13,7.9,7.05,7.48,7.58,8.11],"x":["lean","lean","lean","lean","lean","lean","lean","lean","lean","lean","lean","lean","lean"],"type":"box","name":"lean","marker":{"color":"rgba(102,194,165,1)","line":{"color":"rgba(102,194,165,1)"}},"line":{"color":"rgba(102,194,165,1)"},"xaxis":"x","yaxis":"y","frame":null},{"fillcolor":"rgba(141,160,203,0.5)","y":[9.21,11.51,12.79,11.85,9.97,8.79,9.69,9.68,9.19],"x":["obese","obese","obese","obese","obese","obese","obese","obese","obese"],"type":"box","name":"obese","marker":{"color":"rgba(141,160,203,1)","line":{"color":"rgba(141,160,203,1)"}},"line":{"color":"rgba(141,160,203,1)"},"xaxis":"x","yaxis":"y","frame":null}],"highlight":{"on":"plotly_click","persistent":false,"dynamic":false,"selectize":false,"opacityDim":0.2,"selected":{"opacity":1},"debounce":0},"shinyEvents":["plotly_hover","plotly_click","plotly_selected","plotly_relayout","plotly_brushed","plotly_brushing","plotly_clickannotation","plotly_doubleclick","plotly_deselect","plotly_afterplot","plotly_sunburstclick"],"base_url":"https://plot.ly"},"evals":[],"jsHooks":[]}</script>
 <p><strong><em>Tables</em></strong></p>
 <pre class="r"><code>caff.marital &lt;- matrix(c(652,1537,598,242,36,46,38,21,218,327,106,67),
                          nrow=3,byrow=T)
@@ -512,18 +524,18 @@ total.caff</code></pre>
 ##       0   1-150 151-300    &gt;300 
 ##     906    1910     742     330</code></pre>
 <pre class="r"><code>barplot(total.caff, col=&quot;white&quot;)</code></pre>
-<p><img src="Lab_sheet7_files/figure-html/unnamed-chunk-13-1.png" width="672" /></p>
+<p><img src="Lab_sheet7_files/figure-html/unnamed-chunk-14-1.png" width="672" /></p>
 <pre class="r"><code>par(mfrow=c(2,2))
 barplot(caff.marital, col=&quot;white&quot;)
 barplot(t(caff.marital), col=&quot;white&quot;)
 barplot(t(caff.marital), col=&quot;white&quot;, beside=T)
 barplot(prop.table(t(caff.marital),2), col=&quot;white&quot;, beside=T)</code></pre>
-<p><img src="Lab_sheet7_files/figure-html/unnamed-chunk-13-2.png" width="672" /></p>
+<p><img src="Lab_sheet7_files/figure-html/unnamed-chunk-14-2.png" width="672" /></p>
 <pre class="r"><code>par(mfrow=c(1,1))
 barplot(prop.table(t(caff.marital),2),beside=T,
         legend.text=colnames(caff.marital),
         col=c(&quot;white&quot;,&quot;grey80&quot;,&quot;grey50&quot;,&quot;black&quot;))</code></pre>
-<p><img src="Lab_sheet7_files/figure-html/unnamed-chunk-13-3.png" width="672" /></p>
+<p><img src="Lab_sheet7_files/figure-html/unnamed-chunk-14-3.png" width="672" /></p>
 <p><strong>Piecharts</strong></p>
 <pre class="r"><code>opar &lt;- par(mfrow=c(2,2),mex=0.8, mar=c(1,1,2,1))
 slices &lt;- c(&quot;white&quot;,&quot;grey80&quot;,&quot;grey50&quot;,&quot;black&quot;)
@@ -532,7 +544,7 @@ pie(caff.marital[&quot;Prev.married&quot;,],
     main=&quot;Previously married&quot;, col=slices)
 pie(caff.marital[&quot;Single&quot;,], main=&quot;Single&quot;, col=slices)
 par(opar)</code></pre>
-<p><img src="Lab_sheet7_files/figure-html/unnamed-chunk-14-1.png" width="672" /></p>
+<p><img src="Lab_sheet7_files/figure-html/unnamed-chunk-15-1.png" width="672" /></p>
 <div id="references" class="section level1 unnumbered">
 <h1 class="unnumbered">References</h1>
 <div id="refs" class="references csl-bib-body hanging-indent">
