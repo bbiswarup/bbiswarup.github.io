@@ -318,24 +318,24 @@ $(document).ready(function () {
 <p><strong>Descriptive statistics</strong></p>
 <pre class="r"><code>x &lt;- rnorm(50)
 mean(x)</code></pre>
-<pre><code>## [1] 0.01297545</code></pre>
+<pre><code>## [1] -0.100373</code></pre>
 <pre class="r"><code>sd(x)</code></pre>
-<pre><code>## [1] 0.9955648</code></pre>
+<pre><code>## [1] 1.150252</code></pre>
 <pre class="r"><code>var(x)</code></pre>
-<pre><code>## [1] 0.9911494</code></pre>
+<pre><code>## [1] 1.32308</code></pre>
 <pre class="r"><code>median(x)</code></pre>
-<pre><code>## [1] 0.08751592</code></pre>
+<pre><code>## [1] -0.09259481</code></pre>
 <pre class="r"><code>quantile(x)</code></pre>
 <pre><code>##          0%         25%         50%         75%        100% 
-## -2.09477694 -0.80028304  0.08751592  0.74274343  2.32234904</code></pre>
+## -2.75704972 -0.94689973 -0.09259481  0.56888018  2.45206344</code></pre>
 <pre class="r"><code>pvec &lt;- seq(0,1,0.1)
 pvec</code></pre>
 <pre><code>##  [1] 0.0 0.1 0.2 0.3 0.4 0.5 0.6 0.7 0.8 0.9 1.0</code></pre>
 <pre class="r"><code>quantile(x,pvec)</code></pre>
-<pre><code>##          0%         10%         20%         30%         40%         50% 
-## -2.09477694 -1.23789974 -0.98920678 -0.66378060 -0.19269491  0.08751592 
-##         60%         70%         80%         90%        100% 
-##  0.43220910  0.67216994  0.80122831  1.12967918  2.32234904</code></pre>
+<pre><code>##          0%         10%         20%         30%         40%         50%         60% 
+## -2.75704972 -1.33343220 -1.00252948 -0.75306479 -0.27054040 -0.09259481  0.13301895 
+##         70%         80%         90%        100% 
+##  0.36690652  0.75924951  1.51421075  2.45206344</code></pre>
 <pre class="r"><code>data()
 head(Nile)</code></pre>
 <pre><code>## [1] 1120 1160  963 1210 1160 1160</code></pre>
@@ -354,44 +354,28 @@ names(juul)</code></pre>
 <pre><code>##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max.    NA&#39;s 
 ##    25.0   202.2   313.5   340.2   462.8   915.0     321</code></pre>
 <pre class="r"><code>summary(juul)</code></pre>
-<pre><code>##       age            menarche          sex             igf1      
-##  Min.   : 0.170   Min.   :1.000   Min.   :1.000   Min.   : 25.0  
-##  1st Qu.: 9.053   1st Qu.:1.000   1st Qu.:1.000   1st Qu.:202.2  
-##  Median :12.560   Median :1.000   Median :2.000   Median :313.5  
-##  Mean   :15.095   Mean   :1.476   Mean   :1.534   Mean   :340.2  
-##  3rd Qu.:16.855   3rd Qu.:2.000   3rd Qu.:2.000   3rd Qu.:462.8  
-##  Max.   :83.000   Max.   :2.000   Max.   :2.000   Max.   :915.0  
-##  NA&#39;s   :5        NA&#39;s   :635     NA&#39;s   :5       NA&#39;s   :321    
-##      tanner        testvol      
-##  Min.   :1.00   Min.   : 1.000  
-##  1st Qu.:1.00   1st Qu.: 1.000  
-##  Median :2.00   Median : 3.000  
-##  Mean   :2.64   Mean   : 7.896  
-##  3rd Qu.:5.00   3rd Qu.:15.000  
-##  Max.   :5.00   Max.   :30.000  
-##  NA&#39;s   :240    NA&#39;s   :859</code></pre>
+<pre><code>##       age         menarche     sex           igf1        tanner       testvol      
+##  Min.   : 0.170   No  :369   M   :621   Min.   : 25.0   I   :515   Min.   : 1.000  
+##  1st Qu.: 9.053   Yes :335   F   :713   1st Qu.:202.2   II  :103   1st Qu.: 1.000  
+##  Median :12.560   NA&#39;s:635   NA&#39;s:  5   Median :313.5   III : 72   Median : 3.000  
+##  Mean   :15.095                         Mean   :340.2   IV  : 81   Mean   : 7.896  
+##  3rd Qu.:16.855                         3rd Qu.:462.8   V   :328   3rd Qu.:15.000  
+##  Max.   :83.000                         Max.   :915.0   NA&#39;s:240   Max.   :30.000  
+##  NA&#39;s   :5                              NA&#39;s   :321                NA&#39;s   :859</code></pre>
 <pre class="r"><code>detach(juul)</code></pre>
 <pre class="r"><code>juul$sex &lt;- factor(juul$sex,labels=c(&quot;M&quot;,&quot;F&quot;))
 juul$menarche &lt;- factor(juul$menarche,labels=c(&quot;No&quot;,&quot;Yes&quot;))
 juul$tanner &lt;- factor(juul$tanner,labels=c(&quot;I&quot;,&quot;II&quot;,&quot;III&quot;,&quot;IV&quot;,&quot;V&quot;))
 attach(juul)
 summary(juul)</code></pre>
-<pre><code>##       age         menarche     sex           igf1        tanner   
-##  Min.   : 0.170   No  :369   M   :621   Min.   : 25.0   I   :515  
-##  1st Qu.: 9.053   Yes :335   F   :713   1st Qu.:202.2   II  :103  
-##  Median :12.560   NA&#39;s:635   NA&#39;s:  5   Median :313.5   III : 72  
-##  Mean   :15.095                         Mean   :340.2   IV  : 81  
-##  3rd Qu.:16.855                         3rd Qu.:462.8   V   :328  
-##  Max.   :83.000                         Max.   :915.0   NA&#39;s:240  
-##  NA&#39;s   :5                              NA&#39;s   :321               
-##     testvol      
-##  Min.   : 1.000  
-##  1st Qu.: 1.000  
-##  Median : 3.000  
-##  Mean   : 7.896  
-##  3rd Qu.:15.000  
-##  Max.   :30.000  
-##  NA&#39;s   :859</code></pre>
+<pre><code>##       age         menarche     sex           igf1        tanner       testvol      
+##  Min.   : 0.170   No  :369   M   :621   Min.   : 25.0   I   :515   Min.   : 1.000  
+##  1st Qu.: 9.053   Yes :335   F   :713   1st Qu.:202.2   II  :103   1st Qu.: 1.000  
+##  Median :12.560   NA&#39;s:635   NA&#39;s:  5   Median :313.5   III : 72   Median : 3.000  
+##  Mean   :15.095                         Mean   :340.2   IV  : 81   Mean   : 7.896  
+##  3rd Qu.:16.855                         3rd Qu.:462.8   V   :328   3rd Qu.:15.000  
+##  Max.   :83.000                         Max.   :915.0   NA&#39;s:240   Max.   :30.000  
+##  NA&#39;s   :5                              NA&#39;s   :321                NA&#39;s   :859</code></pre>
 <pre class="r"><code>juul &lt;- transform(juul,sex=factor(sex,labels=c(&quot;M&quot;,&quot;F&quot;)),
                   menarche=factor(menarche,labels=c(&quot;No&quot;,&quot;Yes&quot;)),
                   tanner=factor(tanner,labels=c(&quot;I&quot;,&quot;II&quot;,&quot;III&quot;,&quot;IV&quot;,&quot;V&quot;)))</code></pre>
@@ -440,40 +424,24 @@ cbind(mean=xbar, std.dev=s, n=n)</code></pre>
 ## 2   F 14.84363 368.1006</code></pre>
 <pre class="r"><code>by(juul, juul[&quot;sex&quot;], summary)</code></pre>
 <pre><code>## sex: M
-##       age        menarche   sex          igf1        tanner   
-##  Min.   : 0.17   No  :  0   M:621   Min.   : 29.0   I   :291  
-##  1st Qu.: 8.85   Yes :  0   F:  0   1st Qu.:176.0   II  : 55  
-##  Median :12.38   NA&#39;s:621           Median :280.0   III : 34  
-##  Mean   :15.38                      Mean   :310.9   IV  : 41  
-##  3rd Qu.:16.77                      3rd Qu.:430.2   V   :124  
-##  Max.   :83.00                      Max.   :915.0   NA&#39;s: 76  
-##                                     NA&#39;s   :145               
-##     testvol      
-##  Min.   : 1.000  
-##  1st Qu.: 1.000  
-##  Median : 3.000  
-##  Mean   : 7.896  
-##  3rd Qu.:15.000  
-##  Max.   :30.000  
-##  NA&#39;s   :141     
-## -------------------------------------------------------- 
+##       age        menarche   sex          igf1        tanner       testvol      
+##  Min.   : 0.17   No  :  0   M:621   Min.   : 29.0   I   :291   Min.   : 1.000  
+##  1st Qu.: 8.85   Yes :  0   F:  0   1st Qu.:176.0   II  : 55   1st Qu.: 1.000  
+##  Median :12.38   NA&#39;s:621           Median :280.0   III : 34   Median : 3.000  
+##  Mean   :15.38                      Mean   :310.9   IV  : 41   Mean   : 7.896  
+##  3rd Qu.:16.77                      3rd Qu.:430.2   V   :124   3rd Qu.:15.000  
+##  Max.   :83.00                      Max.   :915.0   NA&#39;s: 76   Max.   :30.000  
+##                                     NA&#39;s   :145                NA&#39;s   :141     
+## ------------------------------------------------------------------ 
 ## sex: F
-##       age        menarche   sex          igf1        tanner   
-##  Min.   : 0.25   No  :369   M:  0   Min.   : 25.0   I   :224  
-##  1st Qu.: 9.30   Yes :335   F:713   1st Qu.:233.0   II  : 48  
-##  Median :12.80   NA&#39;s:  9           Median :352.0   III : 38  
-##  Mean   :14.84                      Mean   :368.1   IV  : 40  
-##  3rd Qu.:16.93                      3rd Qu.:483.0   V   :204  
-##  Max.   :75.12                      Max.   :914.0   NA&#39;s:159  
-##                                     NA&#39;s   :176               
-##     testvol   
-##  Min.   : NA  
-##  1st Qu.: NA  
-##  Median : NA  
-##  Mean   :NaN  
-##  3rd Qu.: NA  
-##  Max.   : NA  
-##  NA&#39;s   :713</code></pre>
+##       age        menarche   sex          igf1        tanner       testvol   
+##  Min.   : 0.25   No  :369   M:  0   Min.   : 25.0   I   :224   Min.   : NA  
+##  1st Qu.: 9.30   Yes :335   F:713   1st Qu.:233.0   II  : 48   1st Qu.: NA  
+##  Median :12.80   NA&#39;s:  9           Median :352.0   III : 38   Median : NA  
+##  Mean   :14.84                      Mean   :368.1   IV  : 40   Mean   :NaN  
+##  3rd Qu.:16.93                      3rd Qu.:483.0   V   :204   3rd Qu.: NA  
+##  Max.   :75.12                      Max.   :914.0   NA&#39;s:159   Max.   : NA  
+##                                     NA&#39;s   :176                NA&#39;s   :713</code></pre>
 <p><strong>Graphics for grouped data</strong></p>
 <pre class="r"><code>attach(energy)
 expend.lean &lt;- expend[stature==&quot;lean&quot;]
@@ -488,8 +456,8 @@ boxplot(expend ~ stature)</code></pre>
 <p><strong>Box plot using plotly</strong></p>
 <pre class="r"><code>library(plotly)
 plot_ly(energy,y=~expend,x=~stature,color=~stature,type=&quot;box&quot;)</code></pre>
-<div id="htmlwidget-d4f8d76581c1423a35be" style="width:672px;height:480px;" class="plotly html-widget"></div>
-<script type="application/json" data-for="htmlwidget-d4f8d76581c1423a35be">{"x":{"visdat":{"582c11de64b":["function () ","plotlyVisDat"]},"cur_data":"582c11de64b","attrs":{"582c11de64b":{"y":{},"x":{},"color":{},"alpha_stroke":1,"sizes":[10,100],"spans":[1,20],"type":"box"}},"layout":{"margin":{"b":40,"l":60,"t":25,"r":10},"xaxis":{"domain":[0,1],"automargin":true,"title":"stature","type":"category","categoryorder":"array","categoryarray":["lean","obese"]},"yaxis":{"domain":[0,1],"automargin":true,"title":"expend"},"hovermode":"closest","showlegend":true},"source":"A","config":{"modeBarButtonsToAdd":["hoverclosest","hovercompare"],"showSendToCloud":false},"data":[{"fillcolor":"rgba(102,194,165,0.5)","y":[7.53,7.48,8.08,8.09,10.15,8.4,10.88,6.13,7.9,7.05,7.48,7.58,8.11],"x":["lean","lean","lean","lean","lean","lean","lean","lean","lean","lean","lean","lean","lean"],"type":"box","name":"lean","marker":{"color":"rgba(102,194,165,1)","line":{"color":"rgba(102,194,165,1)"}},"line":{"color":"rgba(102,194,165,1)"},"xaxis":"x","yaxis":"y","frame":null},{"fillcolor":"rgba(141,160,203,0.5)","y":[9.21,11.51,12.79,11.85,9.97,8.79,9.69,9.68,9.19],"x":["obese","obese","obese","obese","obese","obese","obese","obese","obese"],"type":"box","name":"obese","marker":{"color":"rgba(141,160,203,1)","line":{"color":"rgba(141,160,203,1)"}},"line":{"color":"rgba(141,160,203,1)"},"xaxis":"x","yaxis":"y","frame":null}],"highlight":{"on":"plotly_click","persistent":false,"dynamic":false,"selectize":false,"opacityDim":0.2,"selected":{"opacity":1},"debounce":0},"shinyEvents":["plotly_hover","plotly_click","plotly_selected","plotly_relayout","plotly_brushed","plotly_brushing","plotly_clickannotation","plotly_doubleclick","plotly_deselect","plotly_afterplot","plotly_sunburstclick"],"base_url":"https://plot.ly"},"evals":[],"jsHooks":[]}</script>
+<div id="htmlwidget-391f79db3d426e47d655" style="width:672px;height:480px;" class="plotly html-widget"></div>
+<script type="application/json" data-for="htmlwidget-391f79db3d426e47d655">{"x":{"visdat":{"2c9756ef8893":["function () ","plotlyVisDat"]},"cur_data":"2c9756ef8893","attrs":{"2c9756ef8893":{"y":{},"x":{},"color":{},"alpha_stroke":1,"sizes":[10,100],"spans":[1,20],"type":"box"}},"layout":{"margin":{"b":40,"l":60,"t":25,"r":10},"xaxis":{"domain":[0,1],"automargin":true,"title":"stature","type":"category","categoryorder":"array","categoryarray":["lean","obese"]},"yaxis":{"domain":[0,1],"automargin":true,"title":"expend"},"hovermode":"closest","showlegend":true},"source":"A","config":{"modeBarButtonsToAdd":["hoverclosest","hovercompare"],"showSendToCloud":false},"data":[{"fillcolor":"rgba(102,194,165,0.5)","y":[7.53,7.48,8.08,8.09,10.15,8.4,10.88,6.13,7.9,7.05,7.48,7.58,8.11],"x":["lean","lean","lean","lean","lean","lean","lean","lean","lean","lean","lean","lean","lean"],"type":"box","name":"lean","marker":{"color":"rgba(102,194,165,1)","line":{"color":"rgba(102,194,165,1)"}},"line":{"color":"rgba(102,194,165,1)"},"xaxis":"x","yaxis":"y","frame":null},{"fillcolor":"rgba(141,160,203,0.5)","y":[9.21,11.51,12.79,11.85,9.97,8.79,9.69,9.68,9.19],"x":["obese","obese","obese","obese","obese","obese","obese","obese","obese"],"type":"box","name":"obese","marker":{"color":"rgba(141,160,203,1)","line":{"color":"rgba(141,160,203,1)"}},"line":{"color":"rgba(141,160,203,1)"},"xaxis":"x","yaxis":"y","frame":null}],"highlight":{"on":"plotly_click","persistent":false,"dynamic":false,"selectize":false,"opacityDim":0.2,"selected":{"opacity":1},"debounce":0},"shinyEvents":["plotly_hover","plotly_click","plotly_selected","plotly_relayout","plotly_brushed","plotly_brushing","plotly_clickannotation","plotly_doubleclick","plotly_deselect","plotly_afterplot","plotly_sunburstclick"],"base_url":"https://plot.ly"},"evals":[],"jsHooks":[]}</script>
 <p><strong><em>Tables</em></strong></p>
 <pre class="r"><code>caff.marital &lt;- matrix(c(652,1537,598,242,36,46,38,21,218,327,106,67),
                          nrow=3,byrow=T)

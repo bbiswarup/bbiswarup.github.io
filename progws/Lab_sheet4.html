@@ -289,11 +289,11 @@ $(document).ready(function () {
 <h3>Sample space</h3>
 <p>How do you roll a dice or flip a coin in R?</p>
 <pre class="r"><code>sample(6, size = 10, replace = TRUE)</code></pre>
-<pre><code>##  [1] 1 3 6 1 3 1 1 6 6 2</code></pre>
+<pre><code>##  [1] 2 3 6 6 2 1 2 5 4 6</code></pre>
 <pre class="r"><code>sample(7:10, size = 10, replace = TRUE)</code></pre>
-<pre><code>##  [1]  9  9  8  7  7 10 10  7  9  7</code></pre>
+<pre><code>##  [1]  7  8 10  9 10 10  9  9  7  7</code></pre>
 <pre class="r"><code>sample(c(&quot;H&quot;,&quot;T&quot;), size = 10, replace = TRUE)</code></pre>
-<pre><code>##  [1] &quot;T&quot; &quot;T&quot; &quot;H&quot; &quot;T&quot; &quot;H&quot; &quot;H&quot; &quot;T&quot; &quot;H&quot; &quot;H&quot; &quot;T&quot;</code></pre>
+<pre><code>##  [1] &quot;T&quot; &quot;H&quot; &quot;H&quot; &quot;T&quot; &quot;H&quot; &quot;T&quot; &quot;H&quot; &quot;T&quot; &quot;T&quot; &quot;T&quot;</code></pre>
 </div>
 <div id="other-ways-to-do-the-same" class="section level3">
 <h3>Other ways to do the same</h3>
@@ -662,13 +662,13 @@ head(dstandard)</code></pre>
 <h3>Plots of pdf</h3>
 <pre class="r"><code>ggplot(data = dstandard,aes(Z))+
 geom_line(aes(y = Density),color=&quot;red&quot;)</code></pre>
-<p><img src="Lab_sheet4_files/figure-html/unnamed-chunk-31-1.png" width="576" /></p>
+<p><img src="Lab_sheet4_files/figure-html/unnamed-chunk-32-1.png" width="576" /></p>
 </div>
 <div id="plots-of-cdf" class="section level3">
 <h3>Plots of cdf</h3>
 <pre class="r"><code>ggplot(data = dstandard,aes(Z))+
 geom_line(aes(y = Distribution),color=&quot;#339999&quot;)</code></pre>
-<p><img src="Lab_sheet4_files/figure-html/unnamed-chunk-32-1.png" width="576" /></p>
+<p><img src="Lab_sheet4_files/figure-html/unnamed-chunk-33-1.png" width="576" /></p>
 </div>
 <div id="chernoff-and-chebychev-bounds" class="section level3">
 <h3>Chernoff and Chebychev bounds</h3>
@@ -681,7 +681,7 @@ P(X - \mu \ge c) ~ \le ~ e^{-ct^* + \sigma^2{t^*}^2/2} ~ = ~ e^{-c^2/2\sigma^2}
 </div>
 <div id="plots" class="section level3">
 <h3>Plots</h3>
-<p><img src="Lab_sheet4_files/figure-html/unnamed-chunk-34-1.png" width="576" /></p>
+<p><img src="Lab_sheet4_files/figure-html/unnamed-chunk-35-1.png" width="576" /></p>
 </div>
 <div id="poisson-distribution" class="section level3">
 <h3>Poisson Distribution</h3>
@@ -713,14 +713,14 @@ head(dpoisson)</code></pre>
 <pre class="r"><code>ggplot(data=dpoisson, aes(x=N, y=Density)) +
     geom_bar(stat=&quot;identity&quot;,width=0.99,fill=&quot;steelblue&quot;)+
     scale_x_continuous(breaks=k)</code></pre>
-<p><img src="Lab_sheet4_files/figure-html/unnamed-chunk-36-1.png" width="576" /></p>
+<p><img src="Lab_sheet4_files/figure-html/unnamed-chunk-37-1.png" width="576" /></p>
 </div>
 <div id="plot-of-cdf" class="section level3">
 <h3>Plot of cdf</h3>
 <pre class="r"><code>ggplot(data=dpoisson, aes(x=N, y=Distribution)) +
     geom_bar(stat=&quot;identity&quot;,width=0.99,fill=&quot;steelblue&quot;)+
     scale_x_continuous(breaks=k)</code></pre>
-<p><img src="Lab_sheet4_files/figure-html/unnamed-chunk-37-1.png" width="576" /></p>
+<p><img src="Lab_sheet4_files/figure-html/unnamed-chunk-38-1.png" width="576" /></p>
 </div>
 <div id="binomial-distribution" class="section level3">
 <h3>Binomial Distribution</h3>
@@ -751,14 +751,14 @@ head(dbinomial)</code></pre>
 <pre class="r"><code>ggplot(data=dbinomial, aes(x=N, y=Density)) +
     geom_bar(stat=&quot;identity&quot;,width=0.99,fill=&quot;steelblue&quot;)+
     scale_x_continuous(breaks=k)</code></pre>
-<p><img src="Lab_sheet4_files/figure-html/unnamed-chunk-39-1.png" width="576" /></p>
+<p><img src="Lab_sheet4_files/figure-html/unnamed-chunk-40-1.png" width="576" /></p>
 </div>
 <div id="plot-of-cdf-1" class="section level3">
 <h3>Plot of cdf</h3>
 <pre class="r"><code>ggplot(data=dbinomial, aes(x=N, y=Distribution)) +
     geom_bar(stat=&quot;identity&quot;,width=0.99,fill=&quot;steelblue&quot;)+
     scale_x_continuous(breaks=k)</code></pre>
-<p><img src="Lab_sheet4_files/figure-html/unnamed-chunk-40-1.png" width="576" /></p>
+<p><img src="Lab_sheet4_files/figure-html/unnamed-chunk-41-1.png" width="576" /></p>
 </div>
 <div id="exponential-distribution" class="section level3">
 <h3>Exponential distribution</h3>
@@ -788,13 +788,13 @@ head(dexponential)</code></pre>
 <h3>Plots of pdf</h3>
 <pre class="r"><code>ggplot(data = dexponential,aes(t))+
 geom_line(aes(y = Density),color=&quot;#339999&quot;)</code></pre>
-<p><img src="Lab_sheet4_files/figure-html/unnamed-chunk-42-1.png" width="576" /></p>
+<p><img src="Lab_sheet4_files/figure-html/unnamed-chunk-43-1.png" width="576" /></p>
 </div>
 <div id="plots-of-cdf-1" class="section level3">
 <h3>Plots of cdf</h3>
 <pre class="r"><code>ggplot(data = dexponential,aes(t))+
 geom_line(aes(y = Distribution),color=&quot;red&quot;)</code></pre>
-<p><img src="Lab_sheet4_files/figure-html/unnamed-chunk-43-1.png" width="576" /></p>
+<p><img src="Lab_sheet4_files/figure-html/unnamed-chunk-44-1.png" width="576" /></p>
 </div>
 <div id="chi2-distribution" class="section level3">
 <h3><span class="math inline">\(\chi^2\)</span> Distribution</h3>
@@ -827,18 +827,18 @@ head(dchisquare)</code></pre>
 <h3>Plots of pdf</h3>
 <pre class="r"><code>ggplot(data = dchisquare,aes(x))+
 geom_line(aes(y = Density),color=&quot;#339999&quot;)</code></pre>
-<p><img src="Lab_sheet4_files/figure-html/unnamed-chunk-45-1.png" width="576" /></p>
+<p><img src="Lab_sheet4_files/figure-html/unnamed-chunk-46-1.png" width="576" /></p>
 </div>
 <div id="plots-of-cdf-2" class="section level3">
 <h3>Plots of cdf</h3>
 <pre class="r"><code>ggplot(data = dchisquare,aes(x))+
 geom_line(aes(y = Distribution),color=&quot;red&quot;)</code></pre>
-<p><img src="Lab_sheet4_files/figure-html/unnamed-chunk-46-1.png" width="576" /></p>
+<p><img src="Lab_sheet4_files/figure-html/unnamed-chunk-47-1.png" width="576" /></p>
 </div>
 <div id="t-distrbution" class="section level3">
 <h3>t-distrbution</h3>
 <p>The pdf of t-distribution is given by: <span class="math display">\[p(t) = \frac{\Gamma(\frac{\nu+1}{2})} {\sqrt{\nu\pi}\,\Gamma(\frac{\nu}{2})} \left(1+\frac{t^2}{\nu} \right)^{\!-\frac{\nu+1}{2}},\!\]</span> where <span class="math inline">\(\nu\)</span> is the number of degrees of freedom.</p>
-<p><img src="Lab_sheet4_files/figure-html/unnamed-chunk-47-1.png" width="576" /></p>
+<p><img src="Lab_sheet4_files/figure-html/unnamed-chunk-48-1.png" width="576" /></p>
 </div>
 
 <p>Copyright &copy; 2022 Biswarup Biswas. All rights reserved.</p>

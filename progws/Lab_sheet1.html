@@ -296,17 +296,48 @@ library(&#39;ggplot2&#39;)</code></pre>
 b&lt;- 3</code></pre>
 <p>ctrl+L clears the screen. <code>ls()</code> shows you the available variables in the Global Environment.</p>
 <pre class="r"><code>ls()</code></pre>
-<pre><code>##  [1] &quot;a&quot;                 &quot;approx_pi&quot;         &quot;b&quot;                
-##  [4] &quot;col.vec&quot;           &quot;data&quot;              &quot;fig&quot;              
-##  [7] &quot;i&quot;                 &quot;legend.vec&quot;        &quot;mu&quot;               
-## [10] &quot;mydata&quot;            &quot;n&quot;                 &quot;new_row&quot;          
-## [13] &quot;newdata&quot;           &quot;nu&quot;                &quot;nu.vec&quot;           
-## [16] &quot;plot_data&quot;         &quot;points&quot;            &quot;ptype&quot;            
-## [19] &quot;selected_students&quot; &quot;sigma&quot;             &quot;student_data&quot;     
-## [22] &quot;v&quot;                 &quot;x&quot;                 &quot;x.seq&quot;            
-## [25] &quot;x1&quot;                &quot;y&quot;                 &quot;y.seq&quot;            
-## [28] &quot;y1&quot;                &quot;y1.seq&quot;            &quot;y2.seq&quot;           
-## [31] &quot;z&quot;</code></pre>
+<pre><code>##   [1] &quot;a&quot;                 &quot;A&quot;                 &quot;acc.count&quot;         &quot;access_secret&quot;    
+##   [5] &quot;access_token&quot;      &quot;age.acc&quot;           &quot;api_key&quot;           &quot;api_secret_key&quot;   
+##   [9] &quot;app_name&quot;          &quot;approx_pi&quot;         &quot;AR&quot;                &quot;b&quot;                
+##  [13] &quot;B&quot;                 &quot;big_num&quot;           &quot;book_list&quot;         &quot;bound&quot;            
+##  [17] &quot;br&quot;                &quot;brk&quot;               &quot;c&quot;                 &quot;C&quot;                
+##  [21] &quot;C.INV&quot;             &quot;caff.marital&quot;      &quot;CleanedTweets&quot;     &quot;col.vec&quot;          
+##  [25] &quot;d&quot;                 &quot;d1&quot;                &quot;D1&quot;                &quot;D2&quot;               
+##  [29] &quot;data&quot;              &quot;dataframe1&quot;        &quot;dbinomial&quot;         &quot;dchisquare&quot;       
+##  [33] &quot;dexponential&quot;      &quot;df&quot;                &quot;dpoisson&quot;          &quot;dstandard&quot;        
+##  [37] &quot;dtm&quot;               &quot;dx&quot;                &quot;dy&quot;                &quot;e&quot;                
+##  [41] &quot;ECDF&quot;              &quot;exp&quot;               &quot;expend.lean&quot;       &quot;expend.obese&quot;     
+##  [45] &quot;f&quot;                 &quot;fig&quot;               &quot;fig1&quot;              &quot;first.name&quot;       
+##  [49] &quot;fname&quot;             &quot;fun&quot;               &quot;func&quot;              &quot;gender.num&quot;       
+##  [53] &quot;gender.num.fac&quot;    &quot;gender.str&quot;        &quot;gender.str.fac&quot;    &quot;h&quot;                
+##  [57] &quot;hello&quot;             &quot;i&quot;                 &quot;I&quot;                 &quot;integrand&quot;        
+##  [61] &quot;integrand3&quot;        &quot;JointD&quot;            &quot;juul&quot;              &quot;k&quot;                
+##  [65] &quot;L&quot;                 &quot;lab&quot;               &quot;legend.vec&quot;        &quot;lname&quot;            
+##  [69] &quot;m&quot;                 &quot;M&quot;                 &quot;matrix&quot;            &quot;mean.histplot&quot;    
+##  [73] &quot;mid.age&quot;           &quot;mob.fac&quot;           &quot;mob.str&quot;           &quot;mob.str.fac&quot;      
+##  [77] &quot;ms&quot;                &quot;mu&quot;                &quot;my_data&quot;           &quot;my.csvtable&quot;      
+##  [81] &quot;my.list&quot;           &quot;my.list1&quot;          &quot;my.url&quot;            &quot;my.urldata&quot;       
+##  [85] &quot;mydata&quot;            &quot;myqplot&quot;           &quot;n&quot;                 &quot;n1&quot;               
+##  [89] &quot;new_row&quot;           &quot;newdata&quot;           &quot;newrecord&quot;         &quot;nu&quot;               
+##  [93] &quot;nu.vec&quot;            &quot;opar&quot;              &quot;p&quot;                 &quot;plot_data&quot;        
+##  [97] &quot;points&quot;            &quot;ptype&quot;             &quot;pvec&quot;              &quot;q&quot;                
+## [101] &quot;randomM1&quot;          &quot;randomM2&quot;          &quot;randomM3&quot;          &quot;rmax&quot;             
+## [105] &quot;s&quot;                 &quot;S&quot;                 &quot;sample_data&quot;       &quot;sample.mean&quot;      
+## [109] &quot;selected_students&quot; &quot;sentimentScores&quot;   &quot;sigma&quot;             &quot;slices&quot;           
+## [113] &quot;sorted_data&quot;       &quot;spcl&quot;              &quot;str1&quot;              &quot;str2&quot;             
+## [117] &quot;str3&quot;              &quot;stream&quot;            &quot;string1&quot;           &quot;string2&quot;          
+## [121] &quot;student_data&quot;      &quot;t&quot;                 &quot;text&quot;              &quot;text_corpus&quot;      
+## [125] &quot;total.caff&quot;        &quot;trace_0&quot;           &quot;trace_1&quot;           &quot;trace_2&quot;          
+## [129] &quot;trace0&quot;            &quot;trace1&quot;            &quot;trace2&quot;            &quot;tweetSentimentNRC&quot;
+## [133] &quot;tweetsTimeline&quot;    &quot;twitter_token&quot;     &quot;u&quot;                 &quot;v&quot;                
+## [137] &quot;v1&quot;                &quot;v2&quot;                &quot;var.seq&quot;           &quot;vec1&quot;             
+## [141] &quot;vec2&quot;              &quot;words&quot;             &quot;x&quot;                 &quot;X&quot;                
+## [145] &quot;x.seq&quot;             &quot;x.values&quot;          &quot;x1&quot;                &quot;xbar&quot;             
+## [149] &quot;xmax&quot;              &quot;xmin&quot;              &quot;xparse&quot;            &quot;y&quot;                
+## [153] &quot;Y&quot;                 &quot;y.seq&quot;             &quot;y.values&quot;          &quot;y1&quot;               
+## [157] &quot;y1.seq&quot;            &quot;y2&quot;                &quot;y2.seq&quot;            &quot;ymax&quot;             
+## [161] &quot;ymin&quot;              &quot;z&quot;                 &quot;Z&quot;                 &quot;zmax&quot;             
+## [165] &quot;zmin&quot;</code></pre>
 <p>Use <code>typeof()</code> and <code>class()</code> to see the datatype and class respectively.</p>
 <pre class="r"><code>typeof(a)</code></pre>
 <pre><code>## [1] &quot;double&quot;</code></pre>
@@ -410,8 +441,6 @@ vec1[1]</code></pre>
 <pre class="r"><code>vec1-vec2</code></pre>
 <pre><code>## [1]  -6.0 -24.0   9.0   0.0 -19.0 -10.0  -0.9   4.2  20.3</code></pre>
 <pre class="r"><code>vec2*c(1,-1)</code></pre>
-<pre><code>## Warning in vec2 * c(1, -1): longer object length is not a multiple of
-## shorter object length</code></pre>
 <pre><code>## [1]   3.0 -22.0 -10.0   0.0  21.0 -14.0   6.9  -3.8 -10.3</code></pre>
 <pre class="r"><code>sum(vec2)</code></pre>
 <pre><code>## [1] 50.4</code></pre>
@@ -489,31 +518,31 @@ print(C)</code></pre>
 <h3>Matrix with random values:</h3>
 <pre class="r"><code>randomM1 &lt;- matrix(rnorm(16), nrow = 4)
 print(randomM1)</code></pre>
-<pre><code>##            [,1]       [,2]       [,3]        [,4]
-## [1,] -0.2925909 -0.8667195  1.3261844  0.88081353
-## [2,] -0.7506788 -0.1993262  0.3651895  0.93789599
-## [3,] -1.9307879  0.7219034 -1.1493009 -1.14251199
-## [4,]  1.6372961  0.2092794 -1.3195323 -0.04889328</code></pre>
+<pre><code>##            [,1]       [,2]       [,3]       [,4]
+## [1,] -0.8313247 -0.7708129  1.1372452  2.5850009
+## [2,]  0.7543461  0.6822748  0.5687856 -0.7606352
+## [3,] -0.1994205  0.5472647 -0.4146305 -1.6558862
+## [4,]  0.2451135  1.0255987 -0.9093848 -1.6213635</code></pre>
 <pre class="r"><code>randomM2 &lt;- matrix(runif(16, min = 0, max = 1), nrow = 4)
 print(randomM2)</code></pre>
-<pre><code>##           [,1]      [,2]      [,3]      [,4]
-## [1,] 0.5193536 0.6390234 0.9481391 0.9444512
-## [2,] 0.1917406 0.9928159 0.4837835 0.3765824
-## [3,] 0.9167513 0.3954734 0.9103495 0.1422706
-## [4,] 0.4917554 0.9641863 0.6475955 0.8063021</code></pre>
+<pre><code>##           [,1]      [,2]      [,3]       [,4]
+## [1,] 0.4460542 0.6629386 0.7989434 0.08341534
+## [2,] 0.1991990 0.2071894 0.5521152 0.28818350
+## [3,] 0.3254654 0.2151154 0.1917085 0.85871101
+## [4,] 0.3986626 0.3040035 0.8545010 0.38416183</code></pre>
 <pre class="r"><code>randomM3 &lt;- matrix(sample(1:20, 100, replace = TRUE), ncol = 10)
 print(randomM3)</code></pre>
 <pre><code>##       [,1] [,2] [,3] [,4] [,5] [,6] [,7] [,8] [,9] [,10]
-##  [1,]   18    6    6   15   10   19   17   14    3    11
-##  [2,]    7    1    2    6   18   16    5   13   19     1
-##  [3,]    9    9    2   19    5   12   19   17    8    12
-##  [4,]    5   18    3    1   19    1    9    2   16    14
-##  [5,]   19    9    8   12    6   15    6   15   15    17
-##  [6,]    1    5   12    7    7   10    7    3   13     5
-##  [7,]    3    8   12    5   12    3    8   10   19    17
-##  [8,]    5   19    7   17   17   11    9    8    8     8
-##  [9,]    6   14    9    9   14   20   12   16    8    20
-## [10,]   15    3   10   11   20    7    2   11   11    19</code></pre>
+##  [1,]   14    6    5   16   10    9   14   10    8    16
+##  [2,]   18    1   20    1    3    7   11   12   19    19
+##  [3,]    2   18    1    9    5    7    6   16   10    16
+##  [4,]   17    3   17   13    4   19   19    3   12    10
+##  [5,]    3   12   16    5   12   11   11   15    4    19
+##  [6,]   13    9    1    1   18    6   18    5   12     1
+##  [7,]   11   15    7    1   20    3    8    1    2     3
+##  [8,]   13    1   15    4    4   12   20   15   14    12
+##  [9,]   12    4    5   17   17    4   16   19    3     5
+## [10,]   17   20    7    4   11    7   18   16   17    11</code></pre>
 <p>There are several more: <code>rexp()</code>, <code>rpois()</code>, <code>rbinom()</code> etc.</p>
 </div>
 <div id="identity-and-zero-matrices" class="section level3">
@@ -535,17 +564,17 @@ print(Z)</code></pre>
 <div id="extracting-element-row-column-and-diagonal-from-a-matrix" class="section level3">
 <h3>Extracting element, row, column and diagonal from a matrix:</h3>
 <pre class="r"><code>randomM3[5,5]</code></pre>
-<pre><code>## [1] 6</code></pre>
+<pre><code>## [1] 12</code></pre>
 <pre class="r"><code>randomM3[,2]</code></pre>
-<pre><code>##  [1]  6  1  9 18  9  5  8 19 14  3</code></pre>
+<pre><code>##  [1]  6  1 18  3 12  9 15  1  4 20</code></pre>
 <pre class="r"><code>randomM3[1,]</code></pre>
-<pre><code>##  [1] 18  6  6 15 10 19 17 14  3 11</code></pre>
+<pre><code>##  [1] 14  6  5 16 10  9 14 10  8 16</code></pre>
 <pre class="r"><code>randomM3[c(3,1),2:3]</code></pre>
 <pre><code>##      [,1] [,2]
-## [1,]    9    2
-## [2,]    6    6</code></pre>
+## [1,]   18    1
+## [2,]    6    5</code></pre>
 <pre class="r"><code>diag(x=randomM3)</code></pre>
-<pre><code>##  [1] 18  1  2  1  6 10  8  8  8 19</code></pre>
+<pre><code>##  [1] 14  1  1 13 12  6  8 15  3 11</code></pre>
 </div>
 <div id="omitting-and-overwriting" class="section level3">
 <h3>Omitting and Overwriting:</h3>
@@ -555,34 +584,34 @@ print(Z)</code></pre>
 ## [2,]    4    6</code></pre>
 <pre class="r"><code>randomM3[-c(1,2,3),-c(4,5,6)]</code></pre>
 <pre><code>##      [,1] [,2] [,3] [,4] [,5] [,6] [,7]
-## [1,]    5   18    3    9    2   16   14
-## [2,]   19    9    8    6   15   15   17
-## [3,]    1    5   12    7    3   13    5
-## [4,]    3    8   12    8   10   19   17
-## [5,]    5   19    7    9    8    8    8
-## [6,]    6   14    9   12   16    8   20
-## [7,]   15    3   10    2   11   11   19</code></pre>
+## [1,]   17    3   17   19    3   12   10
+## [2,]    3   12   16   11   15    4   19
+## [3,]   13    9    1   18    5   12    1
+## [4,]   11   15    7    8    1    2    3
+## [5,]   13    1   15   20   15   14   12
+## [6,]   12    4    5   16   19    3    5
+## [7,]   17   20    7   18   16   17   11</code></pre>
 <pre class="r"><code>B &lt;- randomM3[-c(5:10),-c(5:10)]
 print(B)</code></pre>
 <pre><code>##      [,1] [,2] [,3] [,4]
-## [1,]   18    6    6   15
-## [2,]    7    1    2    6
-## [3,]    9    9    2   19
-## [4,]    5   18    3    1</code></pre>
+## [1,]   14    6    5   16
+## [2,]   18    1   20    1
+## [3,]    2   18    1    9
+## [4,]   17    3   17   13</code></pre>
 <pre class="r"><code>B[,1]=c(1,2,3,4)
 print(B)</code></pre>
 <pre><code>##      [,1] [,2] [,3] [,4]
-## [1,]    1    6    6   15
-## [2,]    2    1    2    6
-## [3,]    3    9    2   19
-## [4,]    4   18    3    1</code></pre>
+## [1,]    1    6    5   16
+## [2,]    2    1   20    1
+## [3,]    3   18    1    9
+## [4,]    4    3   17   13</code></pre>
 <pre class="r"><code>B[c(1,4),c(2,3)] &lt;- 0
 print(B)</code></pre>
 <pre><code>##      [,1] [,2] [,3] [,4]
-## [1,]    1    0    0   15
-## [2,]    2    1    2    6
-## [3,]    3    9    2   19
-## [4,]    4    0    0    1</code></pre>
+## [1,]    1    0    0   16
+## [2,]    2    1   20    1
+## [3,]    3   18    1    9
+## [4,]    4    0    0   13</code></pre>
 <pre class="r"><code>diag(Z) &lt;- rep(x=1,times=4)
 print(Z)</code></pre>
 <pre><code>##      [,1] [,2] [,3] [,4] [,5]
