@@ -1,6 +1,0 @@
-install.packages(pkgs="prob_1.0-1.tar", type="source", repos=NULL)
-library("prob")
-library("distr")
-library("distrEx")
-library("pracma")
-library("mvtnorm")
