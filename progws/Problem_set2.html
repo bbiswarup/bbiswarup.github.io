@@ -11,7 +11,7 @@
 
 
 
-<title>MA2107: R Programming</title>
+<title>Problem set 2</title>
 
 <script src="site_libs/header-attrs-2.14/header-attrs.js"></script>
 <script src="site_libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
@@ -34,6 +34,15 @@
 <script src="site_libs/highlightjs-9.12.0/highlight.js"></script>
 <link href="site_libs/font-awesome-5.1.0/css/all.css" rel="stylesheet" />
 <link href="site_libs/font-awesome-5.1.0/css/v4-shims.css" rel="stylesheet" />
+\usepackage{amsthm,amsmath,amssymb}
+\usepackage[inline]{enumitem}
+\theoremstyle{remark}
+\newtheorem{problem}{\textbf{Problem}}
+\usepackage{listings}
+\usepackage{verbatim}
+\usepackage{booktabs}
+\usepackage{hyperref}
+\newcommand{\pow}{^\wedge}
 
 <style type="text/css">
   code{white-space: pre-wrap;}
@@ -280,38 +289,67 @@ $(document).ready(function () {
 
 
 
-<h1 class="title toc-ignore">MA2107: R Programming</h1>
+<h1 class="title toc-ignore">Problem set 2</h1>
 
 </div>
 
 
-<div id="lab-sheets" class="section level3">
-<h3>Lab sheets</h3>
-<ul>
-<li><a href="installation.pdf">R installation and course information</a></li>
-<li><a href="Lab_sheet1.html">Lab sheet 1</a></li>
-<li><a href="Lab_sheet2.html">Lab sheet 2</a></li>
-</ul>
-</div>
-<div id="problem-sets" class="section level3">
-<h3>Problem sets</h3>
-<ul>
-<li><a href="Problem_set1.pdf">Problem set 1a</a></li>
-<li><a href="Problem_set1b.pdf">Problem set 1b</a></li>
-<li><a href="Problem_set2.pdf">Problem set 2</a></li>
-</ul>
-</div>
-<div id="quizes" class="section level3">
-<h3>Quizes</h3>
-<ul>
-<li><a href="CT1.pdf">Class test 1</a></li>
-</ul>
-</div>
-<div id="assignments" class="section level3">
-<h3>Assignments</h3>
-</div>
+<pre><code>## &quot;The quick brown fox
+##  jumped over
+##      the lazy dogs&quot;</code></pre>
+<pre><code>## [1] &quot;The result of multiplying 4 by 0.75 is 3.&quot;</code></pre>
+<ol style="list-style-type: lower-alpha">
+<li>Use a check for equality to confirm that the substring beginning with character 5 and ending with character 10 is “6-pack”.</li>
+<li>Make it a better deal by changing the price to $10.99.</li>
+</ol>
+<pre><code>##  [1] &quot;Group 1&quot;  &quot;Group 2&quot;  &quot;Group 3&quot;  &quot;Group 4&quot;  &quot;Group 5&quot;  &quot;Group 6&quot; 
+##  [7] &quot;Group 7&quot;  &quot;Group 8&quot;  &quot;Group 9&quot;  &quot;Group 10&quot;</code></pre>
+<ol style="list-style-type: lower-alpha">
+<li>Give appropriate name to each element of the list.</li>
+<li>Extract row elements 2 and 1 of columns 2 and 3, in that order, of the logical matrix.</li>
+<li>Use sub to overwrite “fateh” with “Fateh” and “kella” with “Kella” inside the list. Then, using the newly overwritten list member, concatenate to the console screen the following statement exactly:</li>
+</ol>
+<pre><code>## &quot;Found the killing weapon!&quot;</code></pre>
+<pre><code>## -\Kella Fateh/-</code></pre>
+<ol start="4" style="list-style-type: lower-alpha">
+<li>Using which, determine which indexes in the factor vector are assigned the “MED” level.</li>
+</ol>
+<p>Here the attribute person should be a character vector, sex should be a factor with levels F and M, and funny should be a factor with levels Low, Med, and High.</p>
+<ol style="list-style-type: lower-alpha">
+<li>Stan and Francine are 41 years old, Steve is 15, Hayley is 21, and Klaus is 60. Roger is extremely old - 1,600 years. Append these data as a new numeric column variable in dframe called age.</li>
+<li>Use your knowledge of reordering the column variables based on column index positions to overwrite dframe, bringing it in line with mydata. That is, the first column should be person, the second column age, the third column sex, and the fourth column funny.</li>
+<li>Now store the following data to a data frame named mydata2.</li>
+<li>Now, combine mydata2 with dframe, naming the resulting object mydataframe.</li>
+<li>Write a single line of code that will extract from mydataframe just the names and ages of any records where the individual is female and has a level of funniness equal to Med OR High.</li>
+<li>Use your knowledge of handling character strings in R to extract all records from mydataframe that correspond to people whose names start with S. (Hint: substr can be used. Use ?substr to see the help)</li>
+</ol>
+<p>Then do the following:</p>
+<ol style="list-style-type: lower-alpha">
+<li>Output all elements of foo that, when raised to a power of 75, are NOT infinite.</li>
+<li>Return the elements of foo, excluding those that result in negative infinity when raised to a power of 75.</li>
+</ol>
+<!-- Answer:
+ 
 
-<!--<p>Copyright &copy; 2023 Biswarup Biswas. All rights reserved.</p>-->
+```r
+foo <- c(13563,-14156,-14319,16981,12921,11979,9568,8833,-12968, 8133)
+foo[is.finite(foo^75)]
+```
+
+```
+## [1] 11979  9568  8833  8133
+```
+
+
+```r
+foo[!(is.infinite(foo^75) & foo^75<0)]
+```
+
+```
+## [1] 13563 16981 12921 11979  9568  8833  8133
+```
+ -->
+
 
 
 

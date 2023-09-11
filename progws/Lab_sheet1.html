@@ -296,21 +296,7 @@ library(&#39;ggplot2&#39;)</code></pre>
 b&lt;- 3</code></pre>
 <p>ctrl+L clears the screen. <code>ls()</code> shows you the available variables in the Global Environment.</p>
 <pre class="r"><code>ls()</code></pre>
-<pre><code>##  [1] &quot;a&quot;              &quot;A&quot;              &quot;AR&quot;             &quot;b&quot;             
-##  [5] &quot;B&quot;              &quot;big_num&quot;        &quot;book_list&quot;      &quot;br&quot;            
-##  [9] &quot;c&quot;              &quot;C&quot;              &quot;C.INV&quot;          &quot;d&quot;             
-## [13] &quot;e&quot;              &quot;file_content&quot;   &quot;first.name&quot;     &quot;fname&quot;         
-## [17] &quot;gender.num&quot;     &quot;gender.num.fac&quot; &quot;gender.str&quot;     &quot;gender.str.fac&quot;
-## [21] &quot;hello&quot;          &quot;lab&quot;            &quot;lname&quot;          &quot;mob.fac&quot;       
-## [25] &quot;mob.str&quot;        &quot;mob.str.fac&quot;    &quot;ms&quot;             &quot;my_data&quot;       
-## [29] &quot;my.csvtable&quot;    &quot;my.list&quot;        &quot;my.list1&quot;       &quot;my.url&quot;        
-## [33] &quot;my.urldata&quot;     &quot;mydata&quot;         &quot;newrecord&quot;      &quot;randomM1&quot;      
-## [37] &quot;randomM2&quot;       &quot;randomM3&quot;       &quot;sorted_data&quot;    &quot;spcl&quot;          
-## [41] &quot;str1&quot;           &quot;str2&quot;           &quot;str3&quot;           &quot;stream&quot;        
-## [45] &quot;string1&quot;        &quot;string2&quot;        &quot;u&quot;              &quot;v&quot;             
-## [49] &quot;v1&quot;             &quot;v2&quot;             &quot;vec1&quot;           &quot;vec2&quot;          
-## [53] &quot;x&quot;              &quot;X&quot;              &quot;xparse&quot;         &quot;Y&quot;             
-## [57] &quot;Z&quot;</code></pre>
+<pre><code>## [1] &quot;a&quot; &quot;b&quot;</code></pre>
 <p>Use <code>typeof()</code> and <code>class()</code> to see the datatype and class respectively.</p>
 <pre class="r"><code>typeof(a)</code></pre>
 <pre><code>## [1] &quot;double&quot;</code></pre>
@@ -493,31 +479,31 @@ print(C)</code></pre>
 <h3>Matrix with random values:</h3>
 <pre class="r"><code>randomM1 &lt;- matrix(rnorm(16), nrow = 4)
 print(randomM1)</code></pre>
-<pre><code>##            [,1]       [,2]       [,3]      [,4]
-## [1,]  1.3522910  1.5770053 -1.7990692 -1.369270
-## [2,]  1.3341506 -1.3886799  0.6400477 -1.518271
-## [3,]  1.0429711 -0.3250732  0.5905787  1.151501
-## [4,] -0.5054929 -1.0976560 -1.3008885 -1.032657</code></pre>
+<pre><code>##            [,1]        [,2]       [,3]          [,4]
+## [1,] -0.4604651  1.00873292 -0.8488431  0.7524635364
+## [2,] -1.3677973  1.70302166  0.8706535  0.0009262771
+## [3,]  0.4343774 -0.08731746  0.8512202 -1.4921154244
+## [4,] -0.8346651 -0.68108666  2.8077875  0.6903912519</code></pre>
 <pre class="r"><code>randomM2 &lt;- matrix(runif(16, min = 0, max = 1), nrow = 4)
 print(randomM2)</code></pre>
-<pre><code>##           [,1]      [,2]      [,3]       [,4]
-## [1,] 0.4745714 0.1716455 0.6045367 0.02009792
-## [2,] 0.1920821 0.3711130 0.3831124 0.23699749
-## [3,] 0.2187418 0.3745918 0.3280801 0.20049747
-## [4,] 0.7675368 0.5269340 0.8509878 0.20515185</code></pre>
+<pre><code>##            [,1]      [,2]      [,3]        [,4]
+## [1,] 0.49388774 0.5887256 0.9736569 0.001768258
+## [2,] 0.04035638 0.1103318 0.6058961 0.151143854
+## [3,] 0.80450264 0.0964193 0.2129712 0.893323453
+## [4,] 0.85699906 0.9240789 0.9536958 0.616795531</code></pre>
 <pre class="r"><code>randomM3 &lt;- matrix(sample(1:20, 100, replace = TRUE), ncol = 10)
 print(randomM3)</code></pre>
 <pre><code>##       [,1] [,2] [,3] [,4] [,5] [,6] [,7] [,8] [,9] [,10]
-##  [1,]   17   20   18   10    3   14    5   14   15     6
-##  [2,]   14    7    4    4    6    8    7    1    4    17
-##  [3,]   18   11    5    8    3   16   10    1    5    15
-##  [4,]   13   18    6   15   11    4   11   17    1     2
-##  [5,]    9   11   15   13    6   19   19   15   10     4
-##  [6,]   20    6   20   16   16   18   18   13   18    12
-##  [7,]   18   12    9    9   18   18   13    6   10    13
-##  [8,]   18    9   11   10   19   13    1    8   15    11
-##  [9,]   11    3   20   16    9   17   19    7   15    18
-## [10,]    9    9    4   15    6    9    9   14   20    16</code></pre>
+##  [1,]    8    4   14    2   10    8    4    2    8    11
+##  [2,]    6    6    6   19   10   17   16   12    6     9
+##  [3,]    1    3   16    2   16   11   11   20   12    17
+##  [4,]   10   19   17    8   18   19   15    9    7     5
+##  [5,]    1    4    2   16   13    6    1    2   20     9
+##  [6,]    7   10    2   15    7   17   12    3   11    18
+##  [7,]    7    2    8   10    8    6   11   17    8    16
+##  [8,]   16   15   11   20   14   12   15    3   18    19
+##  [9,]   18    2   14   10    7    8    1    8    6    19
+## [10,]   15    2   14   17   12    3   10   14   11    20</code></pre>
 <p>There are several more: <code>rexp()</code>, <code>rpois()</code>, <code>rbinom()</code> etc.</p>
 </div>
 <div id="identity-and-zero-matrices" class="section level3">
@@ -539,17 +525,17 @@ print(Z)</code></pre>
 <div id="extracting-element-row-column-and-diagonal-from-a-matrix" class="section level3">
 <h3>Extracting element, row, column and diagonal from a matrix:</h3>
 <pre class="r"><code>randomM3[5,5]</code></pre>
-<pre><code>## [1] 6</code></pre>
+<pre><code>## [1] 13</code></pre>
 <pre class="r"><code>randomM3[,2]</code></pre>
-<pre><code>##  [1] 20  7 11 18 11  6 12  9  3  9</code></pre>
+<pre><code>##  [1]  4  6  3 19  4 10  2 15  2  2</code></pre>
 <pre class="r"><code>randomM3[1,]</code></pre>
-<pre><code>##  [1] 17 20 18 10  3 14  5 14 15  6</code></pre>
+<pre><code>##  [1]  8  4 14  2 10  8  4  2  8 11</code></pre>
 <pre class="r"><code>randomM3[c(3,1),2:3]</code></pre>
 <pre><code>##      [,1] [,2]
-## [1,]   11    5
-## [2,]   20   18</code></pre>
+## [1,]    3   16
+## [2,]    4   14</code></pre>
 <pre class="r"><code>diag(x=randomM3)</code></pre>
-<pre><code>##  [1] 17  7  5 15  6 18 13  8 15 16</code></pre>
+<pre><code>##  [1]  8  6 16  8 13 17 11  3  6 20</code></pre>
 </div>
 <div id="omitting-and-overwriting" class="section level3">
 <h3>Omitting and Overwriting:</h3>
@@ -559,34 +545,34 @@ print(Z)</code></pre>
 ## [2,]    4    6</code></pre>
 <pre class="r"><code>randomM3[-c(1,2,3),-c(4,5,6)]</code></pre>
 <pre><code>##      [,1] [,2] [,3] [,4] [,5] [,6] [,7]
-## [1,]   13   18    6   11   17    1    2
-## [2,]    9   11   15   19   15   10    4
-## [3,]   20    6   20   18   13   18   12
-## [4,]   18   12    9   13    6   10   13
-## [5,]   18    9   11    1    8   15   11
-## [6,]   11    3   20   19    7   15   18
-## [7,]    9    9    4    9   14   20   16</code></pre>
+## [1,]   10   19   17   15    9    7    5
+## [2,]    1    4    2    1    2   20    9
+## [3,]    7   10    2   12    3   11   18
+## [4,]    7    2    8   11   17    8   16
+## [5,]   16   15   11   15    3   18   19
+## [6,]   18    2   14    1    8    6   19
+## [7,]   15    2   14   10   14   11   20</code></pre>
 <pre class="r"><code>B &lt;- randomM3[-c(5:10),-c(5:10)]
 print(B)</code></pre>
 <pre><code>##      [,1] [,2] [,3] [,4]
-## [1,]   17   20   18   10
-## [2,]   14    7    4    4
-## [3,]   18   11    5    8
-## [4,]   13   18    6   15</code></pre>
+## [1,]    8    4   14    2
+## [2,]    6    6    6   19
+## [3,]    1    3   16    2
+## [4,]   10   19   17    8</code></pre>
 <pre class="r"><code>B[,1]=c(1,2,3,4)
 print(B)</code></pre>
 <pre><code>##      [,1] [,2] [,3] [,4]
-## [1,]    1   20   18   10
-## [2,]    2    7    4    4
-## [3,]    3   11    5    8
-## [4,]    4   18    6   15</code></pre>
+## [1,]    1    4   14    2
+## [2,]    2    6    6   19
+## [3,]    3    3   16    2
+## [4,]    4   19   17    8</code></pre>
 <pre class="r"><code>B[c(1,4),c(2,3)] &lt;- 0
 print(B)</code></pre>
 <pre><code>##      [,1] [,2] [,3] [,4]
-## [1,]    1    0    0   10
-## [2,]    2    7    4    4
-## [3,]    3   11    5    8
-## [4,]    4    0    0   15</code></pre>
+## [1,]    1    0    0    2
+## [2,]    2    6    6   19
+## [3,]    3    3   16    2
+## [4,]    4    0    0    8</code></pre>
 <pre class="r"><code>diag(Z) &lt;- rep(x=1,times=4)
 print(Z)</code></pre>
 <pre><code>##      [,1] [,2] [,3] [,4] [,5]
