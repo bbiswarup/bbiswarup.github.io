@@ -339,11 +339,15 @@ string2</code></pre>
 </div>
 <div id="left-justifying" class="section level1">
 <h1>left justifying</h1>
-<p>x &lt;- format(“MU”, width = 16, justify = “l”) print(x)</p>
+<pre class="r"><code>x &lt;- format(&quot;MU&quot;, width = 16, justify = &quot;l&quot;)
+print(x)</code></pre>
+<pre><code>## [1] &quot;MU              &quot;</code></pre>
 </div>
 <div id="centering" class="section level1">
 <h1>centering</h1>
-<p>x &lt;- format(“MU”, width = 16, justify = “c”) print(x)</p>
+<pre class="r"><code>x &lt;- format(&quot;MU&quot;, width = 16, justify = &quot;c&quot;)
+print(x)</code></pre>
+<pre><code>## [1] &quot;       MU       &quot;</code></pre>
 <div id="the-stringr-package" class="section level2">
 <h2>The stringr package</h2>
 <pre class="r"><code># load the stringr package to replace a string
