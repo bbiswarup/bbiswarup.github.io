@@ -311,26 +311,26 @@ $(document).ready(function () {
 <p><strong>Descriptive statistics</strong></p>
 <pre class="r"><code>x &lt;- rnorm(50)
 mean(x)</code></pre>
-<pre><code>## [1] -0.1012539</code></pre>
+<pre><code>## [1] -0.05287689</code></pre>
 <pre class="r"><code>sd(x)</code></pre>
-<pre><code>## [1] 0.9910973</code></pre>
+<pre><code>## [1] 0.9345765</code></pre>
 <pre class="r"><code>var(x)</code></pre>
-<pre><code>## [1] 0.9822739</code></pre>
+<pre><code>## [1] 0.8734332</code></pre>
 <pre class="r"><code>median(x)</code></pre>
-<pre><code>## [1] -0.01416905</code></pre>
+<pre><code>## [1] -0.1876544</code></pre>
 <pre class="r"><code>quantile(x)</code></pre>
-<pre><code>##          0%         25%         50%         75%        100% 
-## -3.05547529 -0.80316825 -0.01416905  0.41053369  2.40224431</code></pre>
+<pre><code>##         0%        25%        50%        75%       100% 
+## -1.9164949 -0.7662010 -0.1876544  0.6832735  1.7648030</code></pre>
 <pre class="r"><code>pvec &lt;- seq(0,1,0.1)
 pvec</code></pre>
 <pre><code>##  [1] 0.0 0.1 0.2 0.3 0.4 0.5 0.6 0.7 0.8 0.9 1.0</code></pre>
 <pre class="r"><code>quantile(x,pvec)</code></pre>
-<pre><code>##          0%         10%         20%         30%         40% 
-## -3.05547529 -1.21712524 -0.88927139 -0.54039824 -0.19485685 
-##         50%         60%         70%         80%         90% 
-## -0.01416905  0.18254436  0.35359341  0.55526306  1.02228466 
-##        100% 
-##  2.40224431</code></pre>
+<pre><code>##         0%        10%        20%        30%        40% 
+## -1.9164949 -1.1139650 -0.8563528 -0.6095118 -0.3110832 
+##        50%        60%        70%        80%        90% 
+## -0.1876544  0.1963215  0.4873423  0.8327715  1.1610481 
+##       100% 
+##  1.7648030</code></pre>
 <pre class="r"><code>data()
 head(Nile)</code></pre>
 <pre><code>## [1] 1120 1160  963 1210 1160 1160</code></pre>
@@ -350,22 +350,22 @@ names(juul)</code></pre>
 <pre><code>##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max.    NA&#39;s 
 ##    25.0   202.2   313.5   340.2   462.8   915.0     321</code></pre>
 <pre class="r"><code>summary(juul)</code></pre>
-<pre><code>##       age            menarche          sex       
-##  Min.   : 0.170   Min.   :1.000   Min.   :1.000  
-##  1st Qu.: 9.053   1st Qu.:1.000   1st Qu.:1.000  
-##  Median :12.560   Median :1.000   Median :2.000  
-##  Mean   :15.095   Mean   :1.476   Mean   :1.534  
-##  3rd Qu.:16.855   3rd Qu.:2.000   3rd Qu.:2.000  
-##  Max.   :83.000   Max.   :2.000   Max.   :2.000  
-##  NA&#39;s   :5        NA&#39;s   :635     NA&#39;s   :5      
-##       igf1           tanner        testvol      
-##  Min.   : 25.0   Min.   :1.00   Min.   : 1.000  
-##  1st Qu.:202.2   1st Qu.:1.00   1st Qu.: 1.000  
-##  Median :313.5   Median :2.00   Median : 3.000  
-##  Mean   :340.2   Mean   :2.64   Mean   : 7.896  
-##  3rd Qu.:462.8   3rd Qu.:5.00   3rd Qu.:15.000  
-##  Max.   :915.0   Max.   :5.00   Max.   :30.000  
-##  NA&#39;s   :321     NA&#39;s   :240    NA&#39;s   :859</code></pre>
+<pre><code>##       age         menarche     sex           igf1      
+##  Min.   : 0.170   No  :369   M   :621   Min.   : 25.0  
+##  1st Qu.: 9.053   Yes :335   F   :713   1st Qu.:202.2  
+##  Median :12.560   NA&#39;s:635   NA&#39;s:  5   Median :313.5  
+##  Mean   :15.095                         Mean   :340.2  
+##  3rd Qu.:16.855                         3rd Qu.:462.8  
+##  Max.   :83.000                         Max.   :915.0  
+##  NA&#39;s   :5                              NA&#39;s   :321    
+##   tanner       testvol      
+##  I   :515   Min.   : 1.000  
+##  II  :103   1st Qu.: 1.000  
+##  III : 72   Median : 3.000  
+##  IV  : 81   Mean   : 7.896  
+##  V   :328   3rd Qu.:15.000  
+##  NA&#39;s:240   Max.   :30.000  
+##             NA&#39;s   :859</code></pre>
 <pre class="r"><code>detach(juul)</code></pre>
 <pre class="r"><code>juul$sex &lt;- factor(juul$sex,labels=c(&quot;M&quot;,&quot;F&quot;))
 juul$menarche &lt;- factor(juul$menarche,labels=c(&quot;No&quot;,&quot;Yes&quot;))

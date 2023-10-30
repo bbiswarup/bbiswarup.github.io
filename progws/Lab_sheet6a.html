@@ -11,7 +11,7 @@
 
 
 
-<title>MA2107: R Programming</title>
+<title>Lab Sheet 6a: Control Structures in R</title>
 
 <script src="site_libs/header-attrs-2.14/header-attrs.js"></script>
 <script src="site_libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
@@ -280,43 +280,113 @@ $(document).ready(function () {
 
 
 
-<h1 class="title toc-ignore">MA2107: R Programming</h1>
+<h1 class="title toc-ignore">Lab Sheet 6a: Control Structures in R</h1>
 
 </div>
 
 
-<div id="lab-sheets" class="section level3">
-<h3>Lab sheets</h3>
-<ul>
-<li><a href="installation.pdf">R installation and course information</a></li>
-<li><a href="Lab_sheet1.html">Lab sheet 1</a></li>
-<li><a href="Lab_sheet2.html">Lab sheet 2</a></li>
-<li><a href="Lab_sheet3.html">Lab sheet 3</a></li>
-<li><a href="Lab_sheet4new.pdf">Lab sheet 4</a></li>
-<li><a href="Lab_sheet5.pdf">Lab sheet 5</a></li>
-<li><a href="Lab_sheet6a.html">Lab sheet 6a</a><i class="fa fa-thumb-tack" style="font-size:14px;color:red"></i></li>
-<li><a href="Lab_sheet6b.html">Lab sheet 6b</a><i class="fa fa-thumb-tack" style="font-size:14px;color:red"></i></li>
-</ul>
+<div id="conditional-statements" class="section level2">
+<h2>Conditional Statements</h2>
+<div id="if-statement" class="section level3">
+<h3>If Statement</h3>
+<pre class="r"><code>x &lt;- 10
+
+if (x &gt; 5) {
+  print(&quot;x is greater than 5&quot;)
+}</code></pre>
 </div>
-<div id="problem-sets" class="section level3">
-<h3>Problem sets</h3>
-<ul>
-<li><a href="Problem_set1.pdf">Problem set 1a</a></li>
-<li><a href="Problem_set1b.pdf">Problem set 1b</a></li>
-<li><a href="Problem_set2.pdf">Problem set 2</a></li>
-<li><a href="Problem_set3.pdf">Problem set 3</a></li>
-<li><a href="Problem_set5.pdf">Problem set 4</a> <i class="fa fa-thumb-tack" style="font-size:14px;color:red"></i></li>
-</ul>
+<div id="if-else-statement" class="section level3">
+<h3>If-else Statement</h3>
+<pre class="r"><code>y &lt;- 3
+
+if (y %% 2 == 0) {
+  print(&quot;y is even&quot;)
+} else {
+  print(&quot;y is odd&quot;)
+}</code></pre>
 </div>
-<div id="quizes" class="section level3">
-<h3>Quizes</h3>
-<ul>
-<li><a href="CT1.pdf">Class test 1</a></li>
-<li><a href="CT2.pdf">Class test 2</a></li>
-</ul>
+<div id="if-else-if-else-statement" class="section level3">
+<h3>If-else if-else Statement</h3>
+<pre class="r"><code>z &lt;- 8
+
+if (z &lt; 0) {
+  print(&quot;z is negative&quot;)
+} else if (z &gt; 0) {
+  print(&quot;z is positive&quot;)
+} else {
+  print(&quot;z is zero&quot;)
+}</code></pre>
 </div>
-<div id="assignments" class="section level3">
-<h3>Assignments</h3>
+</div>
+<div id="loops" class="section level2">
+<h2>Loops</h2>
+<div id="for-loop" class="section level3">
+<h3>For Loop</h3>
+<pre class="r"><code>for (i in 1:5) {
+  print(i)
+}</code></pre>
+</div>
+<div id="while-loop" class="section level3">
+<h3>While Loop</h3>
+<pre class="r"><code>a &lt;- 1
+
+while (a &lt;= 5) {
+  print(a)
+  a &lt;- a + 1
+}</code></pre>
+</div>
+</div>
+<div id="control-statements" class="section level2">
+<h2>Control Statements</h2>
+<div id="break-statement" class="section level3">
+<h3>Break Statement</h3>
+<pre class="r"><code>for (i in 1:10) {
+  if (i == 5) {
+    break
+  }
+  print(i)
+}</code></pre>
+</div>
+<div id="next-statement" class="section level3">
+<h3>Next Statement</h3>
+<pre class="r"><code>for (i in 1:5) {
+  if (i == 3) {
+    next
+  }
+  print(i)
+}</code></pre>
+</div>
+<div id="creating-functions" class="section level3">
+<h3>Creating Functions</h3>
+<p>A function in R is defined using the <code>function()</code> keyword. Here’s the basic syntax:</p>
+<pre class="r"><code># Function to add two numbers
+add_numbers &lt;- function(a, b) {
+  result &lt;- a + b
+  return(result)
+}</code></pre>
+<pre class="r"><code># Function to calculate factorial
+calculate_factorial &lt;- function(n) {
+  if (n == 0 || n == 1) {
+    return(1)
+  } else {
+    return(n * calculate_factorial(n - 1))
+  }
+}
+
+# Using the calculate_factorial function
+fact_5 &lt;- calculate_factorial(5)
+print(fact_5)  # This will print the factorial of 5</code></pre>
+</div>
+</div>
+<div id="problems" class="section level2">
+<h2>Problems</h2>
+<ol style="list-style-type: decimal">
+<li>Write an R script that takes an input number and checks if it’s a prime number or not using conditional statements.</li>
+<li>Generate Fibonacci sequence using a <code>for</code> loop. Prompt the user to input the length of the sequence and display the result.</li>
+<li>Write a script that uses a <code>for</code> loop to print all numbers between 1 and 100 but skips numbers that are multiples of 5.</li>
+<li>Create a program to generate the first 10 even numbers using a <code>for</code> loop. Implement a <code>break</code> statement to stop the loop after 10 even numbers are found.</li>
+<li>Write an R function <code>power</code> that takes two arguments <code>x</code> and <code>n</code> and returns the value of x raised to the power of n.</li>
+</ol>
 </div>
 
 <!--<p>Copyright &copy; 2023 Biswarup Biswas. All rights reserved.</p>-->
