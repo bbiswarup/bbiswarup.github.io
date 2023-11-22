@@ -11,7 +11,7 @@
 
 
 
-<title>MA2107: R Programming</title>
+<title>Lab sheet 8</title>
 
 <script src="site_libs/header-attrs-2.14/header-attrs.js"></script>
 <script src="site_libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
@@ -280,47 +280,126 @@ $(document).ready(function () {
 
 
 
-<h1 class="title toc-ignore">MA2107: R Programming</h1>
+<h1 class="title toc-ignore">Lab sheet 8</h1>
 
 </div>
 
 
-<div id="lab-sheets" class="section level3">
-<h3>Lab sheets</h3>
-<ul>
-<li><a href="installation.pdf">R installation and course information</a></li>
-<li><a href="Lab_sheet1.html">Lab sheet 1</a></li>
-<li><a href="Lab_sheet2.html">Lab sheet 2</a></li>
-<li><a href="Lab_sheet3.html">Lab sheet 3</a></li>
-<li><a href="Lab_sheet4new.pdf">Lab sheet 4</a></li>
-<li><a href="Lab_sheet5.pdf">Lab sheet 5</a></li>
-<li><a href="Lab_sheet6a.html">Lab sheet 6a</a></li>
-<li><a href="Lab_sheet6b.html">Lab sheet 6b</a></li>
-<li><a href="Lab_sheet7a.html">Lab sheet 7a</a></li>
-<li><a href="Lab_sheet7b.html">Lab sheet 7b</a></li>
-<li><a href="Lab_sheet7c.html">Lab sheet 7c</a></li>
-<li><a href="Lab_sheet8.html">Lab sheet 8</a></li>
-</ul>
+<div id="differentation" class="section level2">
+<h2>Differentation</h2>
+<pre class="r"><code>f&lt;-expression(x^3+2*x+3)
+d&lt;-D(f,&#39;x&#39;)
+d</code></pre>
+<pre><code>## 3 * x^2 + 2</code></pre>
+<pre class="r"><code>d1&lt;-D(D(f,&#39;x&#39;),&#39;x&#39;)
+d1</code></pre>
+<pre><code>## 3 * (2 * x)</code></pre>
+<div id="differentiation-in-two-variables" class="section level3">
+<h3>Differentiation in two variables</h3>
+<pre class="r"><code>f&lt;-expression(x^2+y^2+2*x*y-3*x+4*y+4)
+D1=D(f,&#39;x&#39;)
+D1</code></pre>
+<pre><code>## 2 * x + 2 * y - 3</code></pre>
+<pre class="r"><code>f&lt;-expression(x^2+y^2+2*x*y-3*x+4*y+4)
+D2=D(f,&#39;y&#39;)
+D2</code></pre>
+<pre><code>## 2 * y + 2 * x + 4</code></pre>
 </div>
-<div id="problem-sets" class="section level3">
-<h3>Problem sets</h3>
-<ul>
-<li><a href="Problem_set1.pdf">Problem set 1a</a></li>
-<li><a href="Problem_set1b.pdf">Problem set 1b</a></li>
-<li><a href="Problem_set2.pdf">Problem set 2</a></li>
-<li><a href="Problem_set3.pdf">Problem set 3</a></li>
-<li><a href="Problem_set5.pdf">Problem set 4</a> <i class="fa fa-thumb-tack" style="font-size:14px;color:red"></i></li>
-</ul>
+<div id="other-differentiation" class="section level3">
+<h3>Other differentiation</h3>
+<pre class="r"><code>exp&lt;- expression(sin(cos(x + y^2)))
+dx&lt;-D(exp,&#39;x&#39;);dx</code></pre>
+<pre><code>## -(cos(cos(x + y^2)) * sin(x + y^2))</code></pre>
+<pre class="r"><code>dy&lt;-D(exp,&#39;y&#39;); dy</code></pre>
+<pre><code>## -(cos(cos(x + y^2)) * (sin(x + y^2) * (2 * y)))</code></pre>
 </div>
-<div id="quizes" class="section level3">
-<h3>Quizes</h3>
-<ul>
-<li><a href="CT1.pdf">Class test 1</a></li>
-<li><a href="CT2.pdf">Class test 2</a></li>
-</ul>
 </div>
-<div id="assignments" class="section level3">
-<h3>Assignments</h3>
+<div id="integration" class="section level2">
+<h2>Integration</h2>
+<pre class="r"><code>func&lt;-function(x)(x^3+2*x^2+3*x+9)
+I&lt;-integrate(func,lower=0,upper=3)
+I</code></pre>
+<pre><code>## 78.75 with absolute error &lt; 8.7e-13</code></pre>
+<div id="other-integration" class="section level3">
+<h3>Other Integration</h3>
+<pre class="r"><code>integrate(dnorm, -1.96, 1.96)</code></pre>
+<pre><code>## 0.9500042 with absolute error &lt; 1e-11</code></pre>
+<pre class="r"><code>integrate(dnorm, -Inf, Inf)</code></pre>
+<pre><code>## 1 with absolute error &lt; 9.4e-05</code></pre>
+</div>
+<div id="how-to-evaluate-tripple-integral" class="section level3">
+<h3>How to evaluate tripple integral?</h3>
+<p>Evaluate <span class="math display">\[\int_{0}^{0.5}\int_{0}^{0.5}\int_{0}^{0.5}\dfrac{2}{3}\left(x^2+y^2+z^2  \right)\ dx\,dy\,dz.\]</span></p>
+<pre class="r"><code>library(cubature)
+
+f &lt;- function(x) { 2/3 * (x[1] + x[2] + x[3]) } 
+# &quot;x&quot; is vector x[1], x[2], x[3] are referring to x1, x2 and x3 respectively.
+adaptIntegrate(f, lowerLimit = c(0, 0, 0), upperLimit = c(0.5, 0.5, 0.5))</code></pre>
+<pre><code>## $integral
+## [1] 0.0625
+## 
+## $error
+## [1] 1.387779e-17
+## 
+## $functionEvaluations
+## [1] 33
+## 
+## $returnCode
+## [1] 0</code></pre>
+<pre class="r"><code>## a slowly-convergent integral
+
+integrand &lt;- function(x) {1/((x+1)*sqrt(x))}
+integrate(integrand, lower = 0, upper = Inf)</code></pre>
+<pre><code>## 3.141593 with absolute error &lt; 2.7e-05</code></pre>
+</div>
+</div>
+<div id="another-package-to-integrate" class="section level2">
+<h2>Another package to integrate</h2>
+<p>Evaluate <span class="math display">\[\int_0^1\int_0^1 \cos{x} \cos{y}\ dx\,dy.\]</span></p>
+<pre class="r"><code>library(&#39;pracma&#39;)
+fun &lt;- function(x, y) cos(x) * cos(y)
+integral2(fun, 0, 1, 0, 1, reltol = 1e-10)</code></pre>
+<pre><code>## $Q
+## [1] 0.7080734
+## 
+## $error
+## [1] 0</code></pre>
+<div id="compute-the-volume-of-a-sphere" class="section level3">
+<h3>Compute the volume of a sphere</h3>
+<p>Evaluate <span class="math display">\[\int_{x=0}^{1}\int_{y=0}^{\sqrt{1-x^2}} \sqrt{1-x^2-y^2} \ dy\,dx.\]</span></p>
+<pre class="r"><code>f &lt;- function(x, y) sqrt(1 -x^2 - y^2)
+xmin &lt;- 0; xmax &lt;- 1
+ymin &lt;- 0; ymax &lt;- function(x) sqrt(1 - x^2)
+I &lt;- integral2(f, xmin, xmax, ymin, ymax)
+I$Q</code></pre>
+<pre><code>## [1] 0.5236076</code></pre>
+</div>
+<div id="compute-the-volume-over-a-sector" class="section level3">
+<h3>Compute the volume over a sector</h3>
+<pre class="r"><code>I &lt;- integral2(f, 0,pi/2, 0,1, sector = TRUE)
+I$Q</code></pre>
+<pre><code>## [1] 0.5236226</code></pre>
+<p>Integrate <span class="math inline">\(\dfrac{1}{ \sqrt{x + y}(1 + x + y)^2 }\)</span> over the triangle <span class="math inline">\(0\leq x \leq 1,\ 0\leq y\leq 1 - x\)</span>. Note that the integrand is infinite at <span class="math inline">\((0,0)\)</span>.</p>
+<pre class="r"><code>f &lt;- function(x,y) 1/( sqrt(x + y) * (1 + x + y)^2 )
+ymax &lt;- function(x) 1 - x
+I &lt;- integral2(f, 0,1, 0,ymax)
+I$Q + 1/2 - pi/4  </code></pre>
+<pre><code>## [1] -3.247091e-08</code></pre>
+<pre class="r"><code>##  Compute this integral as a sector
+rmax &lt;- function(theta) 1/(sin(theta) + cos(theta))
+I &lt;- integral2(f, 0,pi/2, 0,rmax, sector = TRUE, singular = TRUE)
+I$Q + 1/2 - pi/4  </code></pre>
+<pre><code>## [1] -4.998646e-11</code></pre>
+<p>Evaluate <span class="math display">\[\int_{x=2}^{4}\int_{x-1}^{x+6}\int_{-2}^{4 + y^2} (x^2+y^2+z) \ dz\,dy\,dx.\]</span></p>
+<pre class="r"><code>integrand3 &lt;- function(x, y, z) x^2 + y^2 + z
+xmin &lt;- 2; xmax &lt;- 4
+ymin &lt;- function(x) x - 1
+ymax &lt;- function(x) x + 6
+zmin &lt;- -2
+zmax &lt;- function(x, y) 4 + y^2
+integral3(integrand3, xmin, xmax, ymin, ymax, zmin, zmax)</code></pre>
+<pre><code>## [1] 47416.76</code></pre>
+</div>
 </div>
 
 <!--<p>Copyright &copy; 2023 Biswarup Biswas. All rights reserved.</p>-->

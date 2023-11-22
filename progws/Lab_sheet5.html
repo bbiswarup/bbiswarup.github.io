@@ -311,26 +311,26 @@ $(document).ready(function () {
 <p><strong>Descriptive statistics</strong></p>
 <pre class="r"><code>x &lt;- rnorm(50)
 mean(x)</code></pre>
-<pre><code>## [1] 0.01580124</code></pre>
+<pre><code>## [1] 0.1606675</code></pre>
 <pre class="r"><code>sd(x)</code></pre>
-<pre><code>## [1] 1.061453</code></pre>
+<pre><code>## [1] 0.8320655</code></pre>
 <pre class="r"><code>var(x)</code></pre>
-<pre><code>## [1] 1.126682</code></pre>
+<pre><code>## [1] 0.692333</code></pre>
 <pre class="r"><code>median(x)</code></pre>
-<pre><code>## [1] 0.0415141</code></pre>
+<pre><code>## [1] 0.1381403</code></pre>
 <pre class="r"><code>quantile(x)</code></pre>
 <pre><code>##         0%        25%        50%        75%       100% 
-## -2.4356459 -0.6362558  0.0415141  0.8374610  2.0650573</code></pre>
+## -1.6036973 -0.2468456  0.1381403  0.5552780  3.0859839</code></pre>
 <pre class="r"><code>pvec &lt;- seq(0,1,0.1)
 pvec</code></pre>
 <pre><code>##  [1] 0.0 0.1 0.2 0.3 0.4 0.5 0.6 0.7 0.8 0.9 1.0</code></pre>
 <pre class="r"><code>quantile(x,pvec)</code></pre>
-<pre><code>##         0%        10%        20%        30%        40% 
-## -2.4356459 -1.4636390 -0.8025879 -0.4277371 -0.1683396 
-##        50%        60%        70%        80%        90% 
-##  0.0415141  0.4354160  0.6597294  0.9046953  1.1443644 
-##       100% 
-##  2.0650573</code></pre>
+<pre><code>##          0%         10%         20%         30%         40% 
+## -1.60369728 -0.85477527 -0.33681885 -0.19874614 -0.01908621 
+##         50%         60%         70%         80%         90% 
+##  0.13814026  0.27892721  0.36827415  0.59343974  1.08481671 
+##        100% 
+##  3.08598394</code></pre>
 <pre class="r"><code>data()
 head(Nile)</code></pre>
 <pre><code>## [1] 1120 1160  963 1210 1160 1160</code></pre>
