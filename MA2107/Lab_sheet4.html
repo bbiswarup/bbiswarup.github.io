@@ -13,7 +13,7 @@
 
 <title>Lab Sheet 4: Basics of data analysis in R and a Simple Sentiment Analysis</title>
 
-<script src="site_libs/header-attrs-2.14/header-attrs.js"></script>
+<script src="site_libs/header-attrs-2.28/header-attrs.js"></script>
 <script src="site_libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <link href="site_libs/bootstrap-3.3.5/css/cosmo.min.css" rel="stylesheet" />
@@ -39,8 +39,8 @@
 <script src="site_libs/wordcloud2-0.0.1/wordcloud2-all.js"></script>
 <script src="site_libs/wordcloud2-0.0.1/hover.js"></script>
 <script src="site_libs/wordcloud2-binding-0.2.1/wordcloud2.js"></script>
-<link href="site_libs/font-awesome-5.1.0/css/all.css" rel="stylesheet" />
-<link href="site_libs/font-awesome-5.1.0/css/v4-shims.css" rel="stylesheet" />
+<link href="site_libs/font-awesome-6.4.2/css/all.min.css" rel="stylesheet" />
+<link href="site_libs/font-awesome-6.4.2/css/v4-shims.min.css" rel="stylesheet" />
 
 <style type="text/css">
   code{white-space: pre-wrap;}
@@ -151,11 +151,15 @@ $(document).ready(function () {
     href = "index.html";
   var menuAnchor = $('a[href="' + href + '"]');
 
-  // mark it active
-  menuAnchor.tab('show');
-
-  // if it's got a parent navbar menu mark it active as well
-  menuAnchor.closest('li.dropdown').addClass('active');
+  // mark the anchor link active (and if it's in a dropdown, also mark that active)
+  var dropdown = menuAnchor.closest('li.dropdown');
+  if (window.bootstrap) { // Bootstrap 4+
+    menuAnchor.addClass('active');
+    dropdown.find('> .dropdown-toggle').addClass('active');
+  } else { // Bootstrap 3
+    menuAnchor.parent().addClass('active');
+    dropdown.addClass('active');
+  }
 
   // Navbar adjustments
   var navHeight = $(".navbar").first().height() + 15;
@@ -184,8 +188,8 @@ $(document).ready(function () {
   border-radius: 4px;
 }
 
-.tabset-dropdown > .nav-tabs > li.active:before {
-  content: "";
+.tabset-dropdown > .nav-tabs > li.active:before, .tabset-dropdown > .nav-tabs.nav-tabs-open:before {
+  content: "\e259";
   font-family: 'Glyphicons Halflings';
   display: inline-block;
   padding: 10px;
@@ -193,16 +197,9 @@ $(document).ready(function () {
 }
 
 .tabset-dropdown > .nav-tabs.nav-tabs-open > li.active:before {
-  content: "&#xe258;";
-  border: none;
-}
-
-.tabset-dropdown > .nav-tabs.nav-tabs-open:before {
-  content: "";
+  content: "\e258";
   font-family: 'Glyphicons Halflings';
-  display: inline-block;
-  padding: 10px;
-  border-right: 1px solid #ddd;
+  border: none;
 }
 
 .tabset-dropdown > .nav-tabs > li.active {
@@ -525,8 +522,8 @@ wordcloud2(
   minRotation = -pi/4,  # Minimum rotation angle
   maxRotation = pi/4   # Maximum rotation angle
 )</code></pre>
-<div id="htmlwidget-a1667d3ecd7feea0da87" style="width:672px;height:480px;" class="wordcloud2 html-widget"></div>
-<script type="application/json" data-for="htmlwidget-a1667d3ecd7feea0da87">{"x":{"word":["artificial","neural","physics","brain","network","nobel","swedish","award","awarded","french","left","million","networks","neurons","prize","agostini","alfred","anne","anniversary","atom","awards","award’s","band","bequest","biological","bodies","born","brothers","carries","cash","caused","centre","ceremonies","chemistry","collections","concerned","concert","connected","continued","couplings","creator","day","death","december","designed","desire","diagnoses","discoveries","disease","electronics","electrons","enable","entire","fans","ferenc","field","foundational","fundamental","gadgets","geoffrey","glimpse","hinton","hopfield","hungarian","incident","information","initially","inspiration","inspired","inventions","inventor","invited","joe","john","jonas","kevin","krausz","kronor","laser","laureates","lead","learning","l’huillier","machine","mimic","moment","nick","nobel’s","nodes","online","perform","performed","person","physicist","pierre","prague","processes","providing","quickly","races","ran","receive","removed","scary","scientist","scientists","security","signaled","songs","spinning","split","stage","structure","superfast","surfaced","synapses","tasks","times","tiny","trained","understand","usd","video","virtually","weighted","won","world","year’s"],"freq":[4,4,4,3,3,3,3,2,2,2,2,2,2,2,2,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1],"fontFamily":"Arial","fontWeight":"bold","color":"random-dark","minSize":0,"weightFactor":45,"backgroundColor":"white","gridSize":0,"minRotation":-0.785398163397448,"maxRotation":0.785398163397448,"shuffle":true,"rotateRatio":0.4,"shape":"circle","ellipticity":0.65,"figBase64":null,"hover":null},"evals":[],"jsHooks":{"render":[{"code":"function(el,x){\n                        console.log(123);\n                        if(!iii){\n                          window.location.reload();\n                          iii = False;\n\n                        }\n  }","data":null}]}}</script>
+<div id="htmlwidget-abb3e7263e5129b7ea74" style="width:672px;height:480px;" class="wordcloud2 html-widget"></div>
+<script type="application/json" data-for="htmlwidget-abb3e7263e5129b7ea74">{"x":{"word":["artificial","neural","physics","brain","network","nobel","swedish","australia","award","awarded","french","josh","lead","million","networks","neurons","odi","prize","registered","absence","agostini","alfred","anne","anniversary","atom","awards","award’s","bequest","biological","bodies","born","captains","carries","cash","centre","ceremonies","chemistry","collections","connected","contenders","couplings","creator","cummins","david","day","death","december","deciding","designed","desire","diagnoses","discoveries","disease","electronics","electrons","enable","entire","ferenc","field","foundational","fundamental","gadgets","geoffrey","glimpse","harris","hazlewood","hinton","hopfield","hungarian","information","inglis","initially","inspiration","inspired","inventions","inventor","invited","john","krausz","kronor","laureates","learning","left","l’huillier","machine","marcus","marsh","mcsweeney","mimic","mitchell","mobile","nathan","nobel’s","nodes","opener","pakistan","pat","perform","physicist","pierre","processes","providing","races","receive","regular","replace","rested","returns","scientist","scientists","series","spinning","split","structure","superfast","synapses","tasks","test","times","tiny","top","trained","understand","usd","virtually","warner","weighted","won","world","year’s"],"freq":[4,4,4,3,3,3,3,2,2,2,2,2,2,2,2,2,2,2,2,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1],"fontFamily":"Arial","fontWeight":"bold","color":"random-dark","minSize":0,"weightFactor":45,"backgroundColor":"white","gridSize":0,"minRotation":-0.785398163397448,"maxRotation":0.785398163397448,"shuffle":true,"rotateRatio":0.4,"shape":"circle","ellipticity":0.65,"figBase64":null,"hover":null},"evals":[],"jsHooks":{"render":[{"code":"function(el,x){\n                        console.log(123);\n                        if(!iii){\n                          window.location.reload();\n                          iii = False;\n\n                        }\n  }","data":null}]}}</script>
 </div>
 <div id="count-sentiment-scores" class="section level3">
 <h3>Count Sentiment Scores</h3>
