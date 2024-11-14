@@ -1,0 +1,517 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+
+<meta charset="utf-8" />
+<meta name="generator" content="pandoc" />
+<meta http-equiv="X-UA-Compatible" content="IE=EDGE" />
+
+
+
+
+<title>Project 2: Comparing IMDb Ratings Across Different Genres</title>
+
+<script src="site_libs/header-attrs-2.28/header-attrs.js"></script>
+<script src="site_libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link href="site_libs/bootstrap-3.3.5/css/cosmo.min.css" rel="stylesheet" />
+<script src="site_libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/respond.min.js"></script>
+<style>h1 {font-size: 34px;}
+       h1.title {font-size: 38px;}
+       h2 {font-size: 30px;}
+       h3 {font-size: 24px;}
+       h4 {font-size: 18px;}
+       h5 {font-size: 16px;}
+       h6 {font-size: 12px;}
+       code {color: inherit; background-color: rgba(0, 0, 0, 0.04);}
+       pre:not([class]) { background-color: white }</style>
+<script src="site_libs/navigation-1.1/tabsets.js"></script>
+<link href="site_libs/highlightjs-9.12.0/textmate.css" rel="stylesheet" />
+<script src="site_libs/highlightjs-9.12.0/highlight.js"></script>
+<link href="site_libs/pagedtable-1.1/css/pagedtable.css" rel="stylesheet" />
+<script src="site_libs/pagedtable-1.1/js/pagedtable.js"></script>
+<link href="site_libs/font-awesome-6.4.2/css/all.min.css" rel="stylesheet" />
+<link href="site_libs/font-awesome-6.4.2/css/v4-shims.min.css" rel="stylesheet" />
+
+<style type="text/css">
+  code{white-space: pre-wrap;}
+  span.smallcaps{font-variant: small-caps;}
+  span.underline{text-decoration: underline;}
+  div.column{display: inline-block; vertical-align: top; width: 50%;}
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+  ul.task-list{list-style: none;}
+    </style>
+
+<style type="text/css">code{white-space: pre;}</style>
+<script type="text/javascript">
+if (window.hljs) {
+  hljs.configure({languages: []});
+  hljs.initHighlightingOnLoad();
+  if (document.readyState && document.readyState === "complete") {
+    window.setTimeout(function() { hljs.initHighlighting(); }, 0);
+  }
+}
+</script>
+
+
+
+
+
+
+<link rel="stylesheet" href="styles.css" type="text/css" />
+
+
+
+<style type = "text/css">
+.main-container {
+  max-width: 940px;
+  margin-left: auto;
+  margin-right: auto;
+}
+img {
+  max-width:100%;
+}
+.tabbed-pane {
+  padding-top: 12px;
+}
+.html-widget {
+  margin-bottom: 20px;
+}
+button.code-folding-btn:focus {
+  outline: none;
+}
+summary {
+  display: list-item;
+}
+details > summary > p:only-child {
+  display: inline;
+}
+pre code {
+  padding: 0;
+}
+</style>
+
+
+<style type="text/css">
+.dropdown-submenu {
+  position: relative;
+}
+.dropdown-submenu>.dropdown-menu {
+  top: 0;
+  left: 100%;
+  margin-top: -6px;
+  margin-left: -1px;
+  border-radius: 0 6px 6px 6px;
+}
+.dropdown-submenu:hover>.dropdown-menu {
+  display: block;
+}
+.dropdown-submenu>a:after {
+  display: block;
+  content: " ";
+  float: right;
+  width: 0;
+  height: 0;
+  border-color: transparent;
+  border-style: solid;
+  border-width: 5px 0 5px 5px;
+  border-left-color: #cccccc;
+  margin-top: 5px;
+  margin-right: -10px;
+}
+.dropdown-submenu:hover>a:after {
+  border-left-color: #adb5bd;
+}
+.dropdown-submenu.pull-left {
+  float: none;
+}
+.dropdown-submenu.pull-left>.dropdown-menu {
+  left: -100%;
+  margin-left: 10px;
+  border-radius: 6px 0 6px 6px;
+}
+</style>
+
+<script type="text/javascript">
+// manage active state of menu based on current page
+$(document).ready(function () {
+  // active menu anchor
+  href = window.location.pathname
+  href = href.substr(href.lastIndexOf('/') + 1)
+  if (href === "")
+    href = "index.html";
+  var menuAnchor = $('a[href="' + href + '"]');
+
+  // mark the anchor link active (and if it's in a dropdown, also mark that active)
+  var dropdown = menuAnchor.closest('li.dropdown');
+  if (window.bootstrap) { // Bootstrap 4+
+    menuAnchor.addClass('active');
+    dropdown.find('> .dropdown-toggle').addClass('active');
+  } else { // Bootstrap 3
+    menuAnchor.parent().addClass('active');
+    dropdown.addClass('active');
+  }
+
+  // Navbar adjustments
+  var navHeight = $(".navbar").first().height() + 15;
+  var style = document.createElement('style');
+  var pt = "padding-top: " + navHeight + "px; ";
+  var mt = "margin-top: -" + navHeight + "px; ";
+  var css = "";
+  // offset scroll position for anchor links (for fixed navbar)
+  for (var i = 1; i <= 6; i++) {
+    css += ".section h" + i + "{ " + pt + mt + "}\n";
+  }
+  style.innerHTML = "body {" + pt + "padding-bottom: 40px; }\n" + css;
+  document.head.appendChild(style);
+});
+</script>
+
+<!-- tabsets -->
+
+<style type="text/css">
+.tabset-dropdown > .nav-tabs {
+  display: inline-table;
+  max-height: 500px;
+  min-height: 44px;
+  overflow-y: auto;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+.tabset-dropdown > .nav-tabs > li.active:before, .tabset-dropdown > .nav-tabs.nav-tabs-open:before {
+  content: "\e259";
+  font-family: 'Glyphicons Halflings';
+  display: inline-block;
+  padding: 10px;
+  border-right: 1px solid #ddd;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li.active:before {
+  content: "\e258";
+  font-family: 'Glyphicons Halflings';
+  border: none;
+}
+
+.tabset-dropdown > .nav-tabs > li.active {
+  display: block;
+}
+
+.tabset-dropdown > .nav-tabs > li > a,
+.tabset-dropdown > .nav-tabs > li > a:focus,
+.tabset-dropdown > .nav-tabs > li > a:hover {
+  border: none;
+  display: inline-block;
+  border-radius: 4px;
+  background-color: transparent;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li {
+  display: block;
+  float: none;
+}
+
+.tabset-dropdown > .nav-tabs > li {
+  display: none;
+}
+</style>
+
+<!-- code folding -->
+
+
+
+
+</head>
+
+<body>
+
+
+<div class="container-fluid main-container">
+
+
+
+
+<div class="navbar navbar-inverse  navbar-fixed-top" role="navigation">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-bs-toggle="collapse" data-target="#navbar" data-bs-target="#navbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="index.html">MA2107: R Programming</a>
+    </div>
+    <div id="navbar" class="navbar-collapse collapse">
+      <ul class="nav navbar-nav">
+        <li>
+  <a href="index.html">
+    <span class="fa fa-home"></span>
+     
+    Home
+  </a>
+</li>
+<li>
+  <a href="about.html">
+    <span class="fa fa-info"></span>
+     
+    About
+  </a>
+</li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        <li>
+  <a href="http://bbiswarup.github.io/index.html">
+    <span class="fa fa-solid fa-user"></span>
+     
+    Biswarup Biswas
+  </a>
+</li>
+      </ul>
+    </div><!--/.nav-collapse -->
+  </div><!--/.container -->
+</div><!--/.navbar -->
+
+<div id="header">
+
+
+
+<h1 class="title toc-ignore">Project 2: Comparing IMDb Ratings Across Different Genres</h1>
+
+</div>
+
+
+<div id="objective" class="section level2">
+<h2>Objective</h2>
+<p>In this lab session, we will analyze IMDb movie ratings across different genres to determine if there are significant differences in ratings. We will use a sample movie dataset to:</p>
+<ul>
+<li>Perform data wrangling.</li>
+<li>Conduct exploratory data analysis (EDA).</li>
+<li>Visualize the distribution of ratings across genres.</li>
+<li>Perform ANOVA to test for significant differences in mean ratings.</li>
+<li>Check assumptions of normality and homogeneity of variance.</li>
+</ul>
+</div>
+<div id="step-1-load-libraries-and-dataset" class="section level2">
+<h2>Step 1: Load Libraries and Dataset</h2>
+<pre class="r"><code># Load necessary libraries
+library(tidyverse)
+
+# Load the dataset
+imdb_data &lt;- read.csv(&quot;imdb_top_1000.csv&quot;)
+
+# Display the first few rows
+head(imdb_data)</code></pre>
+<div data-pagedtable="false">
+<script data-pagedtable-source type="application/json">
+{"columns":[{"label":[""],"name":["_rn_"],"type":[""],"align":["left"]},{"label":["Poster_Link"],"name":[1],"type":["chr"],"align":["left"]},{"label":["Series_Title"],"name":[2],"type":["chr"],"align":["left"]},{"label":["Released_Year"],"name":[3],"type":["chr"],"align":["left"]},{"label":["Certificate"],"name":[4],"type":["chr"],"align":["left"]},{"label":["Runtime"],"name":[5],"type":["chr"],"align":["left"]},{"label":["Genre"],"name":[6],"type":["chr"],"align":["left"]},{"label":["IMDB_Rating"],"name":[7],"type":["dbl"],"align":["right"]},{"label":["Overview"],"name":[8],"type":["chr"],"align":["left"]},{"label":["Meta_score"],"name":[9],"type":["int"],"align":["right"]},{"label":["Director"],"name":[10],"type":["chr"],"align":["left"]},{"label":["Star1"],"name":[11],"type":["chr"],"align":["left"]},{"label":["Star2"],"name":[12],"type":["chr"],"align":["left"]},{"label":["Star3"],"name":[13],"type":["chr"],"align":["left"]},{"label":["Star4"],"name":[14],"type":["chr"],"align":["left"]},{"label":["No_of_Votes"],"name":[15],"type":["int"],"align":["right"]},{"label":["Gross"],"name":[16],"type":["chr"],"align":["left"]}],"data":[{"1":"https://m.media-amazon.com/images/M/MV5BMDFkYTc0MGEtZmNhMC00ZDIzLWFmNTEtODM1ZmRlYWMwMWFmXkEyXkFqcGdeQXVyMTMxODk2OTU@._V1_UX67_CR0,0,67,98_AL_.jpg","2":"The Shawshank Redemption","3":"1994","4":"A","5":"142 min","6":"Drama","7":"9.3","8":"Two imprisoned men bond over a number of years, finding solace and eventual redemption through acts of common decency.","9":"80","10":"Frank Darabont","11":"Tim Robbins","12":"Morgan Freeman","13":"Bob Gunton","14":"William Sadler","15":"2343110","16":"28,341,469","_rn_":"1"},{"1":"https://m.media-amazon.com/images/M/MV5BM2MyNjYxNmUtYTAwNi00MTYxLWJmNWYtYzZlODY3ZTk3OTFlXkEyXkFqcGdeQXVyNzkwMjQ5NzM@._V1_UY98_CR1,0,67,98_AL_.jpg","2":"The Godfather","3":"1972","4":"A","5":"175 min","6":"Crime, Drama","7":"9.2","8":"An organized crime dynasty's aging patriarch transfers control of his clandestine empire to his reluctant son.","9":"100","10":"Francis Ford Coppola","11":"Marlon Brando","12":"Al Pacino","13":"James Caan","14":"Diane Keaton","15":"1620367","16":"134,966,411","_rn_":"2"},{"1":"https://m.media-amazon.com/images/M/MV5BMTMxNTMwODM0NF5BMl5BanBnXkFtZTcwODAyMTk2Mw@@._V1_UX67_CR0,0,67,98_AL_.jpg","2":"The Dark Knight","3":"2008","4":"UA","5":"152 min","6":"Action, Crime, Drama","7":"9.0","8":"When the menace known as the Joker wreaks havoc and chaos on the people of Gotham, Batman must accept one of the greatest psychological and physical tests of his ability to fight injustice.","9":"84","10":"Christopher Nolan","11":"Christian Bale","12":"Heath Ledger","13":"Aaron Eckhart","14":"Michael Caine","15":"2303232","16":"534,858,444","_rn_":"3"},{"1":"https://m.media-amazon.com/images/M/MV5BMWMwMGQzZTItY2JlNC00OWZiLWIyMDctNDk2ZDQ2YjRjMWQ0XkEyXkFqcGdeQXVyNzkwMjQ5NzM@._V1_UY98_CR1,0,67,98_AL_.jpg","2":"The Godfather: Part II","3":"1974","4":"A","5":"202 min","6":"Crime, Drama","7":"9.0","8":"The early life and career of Vito Corleone in 1920s New York City is portrayed, while his son, Michael, expands and tightens his grip on the family crime syndicate.","9":"90","10":"Francis Ford Coppola","11":"Al Pacino","12":"Robert De Niro","13":"Robert Duvall","14":"Diane Keaton","15":"1129952","16":"57,300,000","_rn_":"4"},{"1":"https://m.media-amazon.com/images/M/MV5BMWU4N2FjNzYtNTVkNC00NzQ0LTg0MjAtYTJlMjFhNGUxZDFmXkEyXkFqcGdeQXVyNjc1NTYyMjg@._V1_UX67_CR0,0,67,98_AL_.jpg","2":"12 Angry Men","3":"1957","4":"U","5":"96 min","6":"Crime, Drama","7":"9.0","8":"A jury holdout attempts to prevent a miscarriage of justice by forcing his colleagues to reconsider the evidence.","9":"96","10":"Sidney Lumet","11":"Henry Fonda","12":"Lee J. Cobb","13":"Martin Balsam","14":"John Fiedler","15":"689845","16":"4,360,000","_rn_":"5"},{"1":"https://m.media-amazon.com/images/M/MV5BNzA5ZDNlZWMtM2NhNS00NDJjLTk4NDItYTRmY2EwMWZlMTY3XkEyXkFqcGdeQXVyNzkwMjQ5NzM@._V1_UX67_CR0,0,67,98_AL_.jpg","2":"The Lord of the Rings: The Return of the King","3":"2003","4":"U","5":"201 min","6":"Action, Adventure, Drama","7":"8.9","8":"Gandalf and Aragorn lead the World of Men against Sauron's army to draw his gaze from Frodo and Sam as they approach Mount Doom with the One Ring.","9":"94","10":"Peter Jackson","11":"Elijah Wood","12":"Viggo Mortensen","13":"Ian McKellen","14":"Orlando Bloom","15":"1642758","16":"377,845,905","_rn_":"6"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
+  </script>
+</div>
+</div>
+<div id="step-2-data-cleaning" class="section level2">
+<h2>Step 2: Data Cleaning</h2>
+<p>Extract the primary genre and handle missing data.</p>
+<pre class="r"><code># Extract the primary genre (first genre listed)
+imdb_data &lt;- imdb_data %&gt;%
+  mutate(Primary_Genre = sapply(strsplit(as.character(Genre), &quot;,&quot;), `[`, 1))
+
+# Convert Primary_Genre and IMDB_Rating to appropriate data types
+imdb_data$Primary_Genre &lt;- as.factor(imdb_data$Primary_Genre)
+imdb_data$IMDB_Rating &lt;- as.numeric(imdb_data$IMDB_Rating)
+
+# Remove rows with missing ratings or genres
+imdb_data &lt;- na.omit(imdb_data[, c(&quot;Primary_Genre&quot;, &quot;IMDB_Rating&quot;)])</code></pre>
+</div>
+<div id="step-3-perform-anova" class="section level2">
+<h2>Step 3: Perform ANOVA</h2>
+<pre class="r"><code># One-way ANOVA
+anova_result &lt;- aov(IMDB_Rating ~ Primary_Genre, data = imdb_data)
+
+# Display ANOVA summary
+summary(anova_result)</code></pre>
+<pre><code>##                Df Sum Sq Mean Sq F value Pr(&gt;F)  
+## Primary_Genre  13   1.65 0.12724   1.692 0.0574 .
+## Residuals     986  74.17 0.07522                 
+## ---
+## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1</code></pre>
+<div id="step-4-post-hoc-analysis" class="section level3">
+<h3>Step 4: Post-Hoc Analysis</h3>
+<p>If the ANOVA result is significant, perform a Tukey’s HSD test to identify which genres differ.</p>
+<pre class="r"><code># Tukey&#39;s HSD test
+tukey_result &lt;- TukeyHSD(anova_result)
+
+# Display the results
+print(tukey_result)</code></pre>
+<pre><code>##   Tukey multiple comparisons of means
+##     95% family-wise confidence level
+## 
+## Fit: aov(formula = IMDB_Rating ~ Primary_Genre, data = imdb_data)
+## 
+## $Primary_Genre
+##                              diff           lwr        upr     p adj
+## Adventure-Action    -1.191860e-02 -0.1413491135 0.11751190 1.0000000
+## Animation-Action    -1.893080e-02 -0.1426730262 0.10481143 0.9999997
+## Biography-Action    -1.078224e-02 -0.1316340990 0.11006962 1.0000000
+## Comedy-Action       -4.812828e-02 -0.1502495083 0.05399294 0.9500042
+## Crime-Action         6.740383e-02 -0.0461281533 0.18093580 0.7701356
+## Drama-Action         8.020842e-03 -0.0807784568 0.09682014 1.0000000
+## Family-Action       -1.494186e-01 -0.8052128780 0.50637567 0.9999654
+## Fantasy-Action       5.058140e-02 -0.6052128780 0.70637567 1.0000000
+## Film-Noir-Action     1.724806e-02 -0.5197421758 0.55423830 1.0000000
+## Horror-Action       -4.032770e-02 -0.3270999932 0.24644460 0.9999999
+## Mystery-Action       2.558140e-02 -0.2497313278 0.30089412 1.0000000
+## Thriller-Action     -1.494186e-01 -1.0741828822 0.77534567 0.9999994
+## Western-Action       4.005814e-01 -0.0657926057 0.86695540 0.1845735
+## Animation-Adventure -7.012195e-03 -0.1559343813 0.14190999 1.0000000
+## Biography-Adventure  1.136364e-03 -0.1453929867 0.14766571 1.0000000
+## Comedy-Adventure    -3.620968e-02 -0.1677179425 0.09529859 0.9997063
+## Crime-Adventure      7.932243e-02 -0.0612307241 0.21987558 0.8278322
+## Drama-Adventure      1.993945e-02 -0.1015142253 0.14139312 0.9999993
+## Family-Adventure    -1.375000e-01 -0.7985081753 0.52350818 0.9999881
+## Fantasy-Adventure    6.250000e-02 -0.5985081753 0.72350818 1.0000000
+## Film-Noir-Adventure  2.916667e-02 -0.5141787064 0.57251204 1.0000000
+## Horror-Adventure    -2.840909e-02 -0.3269120718 0.27009389 1.0000000
+## Mystery-Adventure    3.750000e-02 -0.2500113467 0.32501135 1.0000000
+## Thriller-Adventure  -1.375000e-01 -1.0659689806 0.79096898 0.9999998
+## Western-Adventure    4.125000e-01 -0.0611775146 0.88617751 0.1675499
+## Biography-Animation  8.148559e-03 -0.1333814115 0.14967853 1.0000000
+## Comedy-Animation    -2.919748e-02 -0.1551113646 0.09671640 0.9999576
+## Crime-Animation      8.633463e-02 -0.0489985604 0.22166781 0.6697503
+## Drama-Animation      2.695164e-02 -0.0884211297 0.14232441 0.9999538
+## Family-Animation    -1.304878e-01 -0.7904057466 0.52943014 0.9999935
+## Fantasy-Animation    6.951220e-02 -0.5904057466 0.72943014 1.0000000
+## Film-Noir-Animation  3.617886e-02 -0.5058396586 0.57819738 1.0000000
+## Horror-Animation    -2.139690e-02 -0.3174778165 0.27468402 1.0000000
+## Mystery-Animation    4.451220e-02 -0.2404836933 0.32950808 0.9999996
+## Thriller-Animation  -1.304878e-01 -1.0581809276 0.79720532 0.9999999
+## Western-Animation    4.195122e-01 -0.0526427263 0.89166712 0.1444755
+## Comedy-Biography    -3.734604e-02 -0.1604205662 0.08572848 0.9991631
+## Crime-Biography      7.818607e-02 -0.0545094651 0.21088160 0.7794809
+## Drama-Biography      1.880308e-02 -0.0934640509 0.13107022 0.9999991
+## Family-Biography    -1.386364e-01 -0.7980184401 0.52074571 0.9999865
+## Fantasy-Biography    6.136364e-02 -0.5980184401 0.72074571 1.0000000
+## Film-Noir-Biography  2.803030e-02 -0.5133356632 0.56939627 1.0000000
+## Horror-Biography    -2.954545e-02 -0.3244300838 0.26533917 1.0000000
+## Mystery-Biography    3.636364e-02 -0.2473892304 0.32011650 1.0000000
+## Thriller-Biography  -1.386364e-01 -1.0659483731 0.78867565 0.9999998
+## Western-Biography    4.113636e-01 -0.0600420305 0.88276930 0.1651001
+## Crime-Comedy         1.155321e-01 -0.0003630061 0.23142722 0.0516588
+## Drama-Comedy         5.614912e-02 -0.0356521974 0.14795044 0.7310799
+## Family-Comedy       -1.012903e-01 -0.7574978325 0.55491719 0.9999997
+## Fantasy-Comedy       9.870968e-02 -0.5574978325 0.75491719 0.9999998
+## Film-Noir-Comedy     6.537634e-02 -0.4721184770 0.60287117 1.0000000
+## Horror-Comedy        7.800587e-03 -0.2799154503 0.29551662 1.0000000
+## Mystery-Comedy       7.370968e-02 -0.2025859300 0.35000528 0.9997927
+## Thriller-Comedy     -1.012903e-01 -1.0263476917 0.82376705 1.0000000
+## Western-Comedy       4.487097e-01 -0.0182452198 0.91566457 0.0742746
+## Drama-Crime         -5.938298e-02 -0.1637297510 0.04496378 0.8190955
+## Family-Crime        -2.168224e-01 -0.8749022589 0.44125740 0.9980345
+## Fantasy-Crime       -1.682243e-02 -0.6749022589 0.64125740 1.0000000
+## Film-Noir-Crime     -5.015576e-02 -0.5899348366 0.48962331 1.0000000
+## Horror-Crime        -1.077315e-01 -0.3996926195 0.18422958 0.9939984
+## Mystery-Crime       -4.182243e-02 -0.3225358567 0.23889100 0.9999998
+## Thriller-Crime      -2.168224e-01 -1.1432089051 0.70956405 0.9999528
+## Western-Crime        3.331776e-01 -0.1364048416 0.80275998 0.4916256
+## Family-Drama        -1.574394e-01 -0.8117061096 0.49682722 0.9999351
+## Fantasy-Drama        4.256055e-02 -0.6117061096 0.69682722 1.0000000
+## Film-Noir-Drama      9.227220e-03 -0.5258963666 0.54435081 1.0000000
+## Horror-Drama        -4.834854e-02 -0.3316100567 0.23491298 0.9999989
+## Mystery-Drama        1.756055e-02 -0.2540933314 0.28921444 1.0000000
+## Thriller-Drama      -1.574394e-01 -1.0811210510 0.76624216 0.9999989
+## Western-Drama        3.925606e-01 -0.0716629341 0.85678404 0.2049787
+## Fantasy-Family       2.000000e-01 -0.7220876749 1.12208767 0.9999805
+## Film-Noir-Family     1.666667e-01 -0.6750803659 1.00841370 0.9999934
+## Horror-Family        1.090909e-01 -0.5997235249 0.81790534 0.9999997
+## Mystery-Family       1.750000e-01 -0.5292560946 0.87925609 0.9999065
+## Thriller-Family     -6.217249e-15 -1.1293221507 1.12932215 1.0000000
+## Western-Family       5.500000e-01 -0.2485513509 1.34855135 0.5436231
+## Film-Noir-Fantasy   -3.333333e-02 -0.8750803659 0.80841370 1.0000000
+## Horror-Fantasy      -9.090909e-02 -0.7997235249 0.61790534 1.0000000
+## Mystery-Fantasy     -2.500000e-02 -0.7292560946 0.67925609 1.0000000
+## Thriller-Fantasy    -2.000000e-01 -1.3293221507 0.92932215 0.9999983
+## Western-Fantasy      3.500000e-01 -0.4485513509 1.14855135 0.9720414
+## Horror-Film-Noir    -5.757576e-02 -0.6581673730 0.54301586 1.0000000
+## Mystery-Film-Noir    8.333333e-03 -0.5868717014 0.60353837 1.0000000
+## Thriller-Film-Noir  -1.666667e-01 -1.2314018012 0.89806847 0.9999996
+## Western-Film-Noir    3.833333e-01 -0.3209227612 1.08758943 0.8622025
+## Mystery-Horror       6.590909e-02 -0.3189920243 0.45081021 0.9999988
+## Thriller-Horror     -1.090909e-01 -1.0721800752 0.85399826 1.0000000
+## Western-Horror       4.409091e-01 -0.0974741201 0.97929230 0.2504262
+## Thriller-Mystery    -1.750000e-01 -1.1347392806 0.78473928 0.9999975
+## Western-Mystery      3.750000e-01 -0.1573675673 0.90736757 0.5043727
+## Western-Thriller     5.500000e-01 -0.4809253611 1.58092536 0.8789044</code></pre>
+</div>
+</div>
+<div id="step-5-interpretation" class="section level2">
+<h2>Step 5: Interpretation</h2>
+<ul>
+<li><strong>ANOVA Output</strong>: If the p-value is less than the significance level (e.g., 0.05), it indicates that there is a statistically significant difference in IMDb ratings between at least two genres.</li>
+<li><strong>Tukey’s HSD Test</strong>: The test will show which pairs of genres have significant differences in mean IMDb ratings.</li>
+</ul>
+</div>
+<div id="step-6-visualization" class="section level2">
+<h2>Step 6: Visualization</h2>
+<pre class="r"><code># Boxplot of IMDb Ratings by Primary Genre
+ggplot(imdb_data, aes(x = Primary_Genre, y = IMDB_Rating, fill = Primary_Genre)) +
+  geom_boxplot() +
+  theme_minimal() +
+  labs(
+    title = &quot;Boxplot of IMDb Ratings by Genre&quot;,
+    x = &quot;Primary Genre&quot;,
+    y = &quot;IMDb Rating&quot;
+  ) +
+  theme(axis.text.x = element_text(angle = 45, hjust = 1))</code></pre>
+<p><img src="Lab_sheet7b_files/figure-html/unnamed-chunk-5-1.png" width="672" /></p>
+</div>
+
+<!--<p>Copyright &copy; 2023 Biswarup Biswas. All rights reserved.</p>-->
+
+
+
+</div>
+
+<script>
+
+// add bootstrap table styles to pandoc tables
+function bootstrapStylePandocTables() {
+  $('tr.odd').parent('tbody').parent('table').addClass('table table-condensed');
+}
+$(document).ready(function () {
+  bootstrapStylePandocTables();
+});
+
+
+</script>
+
+<!-- tabsets -->
+
+<script>
+$(document).ready(function () {
+  window.buildTabsets("TOC");
+});
+
+$(document).ready(function () {
+  $('.tabset-dropdown > .nav-tabs > li').click(function () {
+    $(this).parent().toggleClass('nav-tabs-open');
+  });
+});
+</script>
+
+<!-- code folding -->
+
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+
+</body>
+</html>
