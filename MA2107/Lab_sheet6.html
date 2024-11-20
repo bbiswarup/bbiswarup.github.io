@@ -322,22 +322,22 @@ kurtosis_x &lt;- kurtosis(x)
 list(mean = mean_x, sd = sd_x, var = var_x, median = median_x, 
      skewness = skewness_x, kurtosis = kurtosis_x)</code></pre>
 <pre><code>## $mean
-## [1] 0.124515
+## [1] 0.1626365
 ## 
 ## $sd
-## [1] 1.037086
+## [1] 0.9969765
 ## 
 ## $var
-## [1] 1.075548
+## [1] 0.9939621
 ## 
 ## $median
-## [1] 0.2371009
+## [1] 0.2662041
 ## 
 ## $skewness
-## [1] -0.3661865
+## [1] -0.3337814
 ## 
 ## $kurtosis
-## [1] 4.832683</code></pre>
+## [1] 5.17371</code></pre>
 <pre class="r"><code>quantile_x &lt;- quantile(x)
 pvec &lt;- seq(0, 1, 0.1)
 quantile_values &lt;- quantile(x, pvec)
@@ -345,16 +345,16 @@ quantile_values &lt;- quantile(x, pvec)
 list(quantiles = quantile_x, pvec = pvec, quantile_values = quantile_values)</code></pre>
 <pre><code>## $quantiles
 ##         0%        25%        50%        75%       100% 
-## -3.2331521 -0.3812748  0.2371009  0.6731148  2.9191401 
+## -3.2331521 -0.3589715  0.2662041  0.6624521  2.9191401 
 ## 
 ## $pvec
 ##  [1] 0.0 0.1 0.2 0.3 0.4 0.5 0.6 0.7 0.8 0.9 1.0
 ## 
 ## $quantile_values
 ##          0%         10%         20%         30%         40%         50% 
-## -3.23315213 -1.07956513 -0.61687491 -0.28370927  0.04854668  0.23710091 
+## -3.23315213 -1.07956513 -0.45383165 -0.28370927  0.04854668  0.26620409 
 ##         60%         70%         80%         90%        100% 
-##  0.41963804  0.62300797  0.70282186  1.11847631  2.91914013</code></pre>
+##  0.41526247  0.60485247  0.71271795  1.19187526  2.91914013</code></pre>
 <pre class="r"><code>data()
 head(Nile)</code></pre>
 <pre><code>## [1] 1120 1160  963 1210 1160 1160</code></pre>
